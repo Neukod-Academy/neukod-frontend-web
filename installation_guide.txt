@@ -1,0 +1,20 @@
+~ Install GSAP
+command : npm install gsap
+
+~ Install Shadcn UI
+command : npx shadcn@latest init
+    - Input
+    command : npx shadcn@latest add input
+    - Select List
+    command : npx shadcn@latest add select
+    - Button
+    command : npx shadcn@latest add button
+    - Navigation Menu
+    command : npx shadcn@latest add navigation-menu
+    - Aspect Ratio
+    command : npx shadcn@latest add aspect-ratio
+    - Card
+    command : npx shadcn@latest add card
+
+
+
