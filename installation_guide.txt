@@ -15,6 +15,13 @@ command : npx shadcn@latest init
     command : npx shadcn@latest add aspect-ratio
     - Card
     command : npx shadcn@latest add card
+    - Carousel
+    command : npx shadcn@latest add carousel
+    - Embla Carousel
+    command : npm install embla-carousel-react
+    - Embla Carousel Autoplay
+    command : npm install embla-carousel-autoplay --save
+
 
 
 
