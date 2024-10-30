@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import * as React from "react";
 import Logo from "../../assets/logo.png";
+import Logo2 from "../../assets/Putih.png"
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 
@@ -36,13 +37,13 @@ const languageOptions = [
 const Navbar = (props: any) => {
   return (
     <header>
-      <nav className="fixed inset-x-0 top-0 z-50 bg-white/30 backdrop-blur-md shadow-sm dark:bg-neutral-800/30">
+      <nav className="fixed inset-x-0 top-0 z-50 bg-gradient-to-b from-blackOut to-blackOut/70 backdrop-blur-md shadow-sm dark:bg-neutral-800/30">
         <div className="w-full max-w-7xl mx-auto px-4">
           <div className="flex justify-between h-14 items-center">
             <Link href="/" className="flex items-center" prefetch={false}>
               <Image
                 {...props}
-                src={Logo}
+                src={Logo2}
                 alt="Logo Profile"
                 x="20%"
                 y="20%"
@@ -54,14 +55,14 @@ const Navbar = (props: any) => {
             <nav className="hidden md:flex gap-4">
               <Link
                 href="/landing_page/about"
-                className="font-medium flex items-center text-sm transition-colors hover:underline"
+                className="font-medium flex items-center text-sm transition-colors text-white hover:underline"
                 prefetch={false}
               >
                 Course
               </Link>
               <Link
                 href="/landing_page/contact"
-                className="font-medium flex items-center text-sm transition-colors hover:underline"
+                className="font-medium flex items-center text-sm transition-colors text-white hover:underline"
                 prefetch={false}
               >
                 Contact Us
@@ -85,16 +86,10 @@ const Navbar = (props: any) => {
             </nav>
             <div className="flex items-center gap-4">
               <Button
-                size="md"
-                className="bg-daisyWhite px-2 py-2 text-black hover:bg-gray-200"
-              >
-                Sign in
-              </Button>
-              <Button
-                size="md"
+                size="sm"
                 className="bg-redFlag px-2 py-2 text-white hover:bg-red-800"
               >
-                Sign up
+                Apply Now!
               </Button>
             </div>
           </div>
