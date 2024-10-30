@@ -50,3 +50,30 @@ export const courseHighlight: CourseHighlight[] = [
         image: Xixi2logo,
     },
 ];
+
+export interface COURSES{
+    id: number;
+    title: string;
+    subtitle: string;
+    categories: string[];
+    alt: string;
+    image: StaticImageData;
+}
+export const courses: COURSES[] =[
+    {
+        id: 1,
+        title: 'Learn Data with Pyton',
+        subtitle: 'this class is for beginner learning about data processing using the python language',
+        categories: ['Beginner', 'Fcukin Python', 'Do not learn'],
+        alt: 'Python Course',
+        image: Awoklogo,
+    },
+    {
+        id: 2,
+        title: 'Check your khodam',
+        subtitle: 'khodam dalam bahasa arab memiliki arti umum yaitu pembantu, penjaga, atau pengawal, namun karena istilah berbau mistis ini khodam biasanya dianggap dari alam ghaib entah dari bangsa jin atau malaikat.',
+        categories: ['Knowledge','Khodam build'],
+        alt: 'Khodam power',
+        image: Alamaklogo,
+    }
+]

@@ -67,9 +67,9 @@ const Navbar = (props: any) => {
                 Contact Us
               </Link>
               <div className="grid gap-3 p-4 md:grid-cols-1">
-                <Select defaultValue="eng">
+                <Select>
                   <SelectTrigger className="w-fit">
-                    <SelectValue placeholder="ENG" />
+                    <SelectValue placeholder="EN"/>
                   </SelectTrigger>
                   <SelectContent>
                     <SelectGroup>
@@ -85,14 +85,14 @@ const Navbar = (props: any) => {
             </nav>
             <div className="flex items-center gap-4">
               <Button
-                size="sm"
-                className="bg-gray-100 px-2 py-2 text-orange-950 hover:bg-gray-200"
+                size="md"
+                className="bg-daisyWhite px-2 py-2 text-black hover:bg-gray-200"
               >
                 Sign in
               </Button>
               <Button
-                size="sm"
-                className="bg-orange-900 px-2 py-2 text-white hover:bg-orange-950"
+                size="md"
+                className="bg-redFlag px-2 py-2 text-white hover:bg-red-800"
               >
                 Sign up
               </Button>

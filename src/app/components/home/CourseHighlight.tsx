@@ -5,7 +5,6 @@ import Image from "next/image"
 import { courseHighlight, CourseHighlight } from "../../utils/constant"
 import { Card, CardContent } from "@/components/ui/card"
 import Autoplay from "embla-carousel-autoplay"
-
 import {
   Carousel,
   CarouselContent,
@@ -16,10 +15,10 @@ import {
 
 const CourseProgram = () => {
   return (
-    <div className="flex w-full px-0 py-8 justify-center">
-      <div className="relative flex flex-col md:flex-row gap-5 items-center">
-        <div className="relative justify-start mx-2 w-auto p-2">
-          <h1 className="text-3xl font-bold sm:texlt-left text-blue-900">
+    <div className="flex w-full px-24 py-8 justify-center">
+      <div className="relative flex flex-col md:flex-row gap-4 items-center">
+        <div className="flex justify-start mx-2 w-auto p-2">
+          <h1 className="text-xl md:text-3xl font-bold sm:text-left text-blue-900">
             Our Programs
           </h1>
         </div>

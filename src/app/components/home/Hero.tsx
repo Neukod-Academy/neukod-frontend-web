@@ -13,7 +13,7 @@ export default function Component() {
         className="object-cover"
         priority
       />
-      <div className="absolute inset-0 bg-cyan-500/50" />
+      <div className="absolute inset-0 bg-yellowMango/50" />
       <div className="relative z-10 h-full flex flex-col justify-center">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
@@ -34,7 +34,7 @@ export default function Component() {
             </p>
             <Button
               size="lg"
-              className="bg-indigo-900 text-white hover:bg-indigo-800"
+              className="bg-redFlag text-white hover:bg-red-800"
             >
               Apply Now
             </Button>

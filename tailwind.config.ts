@@ -49,7 +49,13 @@ const config: Config = {
   				'3': 'hsl(var(--chart-3))',
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
-  			}
+  			},
+
+		
+				'blackOut': '#242121',
+				'yellowMango': '#F8C25C',
+				'daisyWhite': '#F8F3E3',
+				'redFlag': '#FF2047'
   		},
   		borderRadius: {
   			lg: 'var(--radius)',
