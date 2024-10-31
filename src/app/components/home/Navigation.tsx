@@ -8,6 +8,17 @@ import Logo from "../../assets/logo.png";
 import Logo2 from "../../assets/Putih.png"
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
+import FormSwitch from "../common/FormSwitch"
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
 
 import {
   NavigationMenu,
@@ -28,13 +39,17 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useState } from "react";
 
 const languageOptions = [
   { value: "EN", label: "EN" },
   { value: "ID", label: "ID" },
 ];
 
+
 const Navbar = (props: any) => {
+  const [isOpen, setIsOpen] = useState(false)
+
   return (
     <header>
       <nav className="fixed inset-x-0 top-0 z-50 bg-gradient-to-b from-blackOut to-blackOut/70 backdrop-blur-md shadow-sm dark:bg-neutral-800/30">
@@ -70,7 +85,7 @@ const Navbar = (props: any) => {
               <div className="grid gap-3 p-4 md:grid-cols-1">
                 <Select>
                   <SelectTrigger className="w-fit">
-                    <SelectValue placeholder="EN"/>
+                    <SelectValue placeholder="EN" />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectGroup>
@@ -85,12 +100,23 @@ const Navbar = (props: any) => {
               </div>
             </nav>
             <div className="flex items-center gap-4">
-              <Button
-                size="sm"
-                className="bg-redFlag px-2 py-2 text-white hover:bg-red-800"
-              >
-                Apply Now!
-              </Button>
+
+              <Dialog open={isOpen} onOpenChange={setIsOpen}>
+                <DialogTrigger asChild>
+                  <Button
+                    size="sm"
+                    className="bg-redFlag px-2 py-2 text-white hover:bg-red-800"
+                  >
+                    Apply Now!
+                  </Button>
+                </DialogTrigger>
+                <DialogHeader>
+                  <DialogTitle className="invisible"></DialogTitle>
+                </DialogHeader>
+                <DialogContent className="sm:max-w-[90vw] md:max-w-[900px] lg:max-w-[1200px] p-0">
+                  <FormSwitch />
+                </DialogContent>
+              </Dialog>
             </div>
           </div>
         </div>

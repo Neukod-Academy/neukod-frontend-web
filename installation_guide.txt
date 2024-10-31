@@ -21,7 +21,8 @@ command : npx shadcn@latest init
     command : npm install embla-carousel-react
     - Embla Carousel Autoplay
     command : npm install embla-carousel-autoplay --save
-
+    - Checkbox
+    command : npx shadcn@latest add checkbox
 
 
 

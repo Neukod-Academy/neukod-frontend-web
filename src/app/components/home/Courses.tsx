@@ -33,30 +33,30 @@ export default function NewsCarousel() {
   }, [api]);
 
   return (
-    <div className="w-full max-w-max mx-auto px-5 py-2">
+    <div className="w-full max-w-max mx-auto px-5 py-2 bg-lime-200">
       <h1 className="text-4xl font-bold mb-4">Courses</h1>
       <div className="text-orange-950 mb-6 flex items-center">
         <span>Try harder kids</span>
         <ChevronRight className="w-4 h-4 ml-1" />
       </div>
-      <div className="flex flex-col gap-2 items-center justify-center">
+      <div className="gap-10 items-center justify-center">
         <Carousel
           setApi={setApi}
-          className="w-full max-w-[1200px]"
+          className="w-full max-w-[900px]"
         >
-          <CarouselContent className="p-3 relative">
+          <CarouselContent className="-ml-1">
             {courses.map((paramcourse, index) => (
               <CarouselItem
                 key={index}
-                className="relative md:basis-1/1 lg:basis-1/1 "
+                className="pl-1 md:basis-1/1 lg:basis-1/1"
               >
                 <div className="p-0 m-0 items-center">
                   <Card className="relative h-full w-auto rounded-md bg-gray-400">
-                    <CardContent className="w-full md:w-[900px] h-full relative mx-auto overflow-hidden rounded-lg p-0 bg-red-400">
+                    <CardContent className="w-full md:w-[900px] h-[600px] relative mx-auto overflow-hidden rounded-lg p-0 bg-red-400">
                       <Image
                         src={paramcourse.image}
                         alt={paramcourse.alt}
-                        className="w-full h-auto relative z-0 rounded-lg transition-all duration-300 hover:scale-105"
+                        className="w-full h-full object-cover z-0 rounded-lg transition-all duration-300 hover:scale-105"
                       />
                       <div className="absolute bottom-0 left-0 p-4 text-white w-full">
                         <div className="absolute inset-0 bg-gradient-to-t from-black/20 from-50% to-transparent rounded-md m-0" />

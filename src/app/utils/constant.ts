@@ -6,6 +6,7 @@ import Unitylogo from '../assets/courses/unity-logo.png'
 import Awoklogo from '../assets/courses/awok-logo.webp'
 import Xixi2logo from '../assets/courses/xixi2-logo.webp'
 import Alamaklogo from '../assets/courses/alamak-logo.webp'
+import Kiwir from '../assets/courses/kiwir.png'
 
 export interface CourseHighlight {
     id: number;
@@ -75,5 +76,13 @@ export const courses: COURSES[] =[
         categories: ['Knowledge','Khodam build'],
         alt: 'Khodam power',
         image: Alamaklogo,
-    }
+    },
+    {
+        id: 3,
+        title: 'Be farmer better',
+        subtitle: 'Kita pewaris bukan perintis.',
+        categories: ['Stop belajar','Mending nandur'],
+        alt: 'Belajar tidak perlu',
+        image: Kiwir,
+    },
 ]
