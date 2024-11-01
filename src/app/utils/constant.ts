@@ -7,6 +7,8 @@ import Awoklogo from '../assets/courses/awok-logo.webp'
 import Xixi2logo from '../assets/courses/xixi2-logo.webp'
 import Alamaklogo from '../assets/courses/alamak-logo.webp'
 import Kiwir from '../assets/courses/kiwir.png'
+import ImgFillform from '../assets/form/formfill.png'
+import ImgSubmitform from '../assets/form/formsubmitted.png'
 
 export interface CourseHighlight {
     id: number;
@@ -86,3 +88,22 @@ export const courses: COURSES[] =[
         image: Kiwir,
     },
 ]
+
+export interface FormTrial {
+    id: number;
+    alt: string;
+    image: StaticImageData;
+  }
+
+  export const formTrial: FormTrial[] =[
+    {
+        id: 1,
+        alt: 'Fill Form',
+        image: ImgFillform,
+    },
+    {
+        id: 2,
+        alt: 'Submit Form',
+        image: ImgSubmitform,
+    },
+  ]

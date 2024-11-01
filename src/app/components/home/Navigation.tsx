@@ -113,7 +113,7 @@ const Navbar = (props: any) => {
                 <DialogHeader>
                   <DialogTitle className="invisible"></DialogTitle>
                 </DialogHeader>
-                <DialogContent className="sm:max-w-[90vw] md:max-w-[900px] lg:max-w-[1200px] p-0">
+                <DialogContent className="sm:max-w-[90vw] md:max-w-[800px] lg:max-w-[1000px] my-auto p-1 bg-white/30 border-none rounded-lg">
                   <FormSwitch />
                 </DialogContent>
               </Dialog>

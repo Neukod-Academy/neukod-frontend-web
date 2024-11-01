@@ -1,6 +1,9 @@
 ~ Install GSAP
 command : npm install gsap
 
+~ Install Framer Motion
+command : npm i framer-motion
+
 ~ Install Shadcn UI
 command : npx shadcn@latest init
     - Input
@@ -23,6 +26,9 @@ command : npx shadcn@latest init
     command : npm install embla-carousel-autoplay --save
     - Checkbox
     command : npx shadcn@latest add checkbox
+    - Label
+    command : npx shadcn@latest add label
+
 
 
 
