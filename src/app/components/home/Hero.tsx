@@ -1,11 +1,30 @@
+"use client";
+
 import Image from "next/image";
+import { useLayoutEffect, useRef } from "react";
+import { gsap } from "gsap";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import Banner from "../../assets/banner.jpg";
 import { Button } from "@/components/ui/button";
 
 export default function Component() {
+  const TextEffect = useRef<HTMLImageElement>(null)
+
+  useLayoutEffect(() => {
+    let ctx = gsap.context(() => {
+      const t1 = gsap.timeline();
+      t1.from(".text-fade", {
+        yPercent: "100",
+        opacity: 0,
+        duration: 1.3,
+        delay: 0.3,
+      })
+    }), TextEffect;
+    return () => ctx.revert();
+  });
+
   return (
-    <div className="relative w-auto h-auto md:h-[600px] max-h-[900px] overflow-hidden mt-20 py-5">
+    <div ref={TextEffect} className="relative w-auto h-auto md:h-[600px] max-h-[900px] overflow-hidden mt-20 py-5">
       <Image
         src={Banner}
         alt="Students studying together"
@@ -16,9 +35,9 @@ export default function Component() {
       <div className="absolute inset-0 bg-yellowMango/50" />
       <div className="relative z-10 h-full flex flex-col justify-center">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
+          <div className="text-fade max-w-3xl">
             <p className="text-sm sm:text-base font-semibold text-white mb-2">
-              WELCOME TO PENNANT EDUCATION
+              WELCOME TO NEUKOD
             </p>
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight">
               EDUCATION = <br className="hidden sm:inline" />
@@ -36,7 +55,7 @@ export default function Component() {
               size="lg"
               className="bg-redFlag text-white hover:bg-red-800"
             >
-              Apply Now
+              Start Learn Now
             </Button>
           </div>
         </div>

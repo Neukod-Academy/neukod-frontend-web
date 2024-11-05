@@ -1,6 +1,12 @@
 ~ Install GSAP
 command : npm install gsap
 
+~ Install Lenis
+command : npm i lenis
+
+~ Install Split Type
+command : npm i split-type
+
 ~ Install Framer Motion
 command : npm i framer-motion
 

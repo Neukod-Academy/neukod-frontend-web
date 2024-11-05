@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./styles/globals.css";
+import { ReactLenis } from "./utils/lenis";
 
 import Navigation from "../app/components/home/Navigation";
 
@@ -27,6 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <ReactLenis root>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
@@ -36,6 +38,7 @@ export default function RootLayout({
         
         {children}
       </body>
+      </ReactLenis>
     </html>
   );
 }
