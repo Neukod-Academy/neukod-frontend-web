@@ -4,6 +4,9 @@ command : npm install gsap
 ~ Install Lenis
 command : npm i lenis
 
+~ Install Svgr/webpack
+command : npm i @svgr/webpack
+
 ~ Install Split Type
 command : npm i split-type
 
@@ -34,6 +37,8 @@ command : npx shadcn@latest init
     command : npx shadcn@latest add checkbox
     - Label
     command : npx shadcn@latest add label
+    - Dropdown
+    command : npx shadcn@latest add dropdown-menu
 
 
 

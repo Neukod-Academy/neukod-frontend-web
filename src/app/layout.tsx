@@ -1,9 +1,24 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Montserrat, Nunito_Sans } from "next/font/google";
 import "./styles/globals.css";
 import { ReactLenis } from "./utils/lenis";
-
+import Footer from "../app/components/home/Footer";
 import Navigation from "../app/components/home/Navigation";
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-montserrat",
+  adjustFontFallback: false,
+});
+const nunito_sans = Nunito_Sans({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-nunito-sans",
+  adjustFontFallback: false,
+});
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -29,15 +44,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <ReactLenis root>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <div>
-          <Navigation />
-        </div>
-        
-        {children}
-      </body>
+        <body
+          className={`${montserrat.className} antialiased`}
+        >
+          <div className={nunito_sans.className}>
+            <Navigation />
+          </div>
+          {children}
+          <div className={nunito_sans.className}>
+            <Footer />
+          </div>
+        </body>
       </ReactLenis>
     </html>
   );

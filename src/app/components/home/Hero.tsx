@@ -24,7 +24,7 @@ export default function Component() {
   });
 
   return (
-    <div ref={TextEffect} className="relative w-auto h-auto md:h-[600px] max-h-[900px] overflow-hidden mt-20 py-5">
+    <div ref={TextEffect} className="relative w-auto h-auto md:h-[600px] max-h-[900px] overflow-hidden mt-0 py-5">
       <Image
         src={Banner}
         alt="Students studying together"

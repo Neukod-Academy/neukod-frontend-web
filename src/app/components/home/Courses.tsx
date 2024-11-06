@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 
-export default function NewsCarousel() {
+export default function CourseSection() {
   const [api, setApi] = React.useState<CarouselApi>();
   const [current, setCurrent] = React.useState(0);
 
@@ -33,7 +33,7 @@ export default function NewsCarousel() {
   }, [api]);
 
   return (
-    <div className="w-full max-w-max mx-auto px-5 py-2 bg-lime-200">
+    <div className="w-full max-w-max mx-auto px-5 py-2 bg-yellowMango/50 rounded-lg">
       <h1 className="text-4xl font-bold mb-4">Courses</h1>
       <div className="text-orange-950 mb-6 flex items-center">
         <span>Try harder kids</span>
@@ -51,32 +51,33 @@ export default function NewsCarousel() {
                 className="pl-1 md:basis-1/1 lg:basis-1/1"
               >
                 <div className="p-0 m-0 items-center">
-                  <Card className="relative h-full w-auto rounded-md bg-gray-400">
+                  <Card className="relative h-full w-auto rounded-md">
                     <CardContent className="w-full md:w-[900px] h-[600px] relative mx-auto overflow-hidden rounded-lg p-0 bg-red-400">
                       <Image
                         src={paramcourse.image}
                         alt={paramcourse.alt}
                         className="w-full h-full object-cover z-0 rounded-lg transition-all duration-300 hover:scale-105"
                       />
-                      <div className="absolute bottom-0 left-0 p-4 text-white w-full">
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 from-50% to-transparent rounded-md m-0" />
-                        <div className="flex space-x-1 mb-4 mx-2">
-                          {paramcourse.categories.map((categories, index) => (
-                            <span
-                              key={index}
-                              className="bg-redFlag px-2 py-1 text-white text-lg rounded"
-                            >
-                              {categories}
+                      <div className="absolute bottom-0 left-0 text-white w-full">
+                        <div className="relative w-full p-2 inset-0 z-0 bg-black/20 backdrop-filter backdrop-blur-sm rounded-md">
+                          <div className="flex space-x-1 mb-4 mx-2 text">
+                            {paramcourse.categories.map((categories, index) => (
+                              <span
+                                key={index}
+                                className="bg-redFlag px-2 py-1 text-white text-lg rounded"
+                              >
+                                {categories}
+                              </span>
+                            ))}
+                          </div>
+                          <div>
+                            <h6 className="mx-2 z-20 font-semibold text-left text-lg text-white lg:text-xl">
+                              {paramcourse.title}
+                            </h6>
+                            <span className="mt-1 z-20 mb-2 text-lg text-white">
+                              {paramcourse.subtitle}
                             </span>
-                          ))}
-                        </div>
-                        <div>
-                          <h6 className="mx-2 font-semibold text-left text-lg text-black lg:text-xl">
-                            {paramcourse.title}
-                          </h6>
-                          <span className="mt-1 mb-2 text-lg text-black">
-                            {paramcourse.subtitle}
-                          </span>
+                          </div>
                         </div>
                       </div>
                     </CardContent>

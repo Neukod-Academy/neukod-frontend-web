@@ -3,6 +3,8 @@ import Hero from "../app/components/home/Hero";
 import CourseProgram from "./components/home/CourseHighlight"
 import Courses from "./components/home/Courses";
 import AboutUs from "./components/home/AboutUs";
+import ContactUs from "./components/home/ContactUs";
+import TrustedBy from "./components/home/TrustedBy";
 
 export default function Home() {
   return (
@@ -11,6 +13,8 @@ export default function Home() {
       <CourseProgram />
       <Courses />
       <AboutUs />
+      <ContactUs />
+      {/* <TrustedBy /> */}
     </main>
   );
 }
