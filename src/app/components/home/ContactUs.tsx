@@ -4,6 +4,8 @@ import Image from "next/image";
 import NeuLogo from "../../assets/Putih.png"
 import { Facebook, Twitter, Instagram } from "lucide-react"
 import Link from "next/link"
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 const ContactUs = () => {
     return (
@@ -20,7 +22,7 @@ const ContactUs = () => {
                         className="w-auto md:max-w-[80%] object-contain"
                     />
                 </div>
-                <div className="flex flex-col col-span-3 justify-center items-start px-5">
+                <div className="flex flex-col col-span-3 justify-center items-start px-5 text-white">
                     {/* Suggested code may be subject to a license. Learn more: ~LicenseLog:1372034879. */}
                     <h1 className="text-2xl font-semibold mb-4">
                         NEUKOD EDU
@@ -33,15 +35,15 @@ const ContactUs = () => {
                         Offline office&nbsp; : &nbsp;Jl. Bersama Prabowo 2 Periode,
                     </h2>
                     <h2>
-                        Email&nbsp;:&nbsp; <a href="#" className="text-muted-foreground hover:text-primary">dinar@gmail.com</a>
+                        Email&nbsp;:&nbsp; <a href="#" className="text-blue-200 hover:text-primary">dinar@gmail.com</a>
                     </h2>
                     <h2>
-                        Phone&nbsp;:&nbsp; <a href="#" className="text-muted-foreground hover:text-primary">+628522345589</a>
+                        Phone&nbsp;:&nbsp; <a href="#" className="text-blue-200 hover:text-primary">+628522345589</a>
                     </h2>
                 </div>
 
                 <div className="flex flex-col items-center justify-center mx-auto">
-                    <h3 className="text-lg font-semibold mb-4 items-center">Follow Us</h3>
+                    <h3 className="text-lg font-semibold mb-4 items-center text-white">Follow Us</h3>
                     <div className="flex items-center justify-center space-x-2 mb-2">
                         <Link
                             href="#"
@@ -75,14 +77,14 @@ const ContactUs = () => {
                         </p>
                     </div>
                     <div className="w-full md:w-auto flex gap-2">
-                        <input
+                        <Input
                             type="email"
                             placeholder="Enter your email"
                             className="flex-1 md:w-80 px-4 py-3 rounded-md border border-transparent focus:border-white/20 focus:ring-0 bg-white text-gray-900"
                         />
-                        <button className="px-6 py-3 font-semibold text-white bg-blue-950 hover:bg-blue-900 rounded-md transition-colors">
+                        <Button className="px-6 font-semibold text-white text-md bg-redFlag hover:bg-pink-800 rounded-md transition-colors">
                             Subscribe
-                        </button>
+                        </Button>
                     </div>
                 </div>
             </section>

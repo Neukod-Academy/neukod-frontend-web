@@ -36,8 +36,8 @@ export default function Component() {
       <div className="relative z-10 h-full flex flex-col justify-center">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-fade max-w-3xl">
-            <p className="text-sm sm:text-base font-semibold text-white mb-2">
-              WELCOME TO NEUKOD
+            <p className="text-2xl md:text-xl font-semibold text-white mb-2">
+              WELCOME TO <span className="text-blue-800 font-bold">NEUKOD</span>
             </p>
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight">
               EDUCATION = <br className="hidden sm:inline" />

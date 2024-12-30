@@ -38,7 +38,7 @@ const AboutUs = () => {
                 scrub: true,
                 start: "top 70%", // Adjusted for better visibility
                 end: "top 20%",
-                markers: true,
+                markers: false,
             },
         });
 
