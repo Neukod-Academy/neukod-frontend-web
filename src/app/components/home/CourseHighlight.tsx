@@ -15,7 +15,7 @@ import {
 
 const CourseProgram = () => {
   return (
-    <div className="flex w-full px-24 py-4 justify-center bg-yellowMango/50 rounded-md">
+    <div className="flex w-full px-24 py-4 justify-center bg-gray-100 rounded-md">
       <div className="relative flex flex-col md:flex-row gap-4 items-center">
         <div className="flex justify-start mx-2 w-auto p-2">
           <h1 className="text-xl md:text-3xl font-bold sm:text-left text-blue-900">

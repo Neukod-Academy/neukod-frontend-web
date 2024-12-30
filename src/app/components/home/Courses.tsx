@@ -33,8 +33,8 @@ export default function CourseSection() {
   }, [api]);
 
   return (
-    <div className="w-full max-w-max mx-auto px-5 py-2 bg-yellowMango/50 rounded-lg">
-      <h1 className="text-4xl font-bold mb-4">Courses</h1>
+    <div className="w-full max-w-max mx-auto px-5 py-2 bg-gray-100 rounded-lg">
+      <h1 className="text-4xl font-bold mb-4 text-blue-900">Courses</h1>
       <div className="text-orange-950 mb-6 flex items-center">
         <span>Try harder kids</span>
         <ChevronRight className="w-4 h-4 ml-1" />

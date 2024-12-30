@@ -11,7 +11,7 @@ const ContactUs = () => {
             <h1 className="text-4xl font-bold">
                 Contact Us
             </h1>
-            <div className="relative grid grid-cols-4 justify-center items-center bg-gradient-to-br from-yellowMango via-yellowMango-600 to-yellowMango-400 px-auto">
+            <div className="relative grid grid-cols-4 justify-center items-center bg-gradient-to-bl from-cyan-400 via-blue-600 to-blue-950 px-auto">
                 <div className="flex w-full items-start justify-center bg-sky-900">
                     <Image
                         src={NeuLogo}
@@ -45,22 +45,22 @@ const ContactUs = () => {
                     <div className="flex items-center justify-center space-x-2 mb-2">
                         <Link
                             href="#"
-                            className="text-white hover:text-gray-300 rounded-full bg-redFlag p-1 items-center"
+                            className="text-white hover:text-gray-300 rounded-full bg-redFlag p-1 items-center transform duration-200 hover:scale-110"
                         >
                             <Facebook size={24} />
                         </Link>
-                        <button className="rounded-full bg-blue-200 p-1">
-                            <a href="#" className="text-muted-foreground hover:text-primary">
-                                <Twitter size={20} />
-                                <span className="sr-only">Twitter</span>
-                            </a>
-                        </button>
-                        <button className="rounded-full bg-blue-200 p-1">
-                            <a href="#" className="text-muted-foreground hover:text-primary">
-                                <Instagram size={20} />
-                                <span className="sr-only">Instagram</span>
-                            </a>
-                        </button>
+                        <Link
+                            href="#"
+                            className="text-white hover:text-gray-300 rounded-full bg-redFlag p-1 items-center transform duration-200 hover:scale-110"
+                        >
+                            <Twitter size={24} />
+                        </Link>
+                        <Link
+                            href="#"
+                            className="text-white hover:text-gray-300 rounded-full bg-redFlag p-1 items-center transform duration-200 hover:scale-110"
+                        >
+                            <Instagram size={24} />
+                        </Link>
                     </div>
                 </div>
             </div>
