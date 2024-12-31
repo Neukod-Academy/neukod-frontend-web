@@ -7,6 +7,8 @@ import ContactUs from "./components/home/ContactUs";
 import TrustedBy from "./components/home/TrustedBy";
 import CourseCategory from "./components/home/CourseCategory";
 import WelcomeText from "./components/home/WelcomeText";
+import FeaturesSection from "./components/home/FeatureSection";
+import SlidePage from "./components/home/SlidePage";
 
 export default function Home() {
   return (
@@ -14,8 +16,10 @@ export default function Home() {
       <Hero />
       <WelcomeText />
       <CourseProgram />
+      <FeaturesSection />
       <CourseCategory />
-      <Courses />
+      <SlidePage />
+      {/* <Courses /> */}
       <AboutUs />
       <ContactUs />
       {/* <TrustedBy /> */}

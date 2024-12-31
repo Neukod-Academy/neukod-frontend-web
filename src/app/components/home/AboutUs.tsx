@@ -28,7 +28,7 @@ const AboutUs = () => {
 
         // GSAP animation targeting the split lines
         gsap.from(content.current.querySelectorAll("p"), { // Use the correct tag
-            xPercent: -50,
+            yPercent: 50,
             opacity: 0,
             duration: 0.5,
             ease: "power1.out",

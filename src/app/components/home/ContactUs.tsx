@@ -13,7 +13,7 @@ const ContactUs = () => {
             <h1 className="text-4xl font-bold">
                 Contact Us
             </h1>
-            <div className="relative grid grid-cols-4 justify-center items-center bg-gradient-to-bl from-cyan-400 via-blue-600 to-blue-950 px-auto">
+            <div className="relative grid grid-cols-4 justify-center items-center border-4 border-gray-100 rounded-lg px-auto">
                 <div className="flex w-full items-start justify-center bg-sky-900">
                     <Image
                         src={NeuLogo}
@@ -22,7 +22,7 @@ const ContactUs = () => {
                         className="w-auto md:max-w-[80%] object-contain"
                     />
                 </div>
-                <div className="flex flex-col col-span-3 justify-center items-start px-5 text-white">
+                <div className="flex flex-col col-span-3 justify-center items-start px-5">
                     {/* Suggested code may be subject to a license. Learn more: ~LicenseLog:1372034879. */}
                     <h1 className="text-2xl font-semibold mb-4">
                         NEUKOD EDU
@@ -66,13 +66,13 @@ const ContactUs = () => {
                     </div>
                 </div>
             </div>
-            <section className="relative overflow-hidden bg-gradient-to-br from-blue-950 via-blue-600 to-cyan-400 p-8 md:p-12">
+            <section className="relative overflow-hidden border-4 border-gray-100 rounded-lg p-8 mt-5 md:p-12">
                 <div className="flex flex-col md:flex-row items-start md:items-center gap-6 max-w-6xl mx-auto">
                     <div className="flex-1 space-y-4">
-                        <h2 className="text-3xl md:text-4xl font-bold text-white">
+                        <h2 className="text-3xl md:text-4xl font-bold">
                             Don&apos;t Miss Our Updates
                         </h2>
-                        <p className="text-white/90 text-base md:text-lg leading-relaxed">
+                        <p className="text-base md:text-lg leading-relaxed">
                             Join the Pennant Education community! Sign up for our newsletter to receive the latest updates on programs, industry insights, success stories, and exclusive offers. Stay connected and take the first step towards a brighter future.
                         </p>
                     </div>
@@ -80,7 +80,7 @@ const ContactUs = () => {
                         <Input
                             type="email"
                             placeholder="Enter your email"
-                            className="flex-1 md:w-80 px-4 py-3 rounded-md border border-transparent focus:border-white/20 focus:ring-0 bg-white text-gray-900"
+                            className="flex-1 md:w-80 px-4 py-3 rounded-md border border-gray-200 focus:border-white/20 focus:ring-0 bg-white text-gray-900"
                         />
                         <Button className="px-6 font-semibold text-white text-md bg-redFlag hover:bg-pink-800 rounded-md transition-colors">
                             Subscribe

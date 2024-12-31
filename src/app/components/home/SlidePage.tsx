@@ -1,0 +1,172 @@
+"use client"
+
+import { useEffect, useRef, useState } from "react"
+import gsap from "gsap"
+import { ChevronRight } from 'lucide-react'
+import { cn } from "@/lib/utils"
+
+interface Section {
+    id: string
+    title: string
+    subtitle: string
+    image: string
+}
+
+const sections: Section[] = [
+    {
+        id: "01",
+        title: "Lights, Camera",
+        subtitle: "Film",
+        image: "/placeholder.svg?height=800&width=1200",
+    },
+    {
+        id: "02",
+        title: "Construction",
+        subtitle: "Building",
+        image: "/placeholder.svg?height=800&width=1200",
+    },
+    {
+        id: "03",
+        title: "Events",
+        subtitle: "Management",
+        image: "/placeholder.svg?height=800&width=1200",
+    },
+    {
+        id: "04",
+        title: "Utilities",
+        subtitle: "Services",
+        image: "/placeholder.svg?height=800&width=1200",
+    },
+    {
+        id: "05",
+        title: "EV Fleet",
+        subtitle: "Electric Vehicles",
+        image: "/placeholder.svg?height=800&width=1200",
+    },
+]
+
+export default function SlidePage() {
+    const [activeIndex, setActiveIndex] = useState(0)
+    const sliderRef = useRef<HTMLDivElement>(null)
+
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            gsap.set(".section", {
+                xPercent: (i) => i * 100,
+            })
+        })
+
+        return () => ctx.revert()
+    }, [])
+
+    const handleNextSection = () => {
+        const nextIndex = activeIndex >= sections.length - 1 ? 0 : activeIndex + 1;
+
+        const ctx = gsap.context(() => {
+            // Animate sections
+            gsap.to(".section", {
+                xPercent: (i) => {
+                    const offset = nextIndex === 0 ? 0 : -nextIndex;
+                    return (i + offset) * 100;
+                },
+                duration: 1,
+                ease: "power2.inOut",
+            });
+
+            // Fix title animation by using unique refs for each section
+            gsap.to(`#title-${activeIndex}`, {
+                yPercent: -20,
+                opacity: 0,
+                duration: 1,
+                ease: "power3.inOut",
+                onComplete: () => {
+                    setActiveIndex(nextIndex);
+                    gsap.fromTo(
+                        `#title-${nextIndex}`,
+                        { yPercent: 30, opacity: 0 },
+                        { yPercent: 0, opacity: 1, duration: 1, ease: "power2.inOut" }
+                    );
+                },
+            });
+        });
+
+        return () => ctx.revert();
+    };
+
+    return (
+        <div className="relative h-screen w-full overflow-hidden bg-black">
+            <div ref={sliderRef} className="relative h-full">
+                {sections.map((section, index) => (
+                    <div
+                        key={section.id}
+                        className={cn(
+                            "section absolute left-0 top-0 h-full w-full select-none",
+                            index === activeIndex ? "z-10" : "z-0"
+                        )}
+                    >
+                        <div className="absolute inset-0 bg-black/40" />
+                        <img
+                            src={section.image}
+                            alt=""
+                            className="h-full w-full object-cover"
+                        />
+                        <div
+                            id={`title-${index}`}
+                            className="absolute left-12 top-1/2 -translate-y-1/2 transform"
+                            style={{ opacity: index === activeIndex ? 1 : 0 }}
+                        >
+                            <div className="flex items-baseline gap-4">
+                                {/* <span className="text-lg font-medium text-white/60">
+                                    {section.id}
+                                </span> */}
+                                <h2 className="text-7xl font-bold text-white">{section.title}</h2>
+                            </div>
+                            <p className="mt-4 text-xl text-white/80">{section.subtitle}</p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+
+            <button
+                onClick={handleNextSection}
+                className="absolute right-8 bottom-0 z-20 -translate-y-1/2 transform rounded-full bg-white/10 p-4 backdrop-blur-sm transition-colors hover:bg-white/20"
+            >
+                <ChevronRight className="h-6 w-6 text-white" />
+            </button>
+            <div className="absolute bottom-8 left-12 z-20 flex gap-4">
+                {sections.map((section, index) => (
+
+                    <div
+                        key={section.id}
+                        className="group">
+                        <h2
+                            className={cn(
+                                "text-lg font-bold text-white duration-200 group-hover:text-white/50",
+                                index === activeIndex ? "text-redFlag group-hover:text-redFlag/60" : "text-white/20"
+                            )}>{section.id} &nbsp; {section.title}</h2>
+                        <button
+                            key={section.id}
+                            className={cn(
+                                "h-2 w-full rounded-full transition-colors group-hover:bg-white/50",
+                                index === activeIndex ? "bg-redFlag group-hover:bg-redFlag/60" : "bg-white/20"
+                            )}
+                            onClick={() => {
+                                const ctx = gsap.context(() => {
+                                    gsap.to(".section", {
+                                        xPercent: (i) => (i - index) * 100,
+                                        duration: 1,
+                                        ease: "power2.inOut",
+                                    })
+                                    setActiveIndex(index)
+                                })
+                                return () => ctx.revert()
+                            }}
+                        />
+                    </div>
+
+                ))}
+            </div>
+        </div>
+    )
+}
+

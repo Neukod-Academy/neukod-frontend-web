@@ -51,10 +51,10 @@ export default function Component() {
             <h3 className="font-semibold text-lg mb-4">NEUKOD</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="#">Tentang Kami</Link>
+                <Link href="#">FAQ</Link>
               </li>
               <li>
-                <Link href="#">Berita dan Kegiatan</Link>
+                <Link href="#">Blog</Link>
               </li>
               <li>
                 <Link href="#">Syarat & Ketentuan</Link>
