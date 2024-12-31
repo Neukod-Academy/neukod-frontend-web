@@ -36,14 +36,10 @@ export default function Component() {
       <div className="relative z-10 h-full flex flex-col justify-center">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-fade max-w-3xl">
-            <p className="text-2xl md:text-xl font-semibold text-white mb-2">
-              WELCOME TO <span className="text-blue-800 font-bold">NEUKOD</span>
+            <p className="text-2xl md:text-7xl font-semibold text-white mb-2 text-pretty">
+             Build a <span className="text-blue-800 font-bold underline">Better You</span>
             </p>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight">
-              EDUCATION = <br className="hidden sm:inline" />
-              OPPORTUNITY
-            </h1>
-            <p className="text-white text-base sm:text-lg md:text-xl mb-6 max-w-2xl">
+            <p className="text-white text-base sm:text-lg md:text-xl mt-10 mb-6 max-w-2xl">
               Education is the cornerstone of a brighter future, opening doors
               to enhanced career prospects and personal growth. In today's
               fast-paced world, staying ahead means continuously developing
