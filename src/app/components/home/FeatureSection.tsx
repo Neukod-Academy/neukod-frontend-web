@@ -47,7 +47,7 @@ export default function FeaturesSection() {
   return (
     <div className="container mx-auto px-4 py-16">
       <div className="max-w-3xl mx-auto text-center mb-12">
-        <h2 className="text-4xl font-bold mb-4 text-blue-800">
+        <h2 className="text-5xl font-bold mb-4 text-blue-800">
           Why we are different than others?
         </h2>
         <hr className="w-48 h-1 mx-auto my-4 bg-blue-400 border-0 rounded md:my-10 dark:bg-gray-700" />

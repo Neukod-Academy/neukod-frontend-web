@@ -48,10 +48,11 @@ const AboutUs = () => {
     }, []);
 
     return (
-        <div className="grid grid-cols-2 p-12">
-            <div ref={content} className="relative">
-                <h1 className="text-4xl font-bold mb-4">About Us</h1>
-                <p>
+        <div className="relative grid grid-cols-1 md:grid-cols-2 p-12">
+            <div ref={content} className="max-w-3xl mb-8 lg:mb-10  mx-auto">
+                <h1 className="text-center text-5xl text-blue-800 font-extrabold mb-4">About Us</h1>
+                <hr className="w-48 h-1 left-0 my-4 bg-blue-400 border-0 rounded md:my-10 dark:bg-gray-700" />
+                <p className="text-sm md:text-lg">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
                     ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
                     ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in

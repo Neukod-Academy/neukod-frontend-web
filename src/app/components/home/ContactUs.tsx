@@ -9,10 +9,11 @@ import { Input } from "@/components/ui/input";
 
 const ContactUs = () => {
     return (
-        <div className="w-full mx-auto p-5 overflow-hidden">
-            <h1 className="text-4xl font-bold">
+        <div className="w-full mx-auto p-5 overflow-hidden items-center jsutify-center">
+            <h1 className="text-5xl font-extrabold text-blue-800 text-center">
                 Contact Us
             </h1>
+            <hr className="w-48 h-1 mx-auto my-4 bg-blue-400 border-0 rounded md:my-10 dark:bg-gray-700" />
             <div className="relative grid grid-cols-4 justify-center items-center border-4 border-gray-100 rounded-lg px-auto">
                 <div className="flex w-full items-start justify-center bg-sky-900">
                     <Image

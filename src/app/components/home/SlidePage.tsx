@@ -4,44 +4,56 @@ import { useEffect, useRef, useState } from "react"
 import gsap from "gsap"
 import { ChevronRight } from 'lucide-react'
 import { cn } from "@/lib/utils"
+import Slide1 from "../../assets/slide/teacher_vector.webp"
+import Slide2 from "../../assets/slide/asian_girl.webp"
+import Slide3 from "../../assets/slide/asian_girl2.webp"
+import Slide4 from "../../assets/slide/graduate.webp"
+import Slide5 from "../../assets/slide/teacher.webp"
+import Image, { StaticImageData } from "next/image"
 
 interface Section {
     id: string
     title: string
     subtitle: string
-    image: string
+    image: StaticImageData
+    alt: string
 }
 
 const sections: Section[] = [
     {
         id: "01",
-        title: "Lights, Camera",
-        subtitle: "Film",
-        image: "/placeholder.svg?height=800&width=1200",
+        title: "Start your journey",
+        subtitle: "eque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
+        image: Slide1,
+        alt: "best teacher"
     },
     {
         id: "02",
-        title: "Construction",
-        subtitle: "Building",
-        image: "/placeholder.svg?height=800&width=1200",
+        title: "Study what you want",
+        subtitle: "eque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
+        image: Slide2,
+        alt: "Happy learning"
     },
     {
         id: "03",
-        title: "Events",
-        subtitle: "Management",
-        image: "/placeholder.svg?height=800&width=1200",
+        title: "Grow your career",
+        subtitle: "eque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
+        image: Slide3,
+        alt: "Choose your path"
     },
     {
         id: "04",
-        title: "Utilities",
-        subtitle: "Services",
-        image: "/placeholder.svg?height=800&width=1200",
+        title: "Certified classroom",
+        subtitle: "eque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
+        image: Slide4,
+        alt: "Finish your study"
     },
     {
         id: "05",
-        title: "EV Fleet",
-        subtitle: "Electric Vehicles",
-        image: "/placeholder.svg?height=800&width=1200",
+        title: "Meet classmate online",
+        subtitle: "eque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
+        image: Slide5,
+        alt: "Ask anytime anywhere"
     },
 ]
 
@@ -105,9 +117,9 @@ export default function SlidePage() {
                         )}
                     >
                         <div className="absolute inset-0 bg-black/40" />
-                        <img
+                        <Image
                             src={section.image}
-                            alt=""
+                            alt={section.alt}
                             className="h-full w-full object-cover"
                         />
                         <div
@@ -119,7 +131,7 @@ export default function SlidePage() {
                                 {/* <span className="text-lg font-medium text-white/60">
                                     {section.id}
                                 </span> */}
-                                <h2 className="text-7xl font-bold text-white">{section.title}</h2>
+                                <h2 className="text-7xl font-bold text-redFlag">{section.title}</h2>
                             </div>
                             <p className="mt-4 text-xl text-white/80">{section.subtitle}</p>
                         </div>
