@@ -1,111 +1,135 @@
 "use client";
 
-import Image from "next/image";
+import { motion } from "framer-motion";
+import { Facebook, Instagram, Twitter } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import logo from "../../assets/Putih.png";
-import { Facebook, Instagram, Linkedin, Mail, Youtube } from "lucide-react";
-// import WhatsappSVG from "../../components/svg/WhatsappSVG"
-// import EmailSVG from "../../components/svg/EmailSVG"
 
-export default function Component() {
+const AnimatedLink = ({
+  href,
+  children,
+}: {
+  href: string;
+  children: React.ReactNode;
+}) => (
+  <motion.a
+    href={href}
+    className="relative inline-block text-gray-600 hover:text-gray-900 transition-colors"
+    whileHover="hover"
+  >
+    {children}
+    <motion.span
+      className="absolute left-0 bottom-0 w-full h-[1px] bg-gray-900 origin-left"
+      initial={{ scaleX: 0 }}
+      variants={{
+        hover: {
+          scaleX: 1,
+          transition: {
+            duration: 0.3,
+            ease: "easeInOut",
+          },
+        },
+      }}
+    />
+  </motion.a>
+);
+
+export default function Footer() {
   return (
-    <footer className="inset-x-0 bottom-0 z-50 bg-white/30 backdrop-blur-md dark:bg-neutral-800/30 border-t-2 pt-2">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-top justify-center">
-          <div className="col-span-1">
-            <Image
-              src={logo}
-              alt="Agree Logo"
-              width={120}
-              height={40}
-              className="mb-4"
-            />
-            <p className="text-sm mb-2">Telkom STO Kebayoran</p>
-            <p className="text-sm mb-2">
-              Jl. Sisingamangaraja No.4 RT.2/RW.1, Selong, Kebayoran
-            </p>
-            <p className="text-sm mb-4">
-              Baru, Kota Jakarta Selatan, DKI Jakarta 12110.
-            </p>
-            <p className="text-sm mb-1">Telepon: +62-811-1953-323</p>
-            <p className="text-sm">Email: hello@agreeculture.id</p>
-          </div>
-          <div className="col-span-1">
-            <h3 className="font-semibold text-lg mb-4">Contact Us</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link href="#" className="flex items-center">
-                  {/* <WhatsappSVG /> */}
-                  <span>Whatsapp</span>
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="flex items-center">
-                  {/* <EmailSVG /> */}
-                  <span>Email</span>
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div className="col-span-1">
-            <h3 className="font-semibold text-lg mb-4">NEUKOD</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link href="#">FAQ</Link>
-              </li>
-              <li>
-                <Link href="#">Blog</Link>
-              </li>
-              <li>
-                <Link href="#">Syarat & Ketentuan</Link>
-              </li>
-              <li>
-                <Link href="#">Kebijakan Privasi</Link>
-              </li>
-            </ul>
+    <footer className="max-w-7xl mx-auto px-4 py-12 md:py-16">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
+        {/* Company Info */}
+        <div className="space-y-4">
+          <h2 className="font-semibold text-lg md:text-2xl text-blue-800">
+            NEUKOD.EDU | INDEPENDENT.
+          </h2>
+          <h3 className="font-medium text-base md:text-lg">E-LEARNING</h3>
+          <p className="text-gray-600 text-sm md:text-base leading-relaxed">
+            Address: Jl. Kyai H. Raden Asnawi No.126, Gendang Sewu,
+            Bakalankrapyak, Kec. Kaliwungu, Kabupaten Kudus, Jawa Tengah 59332
+            Hours: Open ⋅ Closes 5.00 pm Phone: (0291) 433255 Province: Central
+            Java
+          </p>
+          <div className="relative space-y-2">
+            <p className="text-gray-600 text-base md:text-lg">CONTACT US :</p>
+            <AnimatedLink href="mailto:info@neukod.com">
+              info@neukod.com
+            </AnimatedLink>
+            <br />
+            <AnimatedLink href="mailto:info@neukod.com">
+              +62-8585-1816-241
+            </AnimatedLink>
           </div>
         </div>
-        <div className="mt-8 flex flex-wrap justify-between items-center">
-          <div className="flex space-x-4 mb-4 md:mb-0 pb-4">
-            <Link
-              href="#"
-              className="text-white hover:text-gray-300 rounded-full bg-orange-950 p-1 items-center"
-            >
-              <Facebook size={24} />
+
+        <div className="space-y-4">
+          <h2 className="font-semibold text-lg md:text-2xl text-blue-800">
+            QUICK LINKS
+          </h2>
+          <nav className="space-y-3">
+            {[
+              "FAQs",
+              "Pricing",
+              "Locations",
+              "About us",
+              "Refund Policy",
+              "Terms of Service",
+              "Accessibility",
+            ].map((link) => (
+              <div key={link}>
+                <AnimatedLink href="#">{link}</AnimatedLink>
+              </div>
+            ))}
+          </nav>
+        </div>
+
+        {/* Newsletter */}
+        <div className="space-y-4">
+          <h2 className="font-semibold text-lg md:text-2xl text-blue-800">
+            STAY IN TOUCH
+          </h2>
+          <p className="text-gray-600 text-sm md:text-base">
+            Subscribe to receive updates, access to exclusive deals, and more.
+          </p>
+          <form className="space-y-3">
+            <Input
+              type="email"
+              placeholder="Enter your email address"
+              className="w-full"
+            />
+            <Button type="submit" className="w-full bg-redFlag">
+              SUBSCRIBE
+            </Button>
+          </form>
+          <div className="relative">
+            <h1 className="text-gray-600 text-base md:text-lg">
+              SOCIAL MEDIA :
+            </h1>
+          </div>
+          <div className="flex space-x-4 group">
+            <Link href="#" className="hover:scale-110 duration-200 transform">
+              <Facebook className="h-5 w-5 md:h-8 md:w-8 text-black hover:text-blue-800" />
             </Link>
-            <Link
-              href="#"
-              className="text-white hover:text-gray-300 rounded-full bg-orange-950 p-1 items-center"
-            >
-              <Mail size={24} />
+            <Link href="#" className="hover:scale-110 duration-200 transform">
+              <Instagram className="h-5 w-5 md:h-8 md:w-8 text-black hover:text-blue-800" />
             </Link>
-            <Link
-              href="#"
-              className="text-white hover:text-gray-300 rounded-full bg-orange-950 p-1 items-center"
-            >
-              <Instagram size={24} />
-            </Link>
-            <Link
-              href="#"
-              className="text-white hover:text-gray-300 rounded-full bg-orange-950 p-1 items-center"
-            >
-              <Linkedin size={24} />
-            </Link>
-            <Link
-              href="#"
-              className="text-white hover:text-gray-300 rounded-full bg-orange-950 p-1 items-center"
-            >
-              <Youtube size={24} />
+            <Link href="#" className="hover:scale-110 duration-200 transform">
+              <Twitter className="h-5 w-5 md:h-8 md:w-8 text-black hover:text-blue-800" />
             </Link>
           </div>
         </div>
       </div>
-      <div className="flex flex-cols bg-blackOut w-auto md:max-w-full h-auto mx-auto items-center justify-center py-5 px-0">
-        <p className="text-sm text-white text-center">
-          © Neukod Edu 2024 - Neukod adalah merek milik PT Pak Nardi Indonesia,
-          Tbk. Terdaftar pada Direktorat Jendral Kekayaan Intelektual Republik
-          Indonesia.
-        </p>
+
+      {/* Bottom Bar */}
+      <div className="mt-12 pt-8 border-t border-gray-200">
+        <div className="flex flex-col md:flex-row items-center justify-center space-y-2 md:space-y-0 md:space-x-4 text-sm text-gray-500">
+          <span>© NEUKOD.EDU</span>
+          <span className="hidden md:inline">|</span>
+          <AnimatedLink href="#">TERMS OF SERVICE</AnimatedLink>
+          <span className="hidden md:inline">|</span>
+          <AnimatedLink href="#">PRIVACY POLICY</AnimatedLink>
+        </div>
       </div>
     </footer>
   );

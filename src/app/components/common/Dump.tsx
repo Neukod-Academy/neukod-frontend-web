@@ -40,7 +40,7 @@ const FadeInSlideUp = () => {
             <Image
                 src={Kiwir}
                 alt="Image 1"
-                className="w-full h-full rounded-md" />
+                className="w-full h-full min-w-[300px] rounded" />
         </div>
     );
 };

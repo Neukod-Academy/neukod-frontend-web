@@ -47,11 +47,11 @@ export default function FeaturesSection() {
   return (
     <div className="container mx-auto px-4 py-16">
       <div className="max-w-3xl mx-auto text-center mb-12">
-        <h2 className="text-5xl font-bold mb-4 text-blue-800">
+        <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-4 text-blue-800">
           Why we are different than others?
         </h2>
         <hr className="w-48 h-1 mx-auto my-4 bg-blue-400 border-0 rounded md:my-10 dark:bg-gray-700" />
-        <p className="text-gray-600 mb-8">
+        <p className="text-sm md:text-base lg:text-lg text-gray-600 mb-8">
           At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.
         </p>
         <button className="bg-coral-500 hover:bg-coral-600 text-white font-semibold py-3 px-8 rounded-lg transition-colors">

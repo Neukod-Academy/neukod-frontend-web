@@ -1,14 +1,14 @@
 import Image from "next/image";
-import Hero from "../app/components/home/Hero";
-import CourseProgram from "./components/home/CourseHighlight"
-import Courses from "./components/home/Courses";
-import AboutUs from "./components/home/AboutUs";
-import ContactUs from "./components/home/ContactUs";
-import TrustedBy from "./components/home/TrustedBy";
-import CourseCategory from "./components/home/CourseCategory";
-import WelcomeText from "./components/home/WelcomeText";
-import FeaturesSection from "./components/home/FeatureSection";
-import SlidePage from "./components/home/SlidePage";
+import Hero from "./public/Hero";
+import CourseProgram from "./public/CourseHighlight"
+import Courses from "./public/Courses";
+import AboutUs from "./public/AboutUs";
+import ContactUs from "./public/ContactUs";
+import TrustedBy from "./public/TrustedBy";
+import CourseCategory from "./public/CourseCategory";
+import WelcomeText from "./public/WelcomeText";
+import FeaturesSection from "./public/FeatureSection";
+import SlidePage from "./public/SlidePage";
 
 export default function Home() {
   return (
@@ -21,7 +21,7 @@ export default function Home() {
       <SlidePage />
       {/* <Courses /> */}
       <AboutUs />
-      <ContactUs />
+      {/* <ContactUs /> */}
       {/* <TrustedBy /> */}
     </main>
   );

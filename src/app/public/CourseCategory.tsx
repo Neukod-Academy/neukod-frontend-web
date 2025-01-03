@@ -3,7 +3,7 @@ import Image from "next/image"
 import { ArrowUpRight } from 'lucide-react'
 
 import { Button } from "@/components/ui/button"
-import Course1 from "../../assets/form/1.jpg"
+import Course1 from "../assets/form/1.jpg"
 import { AnimatePresence, motion, useSpring, useTransform } from "framer-motion";
 import { useRef, useState } from "react"
 import Link from "next/link"
@@ -33,13 +33,13 @@ const CourseCategory = () => {
     const containerRef = useRef<HTMLDivElement>(null);
 
     return (
-        <div className="container mx-auto px-4 py-12 md:py-16 lg:py-20">
+        <div className="container mx-auto px-4 py-12 md:py-16 lg:py-20 bg-gray-100">
             <div className="max-w-3xl mb-12 lg:mb-16 items-center justify-center mx-auto">
-                <h1 className="text-5xl font-extrabold text-center text-blue-800">
+                <h1 className="text-2xl md:text-4xl lg:text-5xl font-extrabold text-center text-blue-800">
                     Start Exploring & Find Your Perfect Category
                 </h1>
                 <hr className="w-48 h-1 mx-auto my-4 bg-blue-400 border-0 rounded md:my-10 dark:bg-gray-700" />
-                <p className="text-gray-600 text-lg text-center">
+                <p className="text-sm md:text-base lg:text-lg text-gray-600 text-center">
                     Dive into our diverse range of categories and discover the ideal course to match your interests and goals.
                 </p>
             </div>

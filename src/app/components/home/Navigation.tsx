@@ -102,7 +102,7 @@ function NavItems() {
       </Link>
       <Link
         href="/landing_page/contact"
-        className="text-sm font-medium transition-colors hover:text-primary text-white"
+        className="text-sm font-medium transition-colors hover:text-primary text-white text-nowrap"
       >
         Contact Us
       </Link>

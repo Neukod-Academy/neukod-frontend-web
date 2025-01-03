@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import Image from "next/image"
-import { courseHighlight, CourseHighlight } from "../../utils/constant"
+import { courseHighlight, CourseHighlight } from "../utils/constant"
 import { Card, CardContent } from "@/components/ui/card"
 import Autoplay from "embla-carousel-autoplay"
 import {
@@ -50,7 +50,7 @@ const CourseProgram = () => {
                         <Image
                           src={course.image}
                           alt={course.alt}
-                          className="w-full h-full object-cover rounded-md"
+                          className="w-full h-full min-w-[20px] object-cover rounded-md"
                         />
                       </CardContent>
                     </Card>
