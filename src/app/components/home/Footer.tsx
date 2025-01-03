@@ -52,13 +52,17 @@ export default function Footer() {
             Java
           </p>
           <div className="relative space-y-2">
-            <p className="text-gray-600 text-base md:text-lg">CONTACT US :</p>
+            <p className="font-medium text-gray-600 text-base md:text-lg">CONTACT US :</p>
             <AnimatedLink href="mailto:info@neukod.com">
+              <span className="hover:text-blue-800">
               info@neukod.com
+              </span>
             </AnimatedLink>
             <br />
             <AnimatedLink href="mailto:info@neukod.com">
-              +62-8585-1816-241
+              <span className="hover:text-blue-800">
+              +62-858-5181-6241
+              </span>
             </AnimatedLink>
           </div>
         </div>
@@ -103,7 +107,7 @@ export default function Footer() {
             </Button>
           </form>
           <div className="relative">
-            <h1 className="text-gray-600 text-base md:text-lg">
+            <h1 className="font-medium text-gray-600 text-base md:text-lg">
               SOCIAL MEDIA :
             </h1>
           </div>
