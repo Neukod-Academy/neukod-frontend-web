@@ -15,7 +15,7 @@ const AnimatedLink = ({
 }) => (
   <motion.a
     href={href}
-    className="relative inline-block text-gray-600 hover:text-gray-900 transition-colors"
+    className="relative inline-block text-gray-600 hover:text-gray-900 transition-colors "
     whileHover="hover"
   >
     {children}
@@ -37,7 +37,7 @@ const AnimatedLink = ({
 
 export default function Footer() {
   return (
-    <footer className="max-w-7xl mx-auto px-4 py-12 md:py-16">
+    <footer className="w-full mx-auto px-4 py-12 md:py-16 border-t-2 border-gray-200">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
         {/* Company Info */}
         <div className="space-y-4">
@@ -100,9 +100,9 @@ export default function Footer() {
             <Input
               type="email"
               placeholder="Enter your email address"
-              className="w-full"
+              className="w-full max-w-2xl"
             />
-            <Button type="submit" className="w-full bg-redFlag">
+            <Button type="submit" className="w-full max-w-2xl bg-redFlag">
               SUBSCRIBE
             </Button>
           </form>
