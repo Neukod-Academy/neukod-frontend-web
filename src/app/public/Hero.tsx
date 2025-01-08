@@ -3,8 +3,7 @@
 import Image from "next/image";
 import { useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { AspectRatio } from "@/components/ui/aspect-ratio";
-import Banner from "../assets/banner.jpg";
+import Banner from "./images/banner.jpg";
 import { Button } from "@/components/ui/button";
 
 export default function Component() {

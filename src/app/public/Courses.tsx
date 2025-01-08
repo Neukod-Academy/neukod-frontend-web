@@ -2,9 +2,8 @@
 
 import * as React from "react";
 import { type CarouselApi } from "@/components/ui/carousel";
-import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { courses, COURSES } from "../utils/constant";
+import { courses } from "../utils/constant";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
@@ -12,10 +11,7 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
 
 export default function CourseSection() {
   const [api, setApi] = React.useState<CarouselApi>();

@@ -4,11 +4,11 @@ import { useEffect, useRef, useState } from "react"
 import gsap from "gsap"
 import { ChevronRight } from 'lucide-react'
 import { cn } from "@/lib/utils"
-import Slide1 from "../assets/slide/teacher_vector.webp"
-import Slide2 from "../assets/slide/asian_girl.webp"
-import Slide3 from "../assets/slide/asian_girl2.webp"
-import Slide4 from "../assets/slide/graduate.webp"
-import Slide5 from "../assets/slide/teacher.webp"
+import Slide1 from "./images/slide/teacher_vector.webp"
+import Slide2 from "./images/slide/asian_girl.webp"
+import Slide3 from "./images/slide/asian_girl2.webp"
+import Slide4 from "./images/slide/graduate.webp"
+import Slide5 from "./images/slide/teacher.webp"
 import Image, { StaticImageData } from "next/image"
 
 interface Section {

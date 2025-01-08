@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Kiwir from '../../assets/courses/kiwir.png';
+import Kiwir from '../../public/images/courses/kiwir.png';
 
 const FadeInSlideUp = () => {
     const imagesRef = useRef<HTMLImageElement>(null)

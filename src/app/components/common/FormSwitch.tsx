@@ -2,17 +2,16 @@
 
 import Image from "next/image"
 import { useState } from 'react'
-import { Facebook, Images, Linkedin, Twitter } from 'lucide-react'
+import { Facebook, Linkedin, Twitter } from 'lucide-react'
 import { Checkbox } from "@/components/ui/checkbox"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
-import ImgFormFill from "../../assets/form/formfill.png"
-import ImgFormSubmit from "../../assets/form/formsubmitted.png"
+import ImgFormFill from "../../public/images/form/formfill.png"
+import ImgFormSubmit from "../../public/images/form/formsubmitted.png"
 
-const FormSwitcher = (props: any) => {
+const FormSwitcher = () => {
 
   const [isSignUp, setIsSignUp] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)

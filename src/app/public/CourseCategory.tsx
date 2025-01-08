@@ -1,11 +1,10 @@
 "use client"
 import Image from "next/image"
 import { ArrowUpRight } from 'lucide-react'
-
 import { Button } from "@/components/ui/button"
-import Course1 from "../assets/form/1.jpg"
-import { AnimatePresence, motion, useSpring, useTransform } from "framer-motion";
-import { useRef, useState } from "react"
+import Course1 from '../public/images/form/1.jpg'
+import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react"
 import Link from "next/link"
 
 const CourseCategory = () => {
@@ -30,7 +29,7 @@ const CourseCategory = () => {
         },
     ]
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-    const containerRef = useRef<HTMLDivElement>(null);
+    // const containerRef = useRef<HTMLDivElement>(null);
 
     return (
         <div className="container mx-auto px-4 py-12 md:py-16 lg:py-20 bg-gray-100">

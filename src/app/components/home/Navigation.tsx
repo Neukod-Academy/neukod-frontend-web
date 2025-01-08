@@ -21,7 +21,7 @@ import {
   SelectItem,
 } from "@/components/ui/select";
 import FormSwitch from "../common/FormSwitch";
-import NeuLogo from "../../assets/Putih.png";
+import NeuLogo from "../../public/images/Putih.png";
 
 // Placeholder for language options - replace with your actual data
 const languageOptions = [

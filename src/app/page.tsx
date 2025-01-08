@@ -1,10 +1,7 @@
-import Image from "next/image";
+
 import Hero from "./public/Hero";
 import CourseProgram from "./public/CourseHighlight"
-import Courses from "./public/Courses";
 import AboutUs from "./public/AboutUs";
-import ContactUs from "./public/ContactUs";
-import TrustedBy from "./public/TrustedBy";
 import CourseCategory from "./public/CourseCategory";
 import WelcomeText from "./public/WelcomeText";
 import FeaturesSection from "./public/FeatureSection";
