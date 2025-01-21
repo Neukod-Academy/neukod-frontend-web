@@ -1,0 +1,5 @@
+- install shadcn Ui
+        --> 
+    * Input :
+    * Button :
+    * Card :
