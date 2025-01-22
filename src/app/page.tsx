@@ -9,7 +9,7 @@ import SlidePage from "./public/SlidePage";
 
 export default function Home() {
   return (
-    <main className="flex flex-col justify-center gap-10 py-2">
+    <main className="flex flex-col justify-center gap-10 py-2 overflow-hidden">
       <Hero />
       <WelcomeText />
       <CourseProgram />

@@ -114,7 +114,7 @@ export default function Navbar() {
           <div className="hidden lg:block">
             <LanguageSelector />
           </div>
-          <Dialog open={isOpen} onOpenChange={setIsOpen}>
+          <Dialog open={isOpen} onOpenChange={setIsOpen} modal={true}>
             <DialogTrigger asChild>
               <Button className="bg-redFlag" variant="default">
                 Apply Now!
@@ -123,7 +123,7 @@ export default function Navbar() {
             <DialogHeader>
               <DialogTitle className="invisible"></DialogTitle>
             </DialogHeader>
-            <DialogContent className="sm:max-w-[90vw] md:max-w-[800px] lg:max-w-[1000px]">
+            <DialogContent className="w-full max-w-[1000px]">
               <FormSwitch />
             </DialogContent>
           </Dialog>

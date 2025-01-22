@@ -41,6 +41,8 @@ command : npx shadcn@latest init
     command : npx shadcn@latest add dropdown-menu
     - Radio Group
     command : npx shadcn@latest add radio-group
+    - Scroll Area
+    command : npx shadcn@latest add scroll-area
 
 
 
