@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -11,16 +11,17 @@ import ImgFormFill from "../../public/images/form/formfill.png"
 import ImgFormSubmit from "../../public/images/form/formsubmitted.png"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
+import { PhoneInput } from "./phoneInput"
 
 const FormSwitcher = () => {
-  const [isSignUp, setIsSignUp] = useState(false)
+  // const [isSignUp, setIsSignUp] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
 
   const toggleForm = () => {
-    setIsSignUp(!isSignUp)
+    // setIsSignUp(!isSignUp)
     setIsSubmitted((prev) => !prev)
   }
-
+  
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     //Nanti di delete bjir, buat cek form submit
@@ -29,7 +30,7 @@ const FormSwitcher = () => {
   }
 
   return (
-    <div className="flex items-center justify-center h-auto py-10 px-2 overflow-auto">
+    <div className="flex items-center justify-center h-auto py-10 px-2">
       <div className="relative w-full max-w-[900px] h-[600px] bg-gradient-to-br from-pink-400 to-pink-600 rounded-xl shadow-lg overflow-hidden">
         {/* Sign Up Form */}
         <div
@@ -49,7 +50,8 @@ const FormSwitcher = () => {
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="parent-phone">Parent phone number</Label>
-                  <Input id="parent-phone" type="number" placeholder="enter your parent phone number" />
+                  {/* <Input id="parent-phone" type="number" placeholder="enter your parent phone number" /> */}
+                  <PhoneInput />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="signup-email">Parent email</Label>

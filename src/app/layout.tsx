@@ -43,7 +43,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <ReactLenis root>
         <body
           className={`${montserrat.className} antialiased`}
         >
@@ -55,7 +54,6 @@ export default function RootLayout({
             <Footer />
           </div>
         </body>
-      </ReactLenis>
     </html>
   );
 }

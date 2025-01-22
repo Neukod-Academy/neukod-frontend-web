@@ -44,6 +44,8 @@ command : npx shadcn@latest init
     - Scroll Area
     command : npx shadcn@latest add scroll-area
 
+    
+npm i react-phone-number-input
 
 
 
