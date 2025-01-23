@@ -33,7 +33,7 @@ export default function Component() {
   });
 
    const [isOpen, setIsOpen] = React.useState(false);
-   isOpen?document.body.style.overflow = "hidden" : document.body.style.overflow = "auto";
+  //  isOpen?document.body.style.overflow = "hidden" : document.body.style.overflow = "auto";
   return (
     <div
       ref={TextEffect}

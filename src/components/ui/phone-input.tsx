@@ -85,7 +85,7 @@ const CountrySelect = ({
   onChange,
 }: CountrySelectProps) => {
   return (
-    <Popover>
+    <Popover modal>
       <PopoverTrigger asChild>
         <Button
           type="button"
@@ -105,11 +105,15 @@ const CountrySelect = ({
           />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[300px] p-0">
+      <PopoverContent className="w-auto p-0"
+        onWheel={(e) => {
+          e.stopPropagation();
+        }}
+      >
         <Command>
           <CommandInput placeholder="Search country..." />
           <CommandList>
-            <ScrollArea className="h-72">
+            <ScrollArea className="h-72 w-full">
               <CommandEmpty>No country found.</CommandEmpty>
               <CommandGroup>
                 {countryList.map(({ value, label }) =>

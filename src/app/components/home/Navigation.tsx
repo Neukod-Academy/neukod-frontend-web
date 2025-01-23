@@ -117,7 +117,7 @@ export default function Navbar() {
           <div className="hidden lg:block">
             <LanguageSelector />
           </div>
-          <Dialog open={isOpen} onOpenChange={setIsOpen} modal={true}>
+          <Dialog open={isOpen} onOpenChange={setIsOpen}>
             <DialogTrigger asChild>
               <Button className="bg-redFlag" variant="default">
                 Apply Now!

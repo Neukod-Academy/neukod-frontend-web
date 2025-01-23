@@ -11,7 +11,8 @@ import ImgFormFill from "../../public/images/form/formfill.png"
 import ImgFormSubmit from "../../public/images/form/formsubmitted.png"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
-import { PhoneInput } from "./phoneInput"
+import { PhoneInput } from "@/components/ui/phone-input"
+import type { E164Number } from "libphonenumber-js/core"
 
 const FormSwitcher = () => {
   // const [isSignUp, setIsSignUp] = useState(false)
@@ -21,22 +22,22 @@ const FormSwitcher = () => {
     // setIsSignUp(!isSignUp)
     setIsSubmitted((prev) => !prev)
   }
-  
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     //Nanti di delete bjir, buat cek form submit
     console.log("Form submitted")
     setIsSubmitted(true)
   }
+  const [phoneNumber, setPhoneNumber] = useState<E164Number | undefined>()
 
   return (
     <div className="flex items-center justify-center h-auto py-10 px-2">
       <div className="relative w-full max-w-[900px] h-[600px] bg-gradient-to-br from-pink-400 to-pink-600 rounded-xl shadow-lg overflow-hidden">
         {/* Sign Up Form */}
         <div
-          className={`w-full md:w-1/2 h-full flex flex-col justify-center items-center bg-background transition-opacity duration-500 ease-in-out ${
-            isSubmitted ? "opacity-0 z-10" : "opacity-100 z-10"
-          }`}
+          className={`w-full md:w-1/2 h-full flex flex-col justify-center items-center bg-background transition-opacity duration-500 ease-in-out ${isSubmitted ? "opacity-0 z-10" : "opacity-100 z-10"
+            }`}
         >
           <ScrollArea className="w-full h-full items-center justify-center">
             <form onSubmit={handleSubmit} className="w-full max-w-[500px] p-4 md:p-8 space-y-6">
@@ -51,7 +52,16 @@ const FormSwitcher = () => {
                 <div className="space-y-2">
                   <Label htmlFor="parent-phone">Parent phone number</Label>
                   {/* <Input id="parent-phone" type="number" placeholder="enter your parent phone number" /> */}
-                  <PhoneInput />
+                  <div className="grid gap-4 py-4">
+                    <PhoneInput
+                      international
+                      countryCallingCodeEditable={false}
+                      value={phoneNumber}
+                      onChange={setPhoneNumber}
+                      addInternationalOption={true}
+                      placeholder="enter your parent phone number"
+                    />
+                  </div>
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="signup-email">Parent email</Label>
@@ -85,10 +95,6 @@ const FormSwitcher = () => {
                     </RadioGroup>
                   </div>
                 </div>
-                {/* <div className="space-y-2">
-                <Label htmlFor="signup-password">Password</Label>
-                <Input id="signup-password" type="password" placeholder="Password" />
-              </div> */}
               </div>
               <div className="flex items-center space-x-2">
                 <Checkbox id="terms2" />
@@ -115,9 +121,8 @@ const FormSwitcher = () => {
                 alt="Fill form"
                 fill
                 style={{ objectFit: "contain" }}
-                className={`absolute transition-opacity duration-1000 ease-in-out ${
-                  isSubmitted ? "opacity-0" : "opacity-100"
-                }`}
+                className={`absolute transition-opacity duration-1000 ease-in-out ${isSubmitted ? "opacity-0" : "opacity-100"
+                  }`}
               />
               {/* Image shown when isSubmitted is true */}
               <Image
@@ -125,9 +130,8 @@ const FormSwitcher = () => {
                 alt="Form submitted"
                 fill
                 style={{ objectFit: "contain" }}
-                className={`absolute transition-opacity duration-1000 ease-in-out ${
-                  isSubmitted ? "opacity-100" : "opacity-0"
-                }`}
+                className={`absolute transition-opacity duration-1000 ease-in-out ${isSubmitted ? "opacity-100" : "opacity-0"
+                  }`}
               />
             </div>
             {isSubmitted ? (
@@ -146,15 +150,13 @@ const FormSwitcher = () => {
           </div>
         </motion.div>
         <div
-          className={`absolute inset-0 flex transition-all duration-1000 ease-in-out ${
-            isSubmitted ? "translate-x-0 md:translate-x-1/2" : "translate-x-full"
-          }`}
+          className={`absolute inset-0 flex transition-all duration-1000 ease-in-out ${isSubmitted ? "translate-x-0 md:translate-x-1/2" : "translate-x-full"
+            }`}
         >
           {/* Sign In Form */}
           <div
-            className={`w-full md:w-1/2 h-full flex items-center justify-center transition-opacity ease-in-out ${
-              isSubmitted ? "opacity-100" : "opacity-100"
-            }`}
+            className={`w-full md:w-1/2 h-full flex items-center justify-center transition-opacity ease-in-out ${isSubmitted ? "opacity-100" : "opacity-100"
+              }`}
           >
             {/* After Submit View */}
             <AnimatePresence>
