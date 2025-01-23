@@ -71,7 +71,7 @@ export default function Component() {
                   onClick={() => setIsOpen(!isOpen)}
                   className="bg-redFlag text-white hover:bg-red-800"
                 >
-                  Start Learn Now
+                  Start Your Trial
                 </Button>
               </DialogTrigger>
               <DialogHeader>

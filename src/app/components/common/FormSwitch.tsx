@@ -29,7 +29,7 @@ const FormSwitcher = () => {
     console.log("Form submitted")
     setIsSubmitted(true)
   }
-  const [phoneNumber, setPhoneNumber] = useState<E164Number | undefined>()
+  const [value, setValue] = useState<E164Number | undefined>()
 
   return (
     <div className="flex items-center justify-center h-auto py-10 px-2">
@@ -56,9 +56,10 @@ const FormSwitcher = () => {
                     <PhoneInput
                       international
                       countryCallingCodeEditable={false}
-                      value={phoneNumber}
-                      onChange={setPhoneNumber}
+                      value={value}
+                      onChange={(value) => setValue(value)}
                       addInternationalOption={true}
+                      formNoValidate
                       placeholder="enter your parent phone number"
                     />
                   </div>

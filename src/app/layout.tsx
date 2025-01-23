@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Montserrat, Nunito_Sans } from "next/font/google";
 import "./styles/globals.css";
-import { ReactLenis } from "./utils/lenis";
 import Footer from "../app/components/home/Footer";
 import Navigation from "../app/components/home/Navigation";
 
