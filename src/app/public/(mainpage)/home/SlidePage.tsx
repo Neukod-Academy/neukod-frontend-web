@@ -4,11 +4,11 @@ import { useEffect, useRef, useState } from "react"
 import gsap from "gsap"
 import { ChevronRight } from 'lucide-react'
 import { cn } from "@/lib/utils"
-import Slide1 from "./images/slide/teacher_vector.webp"
-import Slide2 from "./images/slide/asian_girl.webp"
-import Slide3 from "./images/slide/asian_girl2.webp"
-import Slide4 from "./images/slide/graduate.webp"
-import Slide5 from "./images/slide/teacher.webp"
+import Slide1 from "../../images/slide/teacher_vector.webp"
+import Slide2 from "../../images/slide/asian_girl.webp"
+import Slide3 from "../../images/slide/asian_girl2.webp"
+import Slide4 from "../../images/slide/graduate.webp"
+import Slide5 from "../../images/slide/teacher.webp"
 import Image, { StaticImageData } from "next/image"
 
 interface Section {
@@ -116,16 +116,16 @@ export default function SlidePage() {
                             index === activeIndex ? "z-10" : "z-0"
                         )}
                     >
-                        <div className="absolute inset-0 bg-black/40" />
+                        <div className="absolute inset-0 z-20 bg-black/40" />
                         <Image
+                            fill
                             src={section.image}
                             alt={section.alt}
-                            layout="contain"
                             className="h-full w-full object-cover"
                         />
                         <div
                             id={`title-${index}`}
-                            className="absolute left-12 top-1/2 -translate-y-1/2 transform"
+                            className="absolute left-12 top-1/2 -translate-y-1/2 transform z-40"
                             style={{ opacity: index === activeIndex ? 1 : 0 }}
                         >
                             <div className="flex items-end gap-4">

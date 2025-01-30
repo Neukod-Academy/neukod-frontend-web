@@ -96,10 +96,10 @@ function MobileMenu() {
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false);
-  React.useEffect(() => {
-    if (isOpen) document.body.classList.add('overflow-hidden');
-    else document.body.classList.remove('overflow-hidden');
-  }, [isOpen]);
+  // React.useEffect(() => {
+  //   if (isOpen) document.body.classList.add('overflow-hidden');
+  //   else document.body.classList.remove('overflow-hidden');
+  // }, [isOpen]);
   return (
     <nav className="fixed top-0 z-50 w-full border-b border-border/40 bg-gradient-to-b from-blackOut/90 to-blackOut/40 backdrop-filter backdrop-blur-md">
       <div className="container flex h-12 md:h-14 lg:h-16 max-w-screen items-center justify-between mx-auto">
@@ -117,7 +117,7 @@ export default function Navbar() {
           <div className="hidden lg:block">
             <LanguageSelector />
           </div>
-          <Dialog open={isOpen} onOpenChange={setIsOpen} modal={false}>
+          <Dialog open={isOpen} onOpenChange={setIsOpen}>
             <DialogTrigger asChild>
               <Button className="bg-redFlag" variant="default">
                 Start Trial

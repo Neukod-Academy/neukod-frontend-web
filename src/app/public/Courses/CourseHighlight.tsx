@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import Image from "next/image"
-import { courseHighlight } from "../utils/constant"
+import { courseHighlight } from "../../utils/constant"
 import { Card, CardContent } from "@/components/ui/card"
 import Autoplay from "embla-carousel-autoplay"
 import {

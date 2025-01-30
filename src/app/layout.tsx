@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Montserrat, Nunito_Sans } from "next/font/google";
 import "./styles/globals.css";
-import Footer from "../app/components/home/Footer";
-import Navigation from "../app/components/home/Navigation";
+import Footer from "./components/component/Footer";
+import Navigation from "./components/component/Navigation";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -19,16 +19,16 @@ const nunito_sans = Nunito_Sans({
 });
 
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+// const geistSans = localFont({
+//   src: "./fonts/GeistVF.woff",
+//   variable: "--font-geist-sans",
+//   weight: "100 900",
+// });
+// const geistMono = localFont({
+//   src: "./fonts/GeistMonoVF.woff",
+//   variable: "--font-geist-mono",
+//   weight: "100 900",
+// });
 
 export const metadata: Metadata = {
   title: "Neukod",

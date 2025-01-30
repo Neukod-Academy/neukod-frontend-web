@@ -2,7 +2,7 @@
 import Image from "next/image"
 import { ArrowUpRight } from 'lucide-react'
 import { Button } from "@/components/ui/button"
-import Course1 from '../public/images/form/1.jpg'
+import Course1 from '../images/form/1.jpg'
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react"
 import Link from "next/link"

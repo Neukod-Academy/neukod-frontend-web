@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useEffect, useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
-import Banner from "./images/banner.jpg";
+import Banner from "../../images/banner.jpg";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -12,7 +12,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import FormSwitch from "../components/common/FormSwitch";
+import FormSwitch from "../../../components/common/FormSwitch";
 import React from "react";
 
 export default function Component() {
