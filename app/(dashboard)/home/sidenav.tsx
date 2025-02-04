@@ -1,6 +1,7 @@
 "use client"
 
 import type React from "react"
+import Image from "next/image"
 import { useState } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
@@ -15,6 +16,7 @@ import {
   faGem,
   faCaretUp,
 } from "@fortawesome/free-solid-svg-icons"
+import Profilepic from "../../images/profilepicture/pofilepicture.png"
 
 const SideNav: React.FC = () => {
   const [isOpen, setIsOpen] = useState(true)
@@ -26,22 +28,22 @@ const SideNav: React.FC = () => {
       className={`fixed left-[1vw] top-[1vw] h-[calc(100%-2vw)] bg-[#18283b] rounded-2xl flex flex-col text-[#f5f6fa] font-sans overflow-hidden select-none transition-all duration-300 ease-in-out ${isOpen ? "w-64" : "w-20"}`}
     >
       <input type="checkbox" id="nav-toggle" className="hidden" checked={isOpen} onChange={() => setIsOpen(!isOpen)} />
-      <div className="relative flex items-center h-20 pl-4 pr-12 bg-[#18283b] rounded-2xl z-10">
+      <div className="relative flex items-center h-20 pl-4 pr-12 bg-transparent rounded-2xl z-10">
         <a
           href="https://codepen.io"
           target="_blank"
           rel="noopener noreferrer"
           className={`text-2xl transition-opacity duration-300 ${isOpen ? "opacity-100" : "opacity-0 pointer-events-none"}`}
         >
-          C<FontAwesomeIcon icon={faCode} />
-          DEPEN
+          NEU<FontAwesomeIcon icon={faCode} />
+          KOD
         </a>
         <label
           htmlFor="nav-toggle"
           className="absolute right-0 flex items-center justify-center w-12 h-full cursor-pointer"
         >
           <span
-            className={`relative w-4 h-0.5 bg-[#18283b] rounded-full transition-all duration-300 ${isOpen ? "bg-[#18283b]" : "bg-[#f5f6fa]"}`}
+            className={`relative w-4 h-0.5 -left-4 bg-[#18283b] rounded-full transition-all duration-300 ${isOpen ? "bg-[#18283b]" : "bg-[#f5f6fa]"}`}
           >
             <span
               className={`absolute top-0.2 left-0 w-4 h-0.5 bg-[#f5f6fa] rounded-full transition-all duration-300 ${isOpen ? "rotate-45 -translate-y-0 -translate-x-1" : "-translate-y-1.5 w-2.5 translate-x-0.5"}`}
@@ -55,7 +57,7 @@ const SideNav: React.FC = () => {
       </div>
       <div className={`relative flex-1 overflow-x-hidden transition-all duration-300 ${isOpen ? "w-64" : "w-20"}`}>
         <div
-          className="absolute left-4 top-0 w-[calc(100%-1rem)] h-[54px] bg-[#9c88ff] rounded-2xl transition-all duration-300 ease-in-out"
+          className="absolute left-2 gap-5 top-0 w-[calc(100%-1rem)] h-[54px] bg-teal-400 rounded-2xl transition-all duration-300 ease-in-out"
           style={{ top: `${activeIndex * 54}px` }}
         ></div>
         <NavButton
@@ -126,16 +128,16 @@ const SideNav: React.FC = () => {
         />
       </div>
       <div
-        className={`relative bg-[#2c3e50] rounded-2xl transition-all duration-300 ${isOpen ? "w-64" : "w-20"} ${isFooterOpen && isOpen ? "h-[30%]" : "h-[54px]"}`}
+        className={`relative bg-[#2c3e50] rounded-2xl transition-all duration-300 overflow-hidden ${isOpen ? "w-64" : "w-20"} ${isFooterOpen && isOpen ? "h-[30%]" : "h-[55px]"}`}
       >
         <div className="relative flex items-center h-[54px]">
           <div
-            className={`w-8 h-8 rounded-full overflow-hidden transition-all duration-300 ${isOpen ? "ml-4" : "ml-6"}`}
+            className={`flex transition-all duration-300`}
           >
-            <img
-              src="https://gravatar.com/avatar/4474ca42d303761c2901fa819c4f2547"
+            <Image
+              src={Profilepic}
               alt="Avatar"
-              className="w-full h-full object-cover"
+              className={`rounded-full w-8 h-8 object-cover ${isOpen ? "transition-all duration-300 ml-3 opacity-100 place-items-left" : "transition-all duration-500 ml-5 min-w-8 opacity-100 place-items-center"}`}
             />
           </div>
           <div
@@ -163,7 +165,7 @@ const SideNav: React.FC = () => {
         </div>
         {isOpen && (
           <div
-            className={`mx-4 pt-4 text-sm text-[#8392a5] overflow-auto transition-all duration-300 ${isFooterOpen ? "max-h-[calc(30vh-54px)]" : "max-h-0"}`}
+            className={`mx-4 pt-4 text-sm text-[#8392a5] overflow-hidden transition-all duration-300 ${isFooterOpen ? "max-h-[calc(30vh-54px)]" : "max-h-0"}`}
           >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
             dolore magna aliqua.
@@ -185,15 +187,15 @@ const NavButton: React.FC<{
   const isActive = index === activeIndex
   return (
     <div
-      className={`relative flex items-center h-[54px] cursor-pointer group z-10 transition-colors duration-300 ${isActive ? "text-[#18283b]" : "text-[#8392a5] hover:text-[#f5f6fa]"}`}
+      className={`relative flex px-5 space-x-2 items-center h-[54px] cursor-pointer group z-10 transition-colors duration-300 ${isActive ? "text-[#a5e0f0]" : "text-[#8392a5] hover:text-[#ffff]"}`}
       onClick={() => setActiveIndex(index)}
     >
       <FontAwesomeIcon
         icon={icon}
-        className={`min-w-[3rem] text-center transition-all duration-300 ${isOpen ? "" : "w-full"}`}
+        className={`max-w-[50px] justify-center text-center transition-all duration-300 ${isOpen ? "" : "w-full"}`}
       />
       <span
-        className={`transition-all duration-300 ${isOpen ? "opacity-100 group-hover:pl-2" : "opacity-0 w-0 overflow-hidden"}`}
+        className={`transition-all duration-300 ${isOpen ? "opacity-100 group-hover:pl-2" : "opacity-0 w-0"}`}
       >
         {text}
       </span>
@@ -201,5 +203,5 @@ const NavButton: React.FC<{
   )
 }
 
-export default SideNav
+export default SideNav;
 
