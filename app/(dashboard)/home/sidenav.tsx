@@ -33,7 +33,7 @@ const SideNav: React.FC = () => {
           href="https://codepen.io"
           target="_blank"
           rel="noopener noreferrer"
-          className={`text-2xl transition-opacity duration-300 ${isOpen ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+          className={`text-2xl transition-opacity duration-500 ${isOpen ? "opacity-100" : "opacity-0 pointer-events-none"}`}
         >
           NEU<FontAwesomeIcon icon={faCode} />
           KOD
@@ -43,14 +43,14 @@ const SideNav: React.FC = () => {
           className="absolute right-0 flex items-center justify-center w-12 h-full cursor-pointer"
         >
           <span
-            className={`relative w-4 h-0.5 -left-4 bg-[#18283b] rounded-full transition-all duration-300 ${isOpen ? "bg-[#18283b]" : "bg-[#f5f6fa]"}`}
+            className={`relative w-5 h-0.5 -left-4 bg-[#18283b] rounded-full transition-all duration-300 ${isOpen ? "bg-[#18283b]" : "bg-[#f5f6fa]"}`}
           >
             <span
-              className={`absolute top-0.2 left-0 w-4 h-0.5 bg-[#f5f6fa] rounded-full transition-all duration-300 ${isOpen ? "rotate-45 -translate-y-0 -translate-x-1" : "-translate-y-1.5 w-2.5 translate-x-0.5"}`}
-            ></span>
+              className={`absolute top-0.2 -left-0 w-4 h-0.5 bg-[#f5f6fa] rounded-full transition-all duration-300 ${isOpen ? "rotate-45 -translate-y-0 -translate-x-1" : "-translate-y-1.5 w-2.5 translate-x-0.5"}`}
+            />
             <span
-              className={`absolute bottom-0.2 left-0 w-4 h-0.5 bg-[#f5f6fa] rounded-full transition-all duration-300 ${isOpen ? "-rotate-45 -translate-y-0 -translate-x-1" : "translate-y-1.5 w-2.5 translate-x-0.5"}`}
-            ></span>
+              className={`absolute bottom-0.2 -left-0 w-4 h-0.5 bg-[#f5f6fa] rounded-full transition-all duration-300 ${isOpen ? "-rotate-45 -translate-y-0 -translate-x-1" : "translate-y-1.5 w-2.5 translate-x-0.5"}`}
+            />
           </span>
         </label>
         <hr className="absolute bottom-0 left-4 w-[calc(100%-2rem)] border-t border-[#2c3e50]" />
