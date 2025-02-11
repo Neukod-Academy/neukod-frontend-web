@@ -4,7 +4,6 @@ import React, { useEffect, useRef } from "react";
 import { gsap } from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from 'split-type';
-import Dump from "../../components/common/Dump"
 import Kiwir from '../../public/images/courses/kiwir.png';
 import Image from "next/image";
 
@@ -37,8 +36,8 @@ const AboutUs = () => {
             scrollTrigger: {
                 trigger: content.current,
                 scrub: true,
-                start: "top 70%", // Adjusted for better visibility
-                end: "top 30%"
+                start: "top 90%", // Adjusted for better visibility
+                end: "top 50%"
             },
         });
 
@@ -62,11 +61,11 @@ const AboutUs = () => {
                 </p>
             </div>
 
-            <div ref={content}className="anim flex">
+            <div ref={content}className="anim flex-1">
             <Image
                 src={Kiwir}
                 alt="Image 1"
-                className="w-full h-full min-w-[300px] max-w-[1200px] rounded" />
+                className="w-full h-1/2 md:h-full min-w-[200px] max-w-[1200px] rounded" />
             </div>
         </div>
     );

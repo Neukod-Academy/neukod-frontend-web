@@ -41,8 +41,8 @@ const FormSwitcher = () => {
         >
           <ScrollArea className="w-full h-full items-center justify-center">
             <form onSubmit={handleSubmit} className="w-full max-w-[500px] p-4 md:p-8 space-y-6">
-              <h2 className="text-2xl font-bold text-primary text-center">Create Account</h2>
-              <p className="text-sm text-center text-muted-foreground">or use your email for registration</p>
+              <h2 className="text-2xl font-bold text-primary text-center">Submit for trial</h2>
+              <p className="text-sm text-center text-muted-foreground">Complete fill form to start your trial soon</p>
               <div className="space-y-4">
                 <h1>Enter your parent information</h1>
                 <div className="space-y-2">

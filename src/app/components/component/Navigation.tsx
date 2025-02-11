@@ -51,7 +51,7 @@ function NavItems() {
 
 function LanguageSelector() {
   return (
-    <div className="grid gap-3 p-4 md:grid-cols-1">
+    <div className="grid md:grid-cols-1">
       <Select>
         <SelectTrigger className="w-fit">
           <SelectValue placeholder="EN" />
@@ -83,9 +83,11 @@ function MobileMenu() {
         <Menu className="h-6 w-6" />
       </Button>
       {isOpen && (
-        <div className="absolute top-full left-0 right-0 bg-blackOut p-4">
-          <NavItems />
-          <div className="mt-4">
+        <div className="absolute grid grid-cols-2 top-full left-0 right-0 bg-blackOut p-5 gap-0">
+          <div className="flex items-start">
+            <NavItems />
+          </div>
+          <div className="place-items-end">
             <LanguageSelector />
           </div>
         </div>
