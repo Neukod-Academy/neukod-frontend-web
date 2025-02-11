@@ -25,7 +25,7 @@ const SideNav: React.FC = () => {
 
   return (
     <nav
-      className={`fixed left-[1vw] top-[1vw] h-[calc(100%-2vw)] bg-[#18283b] rounded-2xl flex flex-col text-[#f5f6fa] font-sans overflow-hidden select-none transition-all duration-300 ease-in-out ${isOpen ? "w-64" : "w-20"}`}
+      className={`fixed left-[1vw] top-[1vw] h-[calc(100%-2vw)] bg-[#18283b] rounded-2xl flex flex-col text-[#f5f6fa] font-sans overflow-hidden select-none transition-all duration-300 z-20 ease-in-out ${isOpen ? "w-64" : "w-20"}`}
     >
       <input type="checkbox" id="nav-toggle" className="hidden" checked={isOpen} onChange={() => setIsOpen(!isOpen)} />
       <div className="relative flex items-center h-20 pl-4 pr-12 bg-transparent rounded-2xl z-10">
