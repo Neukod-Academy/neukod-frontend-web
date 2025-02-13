@@ -1,9 +1,10 @@
-import LandingPage from "./(mainpage)/home/page"
 
-export default function Home() {
+import AboutUs from "./AboutUs"
+
+export default function About() {
   return (
     <main className="flex flex-col justify-center gap-10 py-2 overflow-hidden">
-        <LandingPage />
+      <AboutUs />
     </main>
   );
 }

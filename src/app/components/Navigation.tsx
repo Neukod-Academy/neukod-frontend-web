@@ -20,8 +20,8 @@ import {
   SelectGroup,
   SelectItem,
 } from "@/components/ui/select";
-import FormSwitch from "../common/FormSwitch";
-import NeuLogo from "../../public/images/Putih.png";
+import FormSwitch from "./FormSwitch";
+import NeuLogo from "../images/Putih.png";
 
 // Placeholder for language options - replace with your actual data
 const languageOptions = [
@@ -34,13 +34,19 @@ function NavItems() {
   return (
     <div className="flex space-x-6">
       <Link
-        href="/landing_page/about"
+        href="#Course"
         className="text-base md:text-lg lg:text-xl font-medium transition-colors hover:text-primary text-white"
       >
-        Course
+        Course 
       </Link>
       <Link
-        href="/landing_page/contact"
+        href="/About"
+        className="text-base md:text-lg lg:text-xl font-medium transition-colors hover:text-primary text-white"
+      >
+        About
+      </Link>
+      <Link
+        href="#"
         className="text-base md:text-lg lg:text-xl font-medium transition-colors hover:text-primary text-white"
       >
         Contact Us

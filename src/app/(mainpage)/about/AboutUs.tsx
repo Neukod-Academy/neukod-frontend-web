@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from "react";
 import { gsap } from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from 'split-type';
-import Kiwir from '../../public/images/courses/kiwir.png';
+import Kiwir from '../../images/courses/kiwir.png';
 import Image from "next/image";
 
 const AboutUs = () => {

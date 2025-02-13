@@ -12,7 +12,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import FormSwitch from "../../../components/common/FormSwitch";
+import FormSwitch from "../../components/FormSwitch";
 import React from "react";
 
 export default function Component() {

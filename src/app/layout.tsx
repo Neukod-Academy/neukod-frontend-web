@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Montserrat, Nunito_Sans } from "next/font/google";
 import "./styles/globals.css";
-import Footer from "./components/component/Footer";
-import Navigation from "./components/component/Navigation";
+import Footer from "./components/Footer";
+import Navigation from "./components/Navigation";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -17,7 +17,6 @@ const nunito_sans = Nunito_Sans({
   variable: "--font-nunito-sans",
   adjustFontFallback: false,
 });
-
 
 // const geistSans = localFont({
 //   src: "./fonts/GeistVF.woff",
@@ -42,17 +41,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-        <body
-          className={`${montserrat.className} antialiased`}
-        >
-          <div className={nunito_sans.className}>
-            <Navigation />
-          </div>
-          {children}
-          <div className={nunito_sans.className}>
-            <Footer />
-          </div>
-        </body>
+      <body className={`${montserrat.className} antialiased`}>
+        <div className={nunito_sans.className}>
+          <Navigation />
+        </div>
+        {children}
+        <div className={nunito_sans.className}>
+          <Footer />
+        </div>
+      </body>
     </html>
   );
 }
