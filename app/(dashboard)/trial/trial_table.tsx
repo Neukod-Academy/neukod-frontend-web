@@ -1,29 +1,20 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import Image from "next/image"
 import { MoreHorizontal, Plus, Download } from "lucide-react"
 import { products } from "../../../lib/data"
+
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 
 const ITEMS_PER_PAGE = 5
+
 export default function ProductsPage() {
   const [currentPage, setCurrentPage] = useState(1)
   const [activeTab, setActiveTab] = useState("all")
-//Call API Trial
-// useEffect(() => {
-//     const getTrial = async () => {
-//         const api = await fetch('http://13.229.229.46:8002/api/v1/trialclass');
-//         const response = await api.json();
-//         console.log('response :',response );
-//     }
-//     getTrial();
-// }, []);
-
-
 
   // Filter products based on active tab
   const filteredProducts = products.filter((product) => {
