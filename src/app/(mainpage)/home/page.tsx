@@ -1,7 +1,7 @@
 
 import Hero from "./Hero";
 import CourseProgram from "../courses/CourseHighlight";
-import AboutUs from "../about/page";
+import AboutUs from "./AboutUs";
 import CourseCategory from "../courses/CourseCategory";
 import WelcomeText from "./WelcomeText";
 import FeaturesSection from "./FeatureSection";
