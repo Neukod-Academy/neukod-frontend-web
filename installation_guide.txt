@@ -46,6 +46,7 @@ command : npx shadcn@latest init
 
 npx shadcn@latest add popover
 npm i react-phone-number-input
+npx shadcn@latest add textarea
 
 
 

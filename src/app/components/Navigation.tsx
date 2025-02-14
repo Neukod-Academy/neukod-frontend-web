@@ -34,6 +34,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import FormSwitch from "./FormSwitch";
 import NeuLogo from "../images/Putih.png";
+import Logo from "../images/courses/alamak-logo.webp";
 import { cn } from "@/lib/utils";
 
 // Placeholder for language options - replace with your actual data
@@ -42,7 +43,11 @@ const languageOptions = [
   { value: "id", label: "ID" },
   // Add more options as needed
 ];
-const navItem: { title: string; href: string; description: string }[] = [
+const navItem: {
+  title: string;
+  href: string;
+  description: string;
+}[] = [
   {
     title: "Class 1",
     href: "#",
@@ -86,40 +91,55 @@ function NavItems() {
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem>
-            <NavigationMenuTrigger>Class</NavigationMenuTrigger>
+            <NavigationMenuTrigger>Course</NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                 <li className="row-span-3">
                   <NavigationMenuLink asChild>
                     <a
                       className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                      href="/"
+                      href="/courses"
                     >
+                      <Image
+                        src={Logo}
+                        alt="courses content"
+                        className="w-full h-full object-cover"
+                      />
                       {/* <Icons.logo className="h-6 w-6" /> */}
-                      <div className="mb-2 mt-4 text-lg font-medium">
-                        shadcn/ui
+                      <div className="top-1/2">
+                        <div className="mb-2 mt-4 text-lg font-medium">
+                          Find a best courses
+                        </div>
+                        <p className="text-sm text-muted-foreground text-wrap">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit, sed do eiusmod tempor incididunt ut labore et
+                          dolore magna aliqua.
+                        </p>
                       </div>
-                      <p className="text-sm leading-tight text-muted-foreground">
-                        Beautifully designed components built with Radix UI and
-                        Tailwind CSS.
-                      </p>
                     </a>
                   </NavigationMenuLink>
                 </li>
-                <ListItem href="/docs" title="Introduction">
-                  Re-usable components built using Radix UI and Tailwind CSS.
+
+                <ListItem href="/courses" title="React Courses">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor
                 </ListItem>
-                <ListItem href="/docs/installation" title="Installation">
-                  How to install dependencies and structure your app.
+                <ListItem href="/courses" title="Minecraft Courses">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor
                 </ListItem>
-                <ListItem href="/docs/primitives/typography" title="Typography">
-                  Styles for headings, paragraphs, lists...etc
+                <ListItem
+                  href="/courses"
+                  title="Data Courses"
+                >
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor
                 </ListItem>
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <NavigationMenuTrigger>Course</NavigationMenuTrigger>
+            <NavigationMenuTrigger>Class</NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
                 {navItem.map((navItem) => (
@@ -135,7 +155,7 @@ function NavItems() {
             </NavigationMenuContent>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <Link href="/docs" legacyBehavior passHref>
+            <Link href="/contact" legacyBehavior passHref>
               <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                 Contact Us
               </NavigationMenuLink>
