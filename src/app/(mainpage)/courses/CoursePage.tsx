@@ -1,5 +1,23 @@
+"use client"
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
+import { motion } from "framer-motion"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+
+const fadeIn = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+}
+
+const staggerChildren = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+}
 
 const CoursePage = () => {
   return (
@@ -95,6 +113,80 @@ const CoursePage = () => {
           </div>
         </div>
       </section>
+      <section className="container mx-auto px-4 py-8">
+      {/* Introduction Section */}
+      <motion.section
+        className="mb-12 text-center"
+        initial="hidden"
+        animate="visible"
+        variants={fadeIn}
+        transition={{ duration: 0.5 }}
+      >
+        <h1 className="text-4xl font-bold mb-4">Welcome to Our Courses</h1>
+        <p className="text-xl text-muted-foreground">
+          Discover a wide range of courses designed to enhance your skills and knowledge in various fields. From
+          programming to design, we have something for everyone.
+        </p>
+      </motion.section>
+
+      {/* Categories and Recommendations Section */}
+      <motion.section className="mb-16" initial="hidden" animate="visible" variants={staggerChildren}>
+        <h2 className="text-3xl font-semibold mb-6 text-center">Course Categories</h2>
+        <div className="grid md:grid-cols-3 gap-8">
+          {["Beginner", "Intermediate", "Advanced"].map((level) => (
+            <motion.div key={level} variants={fadeIn}>
+              <Card className="h-full transition-transform duration-300 hover:scale-105">
+                <CardHeader>
+                  <CardTitle>{level} Courses</CardTitle>
+                  <CardDescription>Recommended for {level.toLowerCase()} learners</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ul className="list-disc pl-5 space-y-2">
+                    <li>Introduction to Web Development</li>
+                    <li>Basic Data Analysis</li>
+                    <li>Fundamentals of UX Design</li>
+                  </ul>
+                </CardContent>
+                <CardFooter>
+                  <Button variant="outline">View {level} Courses</Button>
+                </CardFooter>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+      </motion.section>
+
+      {/* All Courses Section */}
+      <motion.section initial="hidden" animate="visible" variants={staggerChildren}>
+        <h2 className="text-3xl font-semibold mb-6 text-center">Explore Our Courses</h2>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+          {[1, 2, 3, 4, 5, 6].map((course) => (
+            <motion.div key={course} variants={fadeIn}>
+              <Card className="h-full transition-transform duration-300 hover:scale-105">
+                <CardHeader>
+                  <CardTitle>Course Title {course}</CardTitle>
+                  <CardDescription>Brief description of the course</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <p>Course details and highlights...</p>
+                </CardContent>
+                <CardFooter>
+                  <Button>Learn More</Button>
+                </CardFooter>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+        <motion.div
+          className="text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 }}
+        >
+          <Button size="lg">Explore All Courses</Button>
+        </motion.div>
+      </motion.section>
+    </section>
     </main>
   );
 };

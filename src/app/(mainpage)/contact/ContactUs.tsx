@@ -12,9 +12,9 @@ const ContactUs = () => {
   return (
     <main>
       {/* Form section */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 lg:grid-cols-3">
         <div>
-          <section className="px-[5%] py-1">
+          <section className="flex px-[5%] py-1 items-center justify-center">
             <div className="container max-w-lg border-4 border-gray-100 rounded-lg p-4 bg-muted/60">
               <div className="mx-auto mb-8 w-full max-w-lg text-center md:mb-10 lg:mb-12">
                 {/* <p className="mb-3 font-semibold md:mb-4">Connect</p> */}
@@ -80,21 +80,21 @@ const ContactUs = () => {
               <div className="flex flex-col col-span-3 justify-center items-start px-5">
                 {/* Suggested code may be subject to a license. Learn more: ~LicenseLog:1372034879. */}
                 <h1 className="text-2xl font-semibold mb-4">NEUKOD EDU</h1>
-                <h2 className="text-sm md:text-base lg:text-lg mb-4">
+                <h2 className="text-sm md:text-base mb-4">
                   Start your journey pergi kebarat mencari kitab suci dengan
                   seekor kera terkurung terpenjara dalam gua bertindak sesuka
                   hati loncat sana kesini.
                 </h2>
-                <h2 className="text-sm md:text-base lg:text-lg">
+                <h2 className="text-sm md:text-base">
                   Offline office&nbsp; : &nbsp;Jl. Bersama Prabowo 2 Periode,
                 </h2>
-                <h2 className="text-sm md:text-base lg:text-lg">
+                <h2 className="text-sm md:text-base">
                   Email&nbsp;:&nbsp;{" "}
                   <a href="#" className="text-blue-200 hover:text-primary">
                     dinar@gmail.com
                   </a>
                 </h2>
-                <h2 className="text-sm md:text-base lg:text-lg">
+                <h2 className="text-sm md:text-base">
                   Phone&nbsp;:&nbsp;{" "}
                   <a href="#" className="text-blue-200 hover:text-primary">
                     +628522345589
@@ -107,11 +107,11 @@ const ContactUs = () => {
           {/*Subs section */}
           <section className="relative overflow-hidden border-4 border-gray-100 rounded-lg px-8 py-8 mt-8 bg-muted/60">
             <div className="flex flex-col md:flex-row items-start md:items-center gap-6 max-w-6xl mx-auto">
-              <div className="flex-1 space-y-4">
+              <div className="space-y-4">
                 <h2 className="text-2xl md:text-4xl text-blue-800 font-bold">
                   Don&apos;t Miss Our Updates
                 </h2>
-                <p className="text-sm md:text-base lg:text-lg leading-relaxed">
+                <p className="text-sm md:text-base leading-relaxed">
                   Join the Pennant Education community! Sign up for our
                   newsletter to receive the latest updates on programs, industry
                   insights, success stories, and exclusive offers. Stay
@@ -122,7 +122,7 @@ const ContactUs = () => {
                 <Input
                   type="email"
                   placeholder="Enter your email"
-                  className="flex-1 w-60 md:w-80 px-4 py-5 text-sm md:text-base lg:text-lg rounded-md border border-gray-200 focus:border-white/20 focus:ring-0 bg-white text-gray-900"
+                  className="flex-1 w-60 md:w-80 px-4 py-5 text-sm md:text-base rounded-md border border-gray-200 focus:border-white/20 focus:ring-0 bg-white text-gray-900"
                 />
                 <Button className="px-6 font-semibold text-white text-sm md:text-base bg-redFlag hover:bg-pink-800 rounded-md transition-colors">
                   Subscribe
