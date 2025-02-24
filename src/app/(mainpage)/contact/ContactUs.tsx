@@ -10,11 +10,11 @@ import { Button } from "@/components/ui/button";
 
 const ContactUs = () => {
   return (
-    <main>
+    <main className="p-5">
       {/* Form section */}
       <div className="grid grid-cols-1 lg:grid-cols-3">
         <div>
-          <section className="flex px-[5%] py-1 items-center justify-center">
+          <section className="flex pr-[5%] py-1 items-center justify-center">
             <div className="container max-w-lg border-4 border-gray-100 rounded-lg p-4 bg-muted/60">
               <div className="mx-auto mb-8 w-full max-w-lg text-center md:mb-10 lg:mb-12">
                 {/* <p className="mb-3 font-semibold md:mb-4">Connect</p> */}

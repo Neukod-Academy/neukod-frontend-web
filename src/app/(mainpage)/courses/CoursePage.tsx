@@ -1,13 +1,27 @@
-"use client"
+"use client";
+
+import Image from "next/image";
+import { gsap } from "gsap";
 import { Button } from "@/components/ui/button";
-import { ChevronRight } from "lucide-react";
-import { motion } from "framer-motion"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { ChevronRight, PanelsTopLeft } from "lucide-react";
+import { motion } from "framer-motion";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import BgCourse from "../../images/slide/asian_girl2.webp";
+import BgCourse2 from "../../images/slide/graduate.webp";
+import { useEffect, useRef } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0 },
-}
+};
 
 const staggerChildren = {
   hidden: { opacity: 0 },
@@ -17,17 +31,60 @@ const staggerChildren = {
       staggerChildren: 0.1,
     },
   },
-}
+};
 
 const CoursePage = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    // if (!sectionRef.current) {
+    //   console.error("Content element not found!");
+    //   return;
+    // }
+    const panels = gsap.utils.toArray<HTMLElement>(".panel-img");
+    const panelsContent = gsap.utils.toArray<HTMLElement>(".panel-content");
+    gsap.to(panels, {
+      scrollTrigger: {
+        trigger: ".main-content",
+        start: "top top",
+        end: "bottom top",
+        markers: true,
+        scrub: true,
+      },
+      y: "50%",
+    });
+
+    gsap.to(panelsContent, {
+      scrollTrigger: {
+        trigger: ".main-content",
+        start: "top top",
+        end: "bottom top",
+        scrub: true,
+      },
+      y: "10%",
+    });
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
+
   return (
     <main>
-      <section id="relume" className="px-[5%] py-16 md:py-24 lg:py-28">
-        <div className="container">
-          <div className="grid grid-cols-1 gap-y-12 md:grid-flow-row md:grid-cols-2 md:items-center md:gap-x-12 lg:gap-x-20">
-            <div>
-              <p className="mb-3 font-semibold md:mb-4">Empower</p>
-              <h1 className="rb-5 mb-5 text-5xl font-bold md:mb-6 md:text-7xl lg:text-8xl">
+      <section>
+        <div className="w-full main-content relative overflow-hidden flex flex-col h-screen">
+          <div className="panel-img relative w-full h-[100vh]">
+            <div className="relative inset-0 z-20 bg-black/20" />
+            <Image
+              src={BgCourse}
+              className="absolute block top-0 left-0 w-full h-full object-cover"
+              alt="Course Page"
+            />
+          </div>
+          <div className="grid grid-cols-1 gap-y-12 md:grid-flow-row md:grid-cols-2 md:items-center md:gap-x-12 lg:gap-x-20 z-40">
+            <div className="absolute left-5 top-[5%] right-1/4 md:right-1/2 z-40 cursor-default panel-content">
+              {/* <p className="mb-3 font-semibold md:mb-4">Empower</p> */}
+              <h1 className="rb-5 mb-5 text-5xl font-bold md:mb-6 md:text-7xl lg:text-8xl text-blue-900">
                 Unlock Your Potential with Our Expertise
               </h1>
               <p className="mb-6 md:mb-8 md:text-md">
@@ -35,7 +92,7 @@ const CoursePage = () => {
                 tailored to your needs. Our consultancy empowers your business
                 to thrive in a digital landscape.
               </p>
-              <div className="grid grid-cols-1 gap-6 py-2 sm:grid-cols-2">
+              <div className="grid grid-cols-1 gap-6 py-2 sm:grid-cols-2 z-40">
                 <div>
                   <h6 className="mb-3 text-md font-bold leading-[1.4] md:mb-4 md:text-xl">
                     Expert Guidance
@@ -55,7 +112,7 @@ const CoursePage = () => {
                   </p>
                 </div>
               </div>
-              <div className="mt-6 flex flex-wrap items-center gap-4 md:mt-8">
+              <div className="mt-6 flex flex-wrap items-center gap-4 md:mt-8 z-40">
                 <Button title="Learn More" variant="secondary">
                   Learn More
                 </Button>
@@ -64,18 +121,11 @@ const CoursePage = () => {
                 </Button>
               </div>
             </div>
-            <div>
-              <img
-                src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg"
-                className="w-full object-cover"
-                alt="Relume placeholder image"
-              />
-            </div>
           </div>
         </div>
       </section>
 
-      <section id="relume" className="px-[5%] py-16 md:py-24 lg:py-28">
+      <section className="m-auto">
         <div className="container">
           <div className="grid grid-cols-1 gap-y-12 md:grid-flow-row md:grid-cols-2 md:items-center md:gap-x-12 lg:gap-x-20">
             <div>
@@ -104,8 +154,8 @@ const CoursePage = () => {
               </div>
             </div>
             <div>
-              <img
-                src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg"
+              <Image
+                src={BgCourse2}
                 className="w-full object-cover"
                 alt="Relume placeholder image"
               />
@@ -114,79 +164,97 @@ const CoursePage = () => {
         </div>
       </section>
       <section className="container mx-auto px-4 py-8">
-      {/* Introduction Section */}
-      <motion.section
-        className="mb-12 text-center"
-        initial="hidden"
-        animate="visible"
-        variants={fadeIn}
-        transition={{ duration: 0.5 }}
-      >
-        <h1 className="text-4xl font-bold mb-4">Welcome to Our Courses</h1>
-        <p className="text-xl text-muted-foreground">
-          Discover a wide range of courses designed to enhance your skills and knowledge in various fields. From
-          programming to design, we have something for everyone.
-        </p>
-      </motion.section>
-
-      {/* Categories and Recommendations Section */}
-      <motion.section className="mb-16" initial="hidden" animate="visible" variants={staggerChildren}>
-        <h2 className="text-3xl font-semibold mb-6 text-center">Course Categories</h2>
-        <div className="grid md:grid-cols-3 gap-8">
-          {["Beginner", "Intermediate", "Advanced"].map((level) => (
-            <motion.div key={level} variants={fadeIn}>
-              <Card className="h-full transition-transform duration-300 hover:scale-105">
-                <CardHeader>
-                  <CardTitle>{level} Courses</CardTitle>
-                  <CardDescription>Recommended for {level.toLowerCase()} learners</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="list-disc pl-5 space-y-2">
-                    <li>Introduction to Web Development</li>
-                    <li>Basic Data Analysis</li>
-                    <li>Fundamentals of UX Design</li>
-                  </ul>
-                </CardContent>
-                <CardFooter>
-                  <Button variant="outline">View {level} Courses</Button>
-                </CardFooter>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
-      </motion.section>
-
-      {/* All Courses Section */}
-      <motion.section initial="hidden" animate="visible" variants={staggerChildren}>
-        <h2 className="text-3xl font-semibold mb-6 text-center">Explore Our Courses</h2>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-          {[1, 2, 3, 4, 5, 6].map((course) => (
-            <motion.div key={course} variants={fadeIn}>
-              <Card className="h-full transition-transform duration-300 hover:scale-105">
-                <CardHeader>
-                  <CardTitle>Course Title {course}</CardTitle>
-                  <CardDescription>Brief description of the course</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p>Course details and highlights...</p>
-                </CardContent>
-                <CardFooter>
-                  <Button>Learn More</Button>
-                </CardFooter>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
-        <motion.div
-          className="text-center"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
+        {/* Introduction Section */}
+        <motion.section
+          className="mb-12 text-center"
+          initial="hidden"
+          animate="visible"
+          variants={fadeIn}
+          transition={{ duration: 0.5 }}
         >
-          <Button size="lg">Explore All Courses</Button>
-        </motion.div>
-      </motion.section>
-    </section>
+          <h1 className="text-4xl font-bold mb-4">Welcome to Our Courses</h1>
+          <p className="text-xl text-muted-foreground">
+            Discover a wide range of courses designed to enhance your skills and
+            knowledge in various fields. From programming to design, we have
+            something for everyone.
+          </p>
+        </motion.section>
+
+        {/* Categories and Recommendations Section */}
+        <motion.section
+          className="mb-16"
+          initial="hidden"
+          animate="visible"
+          variants={staggerChildren}
+        >
+          <h2 className="text-3xl font-semibold mb-6 text-center">
+            Course Categories
+          </h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {["Beginner", "Intermediate", "Advanced"].map((level) => (
+              <motion.div key={level} variants={fadeIn}>
+                <Card className="h-full transition-transform duration-300 hover:scale-105">
+                  <CardHeader>
+                    <CardTitle>{level} Courses</CardTitle>
+                    <CardDescription>
+                      Recommended for {level.toLowerCase()} learners
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="list-disc pl-5 space-y-2">
+                      <li>Introduction to Web Development</li>
+                      <li>Basic Data Analysis</li>
+                      <li>Fundamentals of UX Design</li>
+                    </ul>
+                  </CardContent>
+                  <CardFooter>
+                    <Button variant="outline">View {level} Courses</Button>
+                  </CardFooter>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </motion.section>
+
+        {/* All Courses Section */}
+        <motion.section
+          initial="hidden"
+          animate="visible"
+          variants={staggerChildren}
+        >
+          <h2 className="text-3xl font-semibold mb-6 text-center">
+            Explore Our Courses
+          </h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            {[1, 2, 3, 4, 5, 6].map((course) => (
+              <motion.div key={course} variants={fadeIn}>
+                <Card className="h-full transition-transform duration-300 hover:scale-105">
+                  <CardHeader>
+                    <CardTitle>Course Title {course}</CardTitle>
+                    <CardDescription>
+                      Brief description of the course
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <p>Course details and highlights...</p>
+                  </CardContent>
+                  <CardFooter>
+                    <Button>Learn More</Button>
+                  </CardFooter>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+          <motion.div
+            className="text-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+          >
+            <Button size="lg">Explore All Courses</Button>
+          </motion.div>
+        </motion.section>
+      </section>
     </main>
   );
 };
