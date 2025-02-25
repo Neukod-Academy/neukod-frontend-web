@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { gsap } from "gsap";
 import { Button } from "@/components/ui/button";
-import { ChevronRight, PanelsTopLeft } from "lucide-react";
+import { ChevronDown, ChevronRight, PanelsTopLeft } from "lucide-react";
 import { motion } from "framer-motion";
 import {
   Card,
@@ -15,8 +15,9 @@ import {
 } from "@/components/ui/card";
 import BgCourse from "../../images/slide/asian_girl2.webp";
 import BgCourse2 from "../../images/slide/graduate.webp";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -35,13 +36,11 @@ const staggerChildren = {
 
 const CoursePage = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-    // if (!sectionRef.current) {
-    //   console.error("Content element not found!");
-    //   return;
-    // }
+
     const panels = gsap.utils.toArray<HTMLElement>(".panel-img");
     const panelsContent = gsap.utils.toArray<HTMLElement>(".panel-content");
     gsap.to(panels, {
@@ -49,7 +48,6 @@ const CoursePage = () => {
         trigger: ".main-content",
         start: "top top",
         end: "bottom top",
-        markers: true,
         scrub: true,
       },
       y: "50%",
@@ -69,12 +67,33 @@ const CoursePage = () => {
     };
   }, []);
 
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+  
+  const handleScrollDown = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    const targetSection = document.querySelector("#course_intro");
+    if (targetSection) {
+      targetSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+  const handleScrollDown2 = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    const targetSection2 = document.querySelector("#course_category");
+    if (targetSection2) {
+      targetSection2.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  // if (!mounted) return null;
+
   return (
-    <main>
+    <main className="flex flex-col">
       <section>
         <div className="w-full main-content relative overflow-hidden flex flex-col h-screen">
           <div className="panel-img relative w-full h-[100vh]">
-            <div className="relative inset-0 z-20 bg-black/20" />
+            <div className="absolute inset-0 z-20 bg-black/20" />
             <Image
               src={BgCourse}
               className="absolute block top-0 left-0 w-full h-full object-cover"
@@ -112,32 +131,72 @@ const CoursePage = () => {
                   </p>
                 </div>
               </div>
-              <div className="mt-6 flex flex-wrap items-center gap-4 md:mt-8 z-40">
-                <Button title="Learn More" variant="secondary">
-                  Learn More
-                </Button>
-                <Button title="Sign Up" variant="link" size="lg">
+              <div className="mt-6 flex flex-col justify-center items-center gap-4 md:mt-8 z-40">
+                <Link
+                  href="#course_intro"
+                >
+                  <motion.button 
+                    title="Go"
+                    animate={{ y: [-10, 10, -10] }}
+                    transition={{ repeat: Infinity, duration: 1.5 }}
+                    onClick={handleScrollDown}
+                    className="stroke-3"
+                    >
+                    <ChevronDown className="h-10 w-10 stroke-[3] text-blue-900" />
+                  </motion.button>
+                </Link>
+                {/* <Button title="Sign Up" variant="link" size="lg">
                   Sign Up <ChevronRight />
-                </Button>
+                </Button> */}
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="m-auto">
-        <div className="container">
+      <section id="course_intro">
+        <div className="w-full main-content relative overflow-hidden flex flex-col h-screen">
+          <div className="absolute z-20 bg-black/40" />
+          <motion.div
+            className="relative"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: -30 }}
+            transition={{ duration: 3 }}
+            viewport={{ once: true }}
+          >
+            <Image
+              src={BgCourse2}
+              className="absolute block w-full min-h-screen object-cover"
+              alt="Relume placeholder image"
+            />
+          </motion.div>
           <div className="grid grid-cols-1 gap-y-12 md:grid-flow-row md:grid-cols-2 md:items-center md:gap-x-12 lg:gap-x-20">
-            <div>
-              <h2 className="rb-5 mb-5 text-4xl font-bold leading-[1.2] md:mb-6 md:text-5xl lg:text-6xl">
-                Discover Our Impressive Achievements and Client Satisfaction
-                Metrics
-              </h2>
-              <p className="mb-6 md:mb-8 md:text-md">
-                Our commitment to excellence is reflected in our outstanding
-                results. With a client satisfaction rate that speaks volumes, we
-                are proud of our achievements.
-              </p>
+            <div className="absoulte z-40 m-[5%] right-1/4">
+              <motion.h2
+                className="rb-5 mb-5 text-4xl font-bold leading-[1.2] md:mb-6 md:text-5xl lg:text-6xl text-blue-900"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 2 }}
+                viewport={{ once: true }}
+              >
+                <span className="block">
+                  Discover Our Impressive Achievements and Client Satisfaction
+                  Metrics
+                </span>
+              </motion.h2>
+              <motion.p
+                className="mb-6 md:mb-8 md:text-md text-white"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 2.4 }}
+                viewport={{ once: true }}
+              >
+                <span>
+                  Our commitment to excellence is reflected in our outstanding
+                  results. With a client satisfaction rate that speaks volumes,
+                  we are proud of our achievements.
+                </span>
+              </motion.p>
               <div className="grid grid-cols-1 gap-6 py-2 sm:grid-cols-2">
                 <div>
                   <h3 className="mb-2 text-5xl font-bold md:text-7xl lg:text-8xl">
@@ -152,25 +211,38 @@ const CoursePage = () => {
                   <p>Projects delivered on time and within budget.</p>
                 </div>
               </div>
-            </div>
-            <div>
-              <Image
-                src={BgCourse2}
-                className="w-full object-cover"
-                alt="Relume placeholder image"
-              />
+              <div className="mt-6 flex flex-col justify-center items-center gap-4 md:mt-8 z-40">
+                <Link
+                  href="#course_intro"
+                >
+                  <motion.button 
+                    title="Go"
+                    animate={{ y: [-10, 10, -10] }}
+                    transition={{ repeat: Infinity, duration: 1.5 }}
+                    onClick={handleScrollDown2}
+                    className="stroke-3"
+                    >
+                    <ChevronDown className="h-10 w-10 stroke-[3] text-blue-900" />
+                  </motion.button>
+                </Link>
+                {/* <Button title="Sign Up" variant="link" size="lg">
+                  Sign Up <ChevronRight />
+                </Button> */}
+              </div>
             </div>
           </div>
         </div>
       </section>
-      <section className="container mx-auto px-4 py-8">
-        {/* Introduction Section */}
+
+      <section id="course_category"className="container mx-auto px-4 py-8">
         <motion.section
           className="mb-12 text-center"
-          initial="hidden"
-          animate="visible"
-          variants={fadeIn}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          // animate="visible"
+          // variants={fadeIn}
+          transition={{ duration: 2 }}
+          viewport={{ once: true }}
         >
           <h1 className="text-4xl font-bold mb-4">Welcome to Our Courses</h1>
           <p className="text-xl text-muted-foreground">
@@ -183,16 +255,23 @@ const CoursePage = () => {
         {/* Categories and Recommendations Section */}
         <motion.section
           className="mb-16"
-          initial="hidden"
-          animate="visible"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          // animate="visible"
           variants={staggerChildren}
+          transition={{ duration: 2 }}
+          viewport={{ once: true }}
         >
           <h2 className="text-3xl font-semibold mb-6 text-center">
             Course Categories
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             {["Beginner", "Intermediate", "Advanced"].map((level) => (
-              <motion.div key={level} variants={fadeIn}>
+              <motion.div
+                key={level}
+                variants={fadeIn}
+                whileTap={{ scale: 0.9 }}
+              >
                 <Card className="h-full transition-transform duration-300 hover:scale-105">
                   <CardHeader>
                     <CardTitle>{level} Courses</CardTitle>
@@ -218,8 +297,10 @@ const CoursePage = () => {
 
         {/* All Courses Section */}
         <motion.section
-          initial="hidden"
-          animate="visible"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 2 }}
+          viewport={{ once: true }}
           variants={staggerChildren}
         >
           <h2 className="text-3xl font-semibold mb-6 text-center">
@@ -227,7 +308,11 @@ const CoursePage = () => {
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
             {[1, 2, 3, 4, 5, 6].map((course) => (
-              <motion.div key={course} variants={fadeIn}>
+              <motion.div
+                key={course}
+                variants={fadeIn}
+                whileTap={{ scale: 0.9 }}
+              >
                 <Card className="h-full transition-transform duration-300 hover:scale-105">
                   <CardHeader>
                     <CardTitle>Course Title {course}</CardTitle>
@@ -239,7 +324,9 @@ const CoursePage = () => {
                     <p>Course details and highlights...</p>
                   </CardContent>
                   <CardFooter>
-                    <Button>Learn More</Button>
+                    <Button className="hover:scale-105 transition-all duration-200 bg-redFlag hover:bg-redFlag/60">
+                      Learn More
+                    </Button>
                   </CardFooter>
                 </Card>
               </motion.div>
@@ -251,7 +338,12 @@ const CoursePage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
           >
-            <Button size="lg">Explore All Courses</Button>
+            <Button
+              size="lg"
+              className="hover:scale-105 transition-all duration-200 bg-redFlag hover:bg-redFlag/60"
+            >
+              Explore All Courses
+            </Button>
           </motion.div>
         </motion.section>
       </section>
