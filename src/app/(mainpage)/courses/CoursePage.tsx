@@ -50,7 +50,7 @@ const CoursePage = () => {
         end: "bottom top",
         scrub: true,
       },
-      y: "50%",
+      y: "30%",
     });
 
     gsap.to(panelsContent, {
@@ -68,9 +68,9 @@ const CoursePage = () => {
   }, []);
 
   useEffect(() => {
-    setMounted(true)
-  }, [])
-  
+    setMounted(true);
+  }, []);
+
   const handleScrollDown = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     const targetSection = document.querySelector("#course_intro");
@@ -132,16 +132,14 @@ const CoursePage = () => {
                 </div>
               </div>
               <div className="mt-6 flex flex-col justify-center items-center gap-4 md:mt-8 z-40">
-                <Link
-                  href="#course_intro"
-                >
-                  <motion.button 
+                <Link href="#course_intro">
+                  <motion.button
                     title="Go"
                     animate={{ y: [-10, 10, -10] }}
                     transition={{ repeat: Infinity, duration: 1.5 }}
                     onClick={handleScrollDown}
                     className="stroke-3"
-                    >
+                  >
                     <ChevronDown className="h-10 w-10 stroke-[3] text-blue-900" />
                   </motion.button>
                 </Link>
@@ -156,17 +154,17 @@ const CoursePage = () => {
 
       <section id="course_intro">
         <div className="w-full main-content relative overflow-hidden flex flex-col h-screen">
-          <div className="absolute z-20 bg-black/40" />
           <motion.div
-            className="relative"
+            className="relative h-[100vh]"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: -30 }}
             transition={{ duration: 3 }}
             viewport={{ once: true }}
           >
+            {/* <div className="absolute inset-0 z-20 w-full min-h-screen bg-black/20" /> */}
             <Image
               src={BgCourse2}
-              className="absolute block w-full min-h-screen object-cover"
+              className="absolute w-full h-auto min-h-screen object-cover"
               alt="Relume placeholder image"
             />
           </motion.div>
@@ -212,16 +210,14 @@ const CoursePage = () => {
                 </div>
               </div>
               <div className="mt-6 flex flex-col justify-center items-center gap-4 md:mt-8 z-40">
-                <Link
-                  href="#course_intro"
-                >
-                  <motion.button 
+                <Link href="#course_intro">
+                  <motion.button
                     title="Go"
                     animate={{ y: [-10, 10, -10] }}
                     transition={{ repeat: Infinity, duration: 1.5 }}
                     onClick={handleScrollDown2}
                     className="stroke-3"
-                    >
+                  >
                     <ChevronDown className="h-10 w-10 stroke-[3] text-blue-900" />
                   </motion.button>
                 </Link>
@@ -234,7 +230,7 @@ const CoursePage = () => {
         </div>
       </section>
 
-      <section id="course_category"className="container mx-auto px-4 py-8">
+      <section id="course_category" className="container mx-auto px-4 py-8">
         <motion.section
           className="mb-12 text-center"
           initial={{ opacity: 0, y: 30 }}
