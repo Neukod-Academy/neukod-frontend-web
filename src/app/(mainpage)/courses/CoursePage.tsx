@@ -13,11 +13,12 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import BgCourse from "../../images/slide/asian_girl2.webp";
-import BgCourse2 from "../../images/slide/graduate.webp";
+import BgCourse from "../../images/course/course_banner.jpg";
+import BgCourse2 from "../../images/course/course_banner2.png";
 import { useEffect, useRef, useState } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
+import { coursePage, type CoursePage } from "../../utils/constant";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -165,7 +166,7 @@ const CoursePage = () => {
             <Image
               src={BgCourse2}
               className="absolute w-full h-auto min-h-screen object-cover"
-              alt="Relume placeholder image"
+              alt="w"
             />
           </motion.div>
           <div className="grid grid-cols-1 gap-y-12 md:grid-flow-row md:grid-cols-2 md:items-center md:gap-x-12 lg:gap-x-20">
@@ -195,7 +196,7 @@ const CoursePage = () => {
                   we are proud of our achievements.
                 </span>
               </motion.p>
-              <div className="grid grid-cols-1 gap-6 py-2 sm:grid-cols-2">
+              <div className="grid grid-cols-1 gap-6 py-2 sm:grid-cols-2 text-white">
                 <div>
                   <h3 className="mb-2 text-5xl font-bold md:text-7xl lg:text-8xl">
                     95%
@@ -261,29 +262,43 @@ const CoursePage = () => {
           <h2 className="text-3xl font-semibold mb-6 text-center">
             Course Categories
           </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {["Beginner", "Intermediate", "Advanced"].map((level) => (
+          <div className="grid md:grid-cols-3 gap-10">
+            {coursePage.map((course: CoursePage, index: number) => (
               <motion.div
-                key={level}
+                key={index}
                 variants={fadeIn}
                 whileTap={{ scale: 0.9 }}
               >
-                <Card className="h-full transition-transform duration-300 hover:scale-105">
+                <Card className="h-full transition-transform duration-300 hover:scale-105 rounded-lg">
                   <CardHeader>
-                    <CardTitle>{level} Courses</CardTitle>
+                    <div className="flex items-center justify-center px-2 py-3">
+                      <Image
+                        src={course.image}
+                        width={320}
+                        height={300}
+                        alt={`Course image ${course.level}`}
+                        className="object-cover rounded-lg"
+                      />
+                    </div>
+                    <CardTitle>{course.level} Courses</CardTitle>
                     <CardDescription>
-                      Recommended for {level.toLowerCase()} learners
+                      <span className="font-bold">
+                        {course.level.toUpperCase()},
+                      </span>{" "}
+                      {course.desc}
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
                     <ul className="list-disc pl-5 space-y-2">
-                      <li>Introduction to Web Development</li>
-                      <li>Basic Data Analysis</li>
-                      <li>Fundamentals of UX Design</li>
+                      {course.list.map((item: string, itemIndex: number) => (
+                        <li key={itemIndex}>{item}</li>
+                      ))}
                     </ul>
                   </CardContent>
                   <CardFooter>
-                    <Button variant="outline">View {level} Courses</Button>
+                    <Button variant="outline">
+                      View {course.level} Courses
+                    </Button>
                   </CardFooter>
                 </Card>
               </motion.div>
