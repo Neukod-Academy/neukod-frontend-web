@@ -97,8 +97,11 @@ const CoursePage = () => {
             <div className="absolute inset-0 z-20 bg-black/20" />
             <Image
               src={BgCourse}
-              className="absolute block top-0 left-0 w-full h-full object-cover"
+              className="absolute block top-0 left-0 w-full h-auto object-cover"
               alt="Course Page"
+              placeholder="blur"
+              quality={40}
+              priority
             />
           </div>
           <div className="grid grid-cols-1 gap-y-12 md:grid-flow-row md:grid-cols-2 md:items-center md:gap-x-12 lg:gap-x-20 z-40">

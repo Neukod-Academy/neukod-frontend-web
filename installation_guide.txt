@@ -43,6 +43,10 @@ command : npx shadcn@latest init
     command : npx shadcn@latest add radio-group
     - Scroll Area
     command : npx shadcn@latest add scroll-area
+    - Accordion
+    command : npx shadcn@latest add accordion
+    - Badge
+    command : npx shadcn@latest add badge
 
 npx shadcn@latest add popover
 npm i react-phone-number-input
