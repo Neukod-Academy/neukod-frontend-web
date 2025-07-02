@@ -21,6 +21,7 @@ const AboutUs = () => {
         const split = new SplitType(content.current, {
             types: "lines",
             tagName: "p", // Ensure this matches the tag structure you want
+            
         });
 
         // Verify that the lines have been split
@@ -35,9 +36,9 @@ const AboutUs = () => {
             stagger: 0.2,
             scrollTrigger: {
                 trigger: content.current,
-                scrub: true,
-                start: "top 90%", // Adjusted for better visibility
-                end: "top 50%"
+                start: "top 90%",
+                end: "top 50%",
+                toggleActions: "play none none none"
             },
         });
 

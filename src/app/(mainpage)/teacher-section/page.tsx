@@ -124,7 +124,9 @@ export default function LeadTeachers() {
                                 src={teacher.image}
                                 alt={teacher.name}
                                 placeholder="blur"
-                                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                                quality={50}
+                                priority
+                                className="max-w-[768px] w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                             />
                         </div>
 
