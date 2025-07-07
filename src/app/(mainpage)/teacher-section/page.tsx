@@ -4,10 +4,10 @@ import Image from "next/image"
 import { useEffect, useRef } from "react"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import Teacher1 from "../../images/top-teacher/teacher-1.jpg"
-import Teacher2 from "../../images/top-teacher/teacher-2.jpg"
-import Teacher3 from "../../images/top-teacher/teacher-3.jpg"
-import Teacher4 from "../../images/top-teacher/teacher-4.jpg"
+import Teacher1 from "../../images/top-teacher/teacher-1-thumb.jpg"
+import Teacher2 from "../../images/top-teacher/teacher-2-thumb.jpg"
+import Teacher3 from "../../images/top-teacher/teacher-3-thumb.jpg"
+import Teacher4 from "../../images/top-teacher/teacher-4-thumb.jpg"
 
 
 // Register ScrollTrigger plugin

@@ -57,111 +57,165 @@ const sections: Section[] = [
     },
 ]
 
-const SLIDE_DURATION = 5000 // 8 seconds per slide
-const PAUSE_DURATION = 1000 // 3 seconds pause after manual click
+const SLIDE_DURATION = 8000 // 8 seconds per slide
+const PAUSE_DURATION = 2000 // 3 seconds pause after manual click
 
 export default function SlidePage() {
     const [activeIndex, setActiveIndex] = useState(0)
     const [progress, setProgress] = useState(0)
     const [isPaused, setIsPaused] = useState(false)
+    const [isTransitioning, setIsTransitioning] = useState(false)
+
     const sliderRef = useRef<HTMLDivElement>(null)
-    const timerRef = useRef<NodeJS.Timeout | null>(null)
-    const pauseTimerRef = useRef<NodeJS.Timeout | null>(null)
-    const progressAnimationRef = useRef<gsap.core.Tween | null>(null)
+    const progressIntervalRef = useRef<NodeJS.Timeout | null>(null)
+    const pauseTimeoutRef = useRef<NodeJS.Timeout | null>(null)
+    const startTimeRef = useRef<number>(Date.now())
+    const activeIndexRef = useRef(activeIndex) // Keep track of current index
+
+    // Update ref when activeIndex changes
+    useEffect(() => {
+        activeIndexRef.current = activeIndex
+    }, [activeIndex])
 
     // Clear all timers
-    const clearTimers = useCallback(() => {
-        if (timerRef.current) {
-            clearTimeout(timerRef.current)
-            timerRef.current = null
+    const clearAllTimers = useCallback(() => {
+        if (progressIntervalRef.current) {
+            clearInterval(progressIntervalRef.current)
+            progressIntervalRef.current = null
         }
-        if (pauseTimerRef.current) {
-            clearTimeout(pauseTimerRef.current)
-            pauseTimerRef.current = null
-        }
-        if (progressAnimationRef.current) {
-            progressAnimationRef.current.kill()
-            progressAnimationRef.current = null
+        if (pauseTimeoutRef.current) {
+            clearTimeout(pauseTimeoutRef.current)
+            pauseTimeoutRef.current = null
         }
     }, [])
 
-    // Start progress animation
-    const startProgressAnimation = useCallback(() => {
-        if (isPaused) return
+    // Advance to next slide
+    const advanceSlide = useCallback(() => {
+        const currentIndex = activeIndexRef.current
+        const nextIndex = currentIndex >= sections.length - 1 ? 0 : currentIndex + 1
 
-        progressAnimationRef.current = gsap.fromTo(
-            {},
-            { progress: progress },
-            {
-                progress: 100,
-                duration: (SLIDE_DURATION * (100 - progress)) / 100000, // Convert to seconds
-                ease: "none",
-                onUpdate: function () {
-                    setProgress(this.targets()[0].progress)
+        setIsTransitioning(true)
+        clearAllTimers()
+
+        const ctx = gsap.context(() => {
+            // Animate sections
+            gsap.to(".section", {
+                xPercent: (i) => {
+                    const offset = nextIndex === 0 ? 0 : -nextIndex
+                    return (i + offset) * 100
                 },
-                onComplete: () => {
-                    handleNextSection(false) // Auto advance
-                },
-            },
-        )
-    }, [progress, isPaused])
-
-    // Handle slide transition
-    const handleNextSection = useCallback(
-        (isManual = true) => {
-            const nextIndex = activeIndex >= sections.length - 1 ? 0 : activeIndex + 1
-
-            clearTimers()
-
-            const ctx = gsap.context(() => {
-                // Animate sections
-                gsap.to(".section", {
-                    xPercent: (i) => {
-                        const offset = nextIndex === 0 ? 0 : -nextIndex
-                        return (i + offset) * 100
-                    },
-                    duration: 1,
-                    ease: "power2.inOut",
-                })
-
-                // Animate title
-                gsap.to(`#title-${activeIndex}`, {
-                    yPercent: -20,
-                    opacity: 0,
-                    duration: 1,
-                    ease: "power3.inOut",
-                    onComplete: () => {
-                        setActiveIndex(nextIndex)
-                        setProgress(0)
-
-                        gsap.fromTo(
-                            `#title-${nextIndex}`,
-                            { yPercent: 30, opacity: 0 },
-                            { yPercent: 0, opacity: 1, duration: 1, ease: "power2.inOut" },
-                        )
-
-                        // Handle timer logic
-                        if (isManual) {
-                            setIsPaused(true)
-                            pauseTimerRef.current = setTimeout(() => {
-                                setIsPaused(false)
-                            }, PAUSE_DURATION)
-                        }
-                    },
-                })
+                duration: 1,
+                ease: "power2.inOut",
             })
 
-            return () => ctx.revert()
-        },
-        [activeIndex, clearTimers],
-    )
+            // Animate title
+            gsap.to(`#title-${currentIndex}`, {
+                yPercent: -20,
+                opacity: 0,
+                duration: 1,
+                ease: "power3.inOut",
+                onComplete: () => {
+                    setActiveIndex(nextIndex)
+                    setProgress(0)
+                    setIsTransitioning(false)
+
+                    gsap.fromTo(
+                        `#title-${nextIndex}`,
+                        { yPercent: 30, opacity: 0 },
+                        { yPercent: 0, opacity: 1, duration: 1, ease: "power2.inOut" },
+                    )
+
+                    // Start timer for next slide after a brief delay
+                    setTimeout(() => {
+                        startTimer()
+                    }, 200)
+                },
+            })
+        })
+
+        return () => ctx.revert()
+    }, [clearAllTimers])
+
+    // Start the progress timer
+    const startTimer = useCallback(() => {
+        if (isTransitioning) return
+
+        clearAllTimers()
+        setProgress(0)
+        startTimeRef.current = Date.now()
+
+        progressIntervalRef.current = setInterval(() => {
+            const elapsed = Date.now() - startTimeRef.current
+            const newProgress = Math.min((elapsed / SLIDE_DURATION) * 100, 100)
+
+            setProgress(newProgress)
+
+            if (newProgress >= 100) {
+                clearInterval(progressIntervalRef.current!)
+                progressIntervalRef.current = null
+                advanceSlide() // Use the separate advance function
+            }
+        }, 50) // Update every 50ms for smooth animation
+    }, [isTransitioning, clearAllTimers, advanceSlide])
+
+    // Handle manual next button click
+    const handleManualNext = useCallback(() => {
+        if (isTransitioning) return
+
+        const currentIndex = activeIndexRef.current
+        const nextIndex = currentIndex >= sections.length - 1 ? 0 : currentIndex + 1
+
+        setIsTransitioning(true)
+        clearAllTimers()
+
+        const ctx = gsap.context(() => {
+            // Animate sections
+            gsap.to(".section", {
+                xPercent: (i) => {
+                    const offset = nextIndex === 0 ? 0 : -nextIndex
+                    return (i + offset) * 100
+                },
+                duration: 1,
+                ease: "power2.inOut",
+            })
+
+            // Animate title
+            gsap.to(`#title-${currentIndex}`, {
+                yPercent: -20,
+                opacity: 0,
+                duration: 1,
+                ease: "power3.inOut",
+                onComplete: () => {
+                    setActiveIndex(nextIndex)
+                    setProgress(0)
+                    setIsTransitioning(false)
+
+                    gsap.fromTo(
+                        `#title-${nextIndex}`,
+                        { yPercent: 30, opacity: 0 },
+                        { yPercent: 0, opacity: 1, duration: 1, ease: "power2.inOut" },
+                    )
+
+                    // Pause timer after manual click
+                    setIsPaused(true)
+                    pauseTimeoutRef.current = setTimeout(() => {
+                        setIsPaused(false)
+                        startTimer() // Restart timer after pause
+                    }, PAUSE_DURATION)
+                },
+            })
+        })
+
+        return () => ctx.revert()
+    }, [isTransitioning, clearAllTimers, startTimer])
 
     // Handle direct slide navigation
     const handleSlideNavigation = useCallback(
         (index: number) => {
-            if (index === activeIndex) return
+            if (index === activeIndex || isTransitioning) return
 
-            clearTimers()
+            setIsTransitioning(true)
+            clearAllTimers()
 
             const ctx = gsap.context(() => {
                 gsap.to(".section", {
@@ -178,7 +232,7 @@ export default function SlidePage() {
                     onComplete: () => {
                         setActiveIndex(index)
                         setProgress(0)
-                        setIsPaused(true)
+                        setIsTransitioning(false)
 
                         gsap.fromTo(
                             `#title-${index}`,
@@ -186,8 +240,10 @@ export default function SlidePage() {
                             { yPercent: 0, opacity: 1, duration: 1, ease: "power2.inOut" },
                         )
 
-                        pauseTimerRef.current = setTimeout(() => {
+                        setIsPaused(true)
+                        pauseTimeoutRef.current = setTimeout(() => {
                             setIsPaused(false)
+                            startTimer() // Restart timer after pause
                         }, PAUSE_DURATION)
                     },
                 })
@@ -195,7 +251,7 @@ export default function SlidePage() {
 
             return () => ctx.revert()
         },
-        [activeIndex, clearTimers],
+        [activeIndex, isTransitioning, clearAllTimers, startTimer],
     )
 
     // Initialize GSAP
@@ -209,22 +265,24 @@ export default function SlidePage() {
         return () => ctx.revert()
     }, [])
 
-    // Handle timer and progress
+    // Start initial timer
     useEffect(() => {
-        if (!isPaused) {
-            startProgressAnimation()   
-        }
+        const timer = setTimeout(() => {
+            startTimer()
+        }, 1000) // Start after 1 second
+
         return () => {
-            clearTimers()
+            clearTimeout(timer)
+            clearAllTimers()
         }
-    }, [activeIndex, isPaused, startProgressAnimation, clearTimers])
+    }, [startTimer, clearAllTimers])
 
     // Cleanup on unmount
     useEffect(() => {
         return () => {
-            clearTimers()
+            clearAllTimers()
         }
-    }, [clearTimers])
+    }, [clearAllTimers])
 
     return (
         <div className="relative h-screen w-full overflow-hidden">
@@ -242,6 +300,7 @@ export default function SlidePage() {
                             fill
                             src={section.image || "/placeholder.svg"}
                             alt={section.alt}
+                            quality={70}
                             className="h-full w-full object-cover"
                         />
                         <div
@@ -260,7 +319,8 @@ export default function SlidePage() {
 
             {/* Next Button */}
             <button
-                onClick={() => handleNextSection(true)}
+                onClick={handleManualNext}
+                disabled={isTransitioning}
                 className="absolute right-8 top-[90%] md:top-1/2 z-20 -translate-y-1/2 transform rounded-full bg-white/20 p-3 md:p-4 backdrop-blur-md transition-colors hover:bg-white/40"
             >
                 <ChevronRight className="h-4 w-4 md:h-6 md:w-6 text-white" />
@@ -300,16 +360,14 @@ export default function SlidePage() {
             </div>
 
             {/* Timer Status Indicator (Optional) */}
-            {isPaused && (
-                <div className="absolute top-8 right-8 z-20 bg-black/50 text-white px-3 py-1 rounded-full text-sm backdrop-blur-md">
-                    Timer Paused
-                </div>
-            )}
-            {!isPaused && (
-                <div className="absolute top-8 right-8 z-20 bg-black/50 text-white px-3 py-1 rounded-full text-sm backdrop-blur-md">
-                    Timer Start
-                </div>
-            )}
+            {/* <div className="absolute top-8 right-8 z-20 bg-black/50 text-white px-3 py-1 rounded-full text-sm backdrop-blur-md">
+                {isPaused ? "Timer Paused" : "Timer Running"}
+            </div> */}
+            {/* Debug info (remove in production) */}
+            <div className="absolute top-8 left-8 z-20 bg-black/50 text-white px-3 py-1 rounded text-xs">
+                Progress: {Math.round(progress)}% | Active: {activeIndex + 1}/{sections.length} | Paused:{" "}
+                {isPaused ? "Yes" : "No"}
+            </div>
         </div>
     )
 }
