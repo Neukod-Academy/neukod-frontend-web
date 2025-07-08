@@ -13,8 +13,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import BgCourse from "../../images/course/course_banner.jpg";
-import BgCourse2 from "../../images/course/course_banner2.png";
+import BgCourse from "../../images/course/course_banner.webp";
+import BgCourse2 from "../../images/course/course_banner2.webp";
 import { useEffect, useRef, useState } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";

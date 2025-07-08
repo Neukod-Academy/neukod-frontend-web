@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import Image from "next/image"
-import CareerImg from "../../images/career-track/career-main.jpg"
+import CareerImg from "../../images/career-track/career-banner2.webp"
 
 // Register ScrollTrigger plugin
 if (typeof window !== "undefined") {
@@ -57,7 +57,7 @@ export default function CareerSection() {
       {
         opacity: 1,
         y: 0,
-        duration: 0.6,
+        duration: 1,
         ease: "power2.out",
       },
       "-=0.4",
@@ -65,8 +65,8 @@ export default function CareerSection() {
     tl2.to(careerImageRef.current, {
       opacity: 1,
       x: 0,
-      duration: 0.8,
-      ease: "power2.out",
+      duration: 2,
+      ease: "power2.in",
     })
 
     return () => {
@@ -84,11 +84,8 @@ export default function CareerSection() {
               <Image
                 src={CareerImg}
                 alt="Student working with technology"
-                placeholder="blur"
-                quality={50}
                 fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover w-full"
               />
 </div>
               {/* Mission Box Overlay */}

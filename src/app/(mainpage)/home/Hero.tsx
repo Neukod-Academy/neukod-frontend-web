@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useEffect, useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
-import Banner from "../../images/banner.jpg";
+import Banner from "../../images/banner_neukod.webp";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,

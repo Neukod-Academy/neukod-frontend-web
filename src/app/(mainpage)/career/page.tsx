@@ -4,10 +4,10 @@ import TeacherSection from "../teacher-section/page"
 
 export default function Page() {
   return (
-    <main>
+    <main className="flex flex-col justify-center gap-10 py-5 overflow-hidden">
       <CareerSection />
       <FAQPage />
-    <TeacherSection />
+      <TeacherSection />
     </main>
   )
 }
