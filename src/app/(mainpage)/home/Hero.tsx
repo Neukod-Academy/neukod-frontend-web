@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useEffect, useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
-import Banner from "../../images/banner_neukod.webp";
+import Banner from "../../images/banner_neukod _crop.webp";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -37,7 +37,7 @@ export default function Component() {
   return (
     <div
       ref={TextEffect}
-      className="relative w-auto h-auto md:h-[70vh] max-h-[900px] overflow-hidden mt-0 py-5"
+      className="relative w-auto h-auto md:h-[80vh] max-h-[900px] overflow-hidden mt-0 py-5"
     >
       <Image
         src={Banner}
