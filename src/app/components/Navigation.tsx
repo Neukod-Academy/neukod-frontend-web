@@ -1,282 +1,389 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu } from "lucide-react";
+import { Menu, ChevronDown, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogTrigger,
-  DialogHeader,
-  DialogTitle,
-  DialogContent,
-} from "@/components/ui/dialog";
-import {
-  Select,
-  SelectTrigger,
-  SelectValue,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-} from "@/components/ui/select";
-
 import {
   NavigationMenu,
   NavigationMenuContent,
-  NavigationMenuIndicator,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
-  NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
-import FormSwitch from "./FormSwitch";
-import NeuLogo from "../images/Putih.png";
-import Logo from "../images/courses/alamak-logo.webp";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
+import NeuLogo from "../images/logo_neukod.png";
+import Logo from "../images/courses/alamak-logo.webp";
 
-// Placeholder for language options - replace with your actual data
-const languageOptions = [
-  { value: "en", label: "EN" },
-  { value: "id", label: "ID" },
-  // Add more options as needed
-];
-const navItem: {
-  title: string;
-  href: string;
-  description: string;
-}[] = [
+// Mock data - replace with your actual data
+const courseCategories = [
   {
-    title: "Class 1",
-    href: "#",
+    title: "React Courses",
+    href: "/courses",
     description:
-      "A modal dialog that interrupts the user with important content and expects a response.",
+      "Master modern React development with hands-on projects and real-world applications.",
   },
   {
-    title: "Class 2",
-    href: "#",
+    title: "Minecraft Courses",
+    href: "/courses",
     description:
-      "For sighted users to preview content available behind a link.",
+      "Learn programming through Minecraft modding and game development.",
   },
   {
-    title: "Class 3",
-    href: "#",
+    title: "Data Science",
+    href: "/courses",
     description:
-      "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
+      "Dive into data analysis, machine learning, and statistical modeling.",
   },
   {
-    title: "Class 4",
-    href: "#",
-    description: "Visually or semantically separates content.",
-  },
-  {
-    title: "Class 5",
-    href: "#",
-    description:
-      "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-  },
-  {
-    title: "Class 6",
-    href: "#",
-    description:
-      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+    title: "Web Development",
+    href: "/courses",
+    description: "Build full-stack applications with modern web technologies.",
   },
 ];
 
-function NavItems() {
-  return (
-    <div className="flex space-x-6">
-      <NavigationMenu>
-        <NavigationMenuList>
-          <NavigationMenuItem>
-            <NavigationMenuTrigger>Course</NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-                <li className="row-span-3">
-                  <NavigationMenuLink asChild>
-                    <a
-                      className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                      href="/courses"
-                    >
-                      <Image
-                        src={Logo}
-                        alt="courses content"
-                        className="w-full h-full object-cover"
-                      />
-                      {/* <Icons.logo className="h-6 w-6" /> */}
-                      <div className="top-1/2">
-                        <div className="mb-2 mt-4 text-lg font-medium">
-                          Find a best courses
-                        </div>
-                        <p className="text-sm text-muted-foreground text-wrap">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit, sed do eiusmod tempor incididunt ut labore et
-                          dolore magna aliqua.
-                        </p>
-                      </div>
-                    </a>
-                  </NavigationMenuLink>
-                </li>
+const classes = [
+  {
+    title: "Beginner Class",
+    href: "/class",
+    description: "Perfect for those starting their coding journey",
+  },
+  {
+    title: "Intermediate Class",
+    href: "/class",
+    description: "Build upon your existing knowledge",
+  },
+  {
+    title: "Advanced Class",
+    href: "/class",
+    description: "Master complex programming concepts",
+  },
+  {
+    title: "Professional Class",
+    href: "/class",
+    description: "Industry-level skills and practices",
+  },
+];
 
-                <ListItem href="/courses" title="React Courses">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor
-                </ListItem>
-                <ListItem href="/courses" title="Minecraft Courses">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor
-                </ListItem>
-                <ListItem
-                  href="/courses"
-                  title="Data Courses"
-                >
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor
-                </ListItem>
-              </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <NavigationMenuTrigger>Class</NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                {navItem.map((navItem) => (
-                  <ListItem
-                    key={navItem.title}
-                    title={navItem.title}
-                    href={navItem.href}
-                  >
-                    {navItem.description}
-                  </ListItem>
-                ))}
-              </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <Link href="/contact" legacyBehavior passHref>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                Contact Us
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
-        </NavigationMenuList>
-      </NavigationMenu>
-    </div>
-  );
-}
+const languages = [
+  { code: "en", label: "English", flag: "🇺🇸" },
+  { code: "id", label: "Bahasa", flag: "🇮🇩" },
+];
+
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
   React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, ...props }, ref) => {
+>(({ className, title, children, href, ...props }, ref) => {
   return (
-    <li>
+    <>
       <NavigationMenuLink asChild>
-        <a
+        <Link
           ref={ref}
+          href={href || "#"}
           className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            "block select-none space-y-1 rounded-lg p-4 leading-none no-underline outline-none transition-all duration-200 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 hover:shadow-md focus:bg-accent focus:text-accent-foreground group",
             className
           )}
           {...props}
         >
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+          <div className="text-sm font-semibold leading-none group-hover:text-blue-600 transition-colors">
+            {title}
+          </div>
+          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground group-hover:text-gray-600">
             {children}
           </p>
-        </a>
+        </Link>
       </NavigationMenuLink>
-    </li>
+    </>
   );
 });
 ListItem.displayName = "ListItem";
 
-function LanguageSelector() {
+function DesktopNavigation() {
   return (
-    <div className="grid md:grid-cols-1">
-      <Select>
-        <SelectTrigger className="w-fit">
-          <SelectValue placeholder="EN" />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectGroup>
-            {languageOptions.map((option) => (
-              <SelectItem key={option.value} value={option.value}>
-                {option.label}
-              </SelectItem>
-            ))}
-          </SelectGroup>
-        </SelectContent>
-      </Select>
-    </div>
+    <NavigationMenu className="hidden lg:flex">
+      <NavigationMenuList className="space-x-2">
+        <NavigationMenuItem>
+          <NavigationMenuTrigger className="bg-transparent text-black hover:text-blue-600 hover:bg-blue-50 focus:bg-blue-100 focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[state=open]:bg-blue-50 transition-all duration-200">
+            Courses
+          </NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <div className="grid gap-3 p-6 md:w-[500px] lg:w-[600px] lg:grid-cols-[240px_1fr]">
+              <div className="row-span-3">
+                <NavigationMenuLink asChild>
+                  <Link
+                    className="flex h-full w-full select-none flex-col justify-end rounded-lg bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 p-6 no-underline outline-none focus:shadow-md hover:shadow-lg transition-all duration-300"
+                    href="/courses"
+                  >
+                    <Image
+                      src={Logo}
+                      alt="courses content"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="mb-2 mt-4 text-lg font-bold text-white">
+                      Discover Courses
+                    </div>
+                    <p className="text-sm text-blue-100">
+                      Explore our comprehensive learning paths designed to take
+                      you from beginner to expert.
+                    </p>
+                  </Link>
+                </NavigationMenuLink>
+              </div>
+              <div className="grid gap-1">
+                {courseCategories.map((course) => (
+                  <ListItem
+                    key={course.title}
+                    title={course.title}
+                    href={course.href}
+                  >
+                    {course.description}
+                  </ListItem>
+                ))}
+              </div>
+            </div>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+
+        <NavigationMenuItem>
+          <NavigationMenuTrigger className="bg-transparent text-black hover:text-blue-600 hover:bg-blue-50 focus:bg-blue-100 focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[state=open]:bg-blue-50 transition-all duration-200">
+            Classes
+          </NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <ul className="grid w-[400px] gap-3 p-6 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+              {classes.map((classItem) => (
+                <ListItem
+                  key={classItem.title}
+                  title={classItem.title}
+                  href={classItem.href}
+                >
+                  {classItem.description}
+                </ListItem>
+              ))}
+            </ul>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+
+        <NavigationMenuItem>
+          <Link href="/career" legacyBehavior passHref>
+            <NavigationMenuLink className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-lg font-medium transition-all duration-200 hover:bg-blue-50 hover:text-blue-600 focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50">
+              Career
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
+
+        <NavigationMenuItem>
+          <Link href="/contact" legacyBehavior passHref>
+            <NavigationMenuLink className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-lg font-medium transition-all duration-200 hover:bg-blue-50 hover:text-blue-600 focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50">
+              Contact Us
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
+      </NavigationMenuList>
+    </NavigationMenu>
   );
 }
 
-function MobileMenu() {
-  const [isOpen, setIsOpen] = React.useState(false);
+function LanguageSelector() {
+  const [selectedLang, setSelectedLang] = useState(languages[0]);
 
   return (
-    <div className="lg:hidden">
-      <Button
-        variant="ghost"
-        className="px-2 text-white"
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        <Menu className="h-6 w-6" />
-      </Button>
-      {isOpen && (
-        <div className="absolute grid grid-cols-2 top-full left-0 right-0 bg-blackOut p-5 gap-0">
-          <div className="flex items-start">
-            <NavItems />
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button
+          variant="ghost"
+          size="sm"
+          className="gap-2 hover:bg-blue-50 transition-colors"
+        >
+          <Globe className="h-4 w-4" />
+          <span className="hidden sm:inline">
+            {selectedLang.code.toUpperCase()}
+          </span>
+          <ChevronDown className="h-3 w-3" />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end" className="w-fit">
+        {languages.map((lang) => (
+          <DropdownMenuItem
+            key={lang.code}
+            onClick={() => setSelectedLang(lang)}
+            className="gap-3 cursor-pointer"
+          >
+            <span className="text-lg">{lang.flag}</span>
+            <span>{lang.label}</span>
+          </DropdownMenuItem>
+        ))}
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
+
+function MobileNavigation() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <Sheet open={isOpen} onOpenChange={setIsOpen}>
+      <SheetTrigger asChild>
+        <Button
+          variant="ghost"
+          size="sm"
+          className="lg:hidden hover:bg-blue-50"
+        >
+          <Menu className="h-5 w-5" />
+          <span className="sr-only">Toggle menu</span>
+        </Button>
+      </SheetTrigger>
+      <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+        <SheetHeader>
+          <SheetTitle className="text-left">Navigation</SheetTitle>
+        </SheetHeader>
+        <div className="mt-6 space-y-6">
+          <div>
+            <h3 className="mb-3 text-sm font-semibold text-gray-900">
+              Courses
+            </h3>
+            <div className="space-y-2">
+              {courseCategories.map((course) => (
+                <Link
+                  key={course.title}
+                  href={course.href}
+                  className="block rounded-lg p-3 text-sm hover:bg-blue-50 transition-colors"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <div className="font-medium">{course.title}</div>
+                  <div className="text-xs text-muted-foreground mt-1">
+                    {course.description}
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
-          <div className="place-items-end">
+
+          <div>
+            <h3 className="mb-3 text-sm font-semibold text-gray-900">
+              Classes
+            </h3>
+            <div className="space-y-2">
+              {classes.map((classItem) => (
+                <Link
+                  key={classItem.title}
+                  href={classItem.href}
+                  className="block rounded-lg p-3 text-sm hover:bg-blue-50 transition-colors"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <div className="font-medium">{classItem.title}</div>
+                  <div className="text-xs text-muted-foreground mt-1">
+                    {classItem.description}
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <Link
+            href="/contact"
+            className="block rounded-lg p-3 text-sm font-medium hover:bg-blue-50 transition-colors"
+            onClick={() => setIsOpen(false)}
+          >
+            Contact Us
+          </Link>
+
+          <div className="pt-4 border-t">
             <LanguageSelector />
           </div>
         </div>
-      )}
-    </div>
+      </SheetContent>
+    </Sheet>
+  );
+}
+
+function TrialDialog() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+      <DialogTrigger asChild>
+        <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105">
+          Start Free Trial
+        </Button>
+      </DialogTrigger>
+      <DialogHeader>
+        <DialogTitle className="sr-only"></DialogTitle>
+      </DialogHeader>
+      <DialogContent className="sm:max-w-[500px]">
+        <div className="text-center space-y-4 p-6">
+          <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            Start Your Learning Journey
+          </h2>
+          <p className="text-muted-foreground">
+            Get access to all our courses and start learning today. No credit
+            card required.
+          </p>
+          <div className="space-y-3 pt-4">
+            <Button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
+              Sign Up with Email
+            </Button>
+            <Button variant="outline" className="w-full bg-transparent">
+              Continue with Google
+            </Button>
+          </div>
+        </div>
+      </DialogContent>
+    </Dialog>
   );
 }
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = React.useState(false);
-  // React.useEffect(() => {
-  //   if (isOpen) document.body.classList.add('overflow-hidden');
-  //   else document.body.classList.remove('overflow-hidden');
-  // }, [isOpen]);
   return (
-    <nav className="fixed top-0 z-50 w-full border-b border-border/40 bg-gradient-to-b from-blackOut/90 to-blackOut/40 backdrop-filter backdrop-blur-md">
-      <div className="container flex h-12 md:h-14 lg:h-16 max-w-screen items-center justify-between mx-auto">
-        <Link href="/" className="flex items-center space-x-2">
-          <Image src={NeuLogo} alt="Logo" width={64} height={64} />
-          <span className="hidden font-bold sm:inline-block text-white">
-            NEUKOD ACADEMY
-          </span>
-        </Link>
+    <nav className="sticky top-0 z-50 w-full border-b bg-white/80 backdrop-blur-md supports-[backdrop-filter]:bg-white/60">
+      <div className="container mx-auto px-4">
+        <div className="flex h-16 items-center justify-between">
+          {/* Logo */}
+          <Link
+            href="/"
+            className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
+          >
+            <Image
+              src={NeuLogo}
+              alt="Neukod Logo"
+              className="w-[70px] h-9 md:w-24 md:h-10"
+            />
+          </Link>
 
-        <div className="hidden lg:flex items-center justify-center flex-1">
-          <NavItems />
-        </div>
-        <div className="flex items-center space-x-4">
-          <div className="hidden lg:block">
-            <LanguageSelector />
+          {/* Desktop Navigation */}
+          <DesktopNavigation />
+
+          {/* Right side actions */}
+          <div className="flex items-center space-x-3">
+            <div className="hidden lg:block">
+              <LanguageSelector />
+            </div>
+            <TrialDialog />
+            <MobileNavigation />
           </div>
-          <Dialog open={isOpen} onOpenChange={setIsOpen}>
-            <DialogTrigger asChild>
-              <Button className="bg-redFlag" variant="default">
-                Start Trial
-              </Button>
-            </DialogTrigger>
-            <DialogHeader>
-              <DialogTitle className="invisible"></DialogTitle>
-            </DialogHeader>
-            <DialogContent className="w-full max-w-[1000px]">
-              <FormSwitch />
-            </DialogContent>
-          </Dialog>
         </div>
-        <MobileMenu />
       </div>
     </nav>
   );
