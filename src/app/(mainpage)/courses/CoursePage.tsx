@@ -19,6 +19,7 @@ import { useEffect, useRef, useState } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
 import { coursePage, type CoursePage } from "../../utils/constant";
+import CourseTextAnimation from "./courseComponent/courseText"
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -107,34 +108,10 @@ const CoursePage = () => {
           <div className="grid grid-cols-1 gap-y-12 md:grid-flow-row md:grid-cols-2 md:items-center md:gap-x-12 lg:gap-x-20 z-40">
             <div className="absolute left-5 top-[5%] right-1/4 md:right-1/2 z-40 cursor-default panel-content">
               {/* <p className="mb-3 font-semibold md:mb-4">Empower</p> */}
-              <h1 className="rb-5 mb-5 text-5xl font-bold md:mb-6 md:text-7xl lg:text-8xl text-blue-900">
+              {/* <h1 className="rb-5 mb-5 text-5xl font-bold md:mb-6 md:text-7xl lg:text-8xl text-blue-900">
                 Unlock Your Potential with Our Expertise
-              </h1>
-              <p className="mb-6 md:mb-8 md:text-md">
-                Partnering with us means gaining access to top-tier IT services
-                tailored to your needs. Our consultancy empowers your business
-                to thrive in a digital landscape.
-              </p>
-              <div className="grid grid-cols-1 gap-6 py-2 sm:grid-cols-2 z-40">
-                <div>
-                  <h6 className="mb-3 text-md font-bold leading-[1.4] md:mb-4 md:text-xl">
-                    Expert Guidance
-                  </h6>
-                  <p>
-                    Leverage our expertise to navigate complex IT challenges
-                    with confidence.
-                  </p>
-                </div>
-                <div>
-                  <h6 className="mb-3 text-md font-bold leading-[1.4] md:mb-4 md:text-xl">
-                    Tailored Solutions
-                  </h6>
-                  <p>
-                    Customized strategies designed to meet your unique business
-                    requirements.
-                  </p>
-                </div>
-              </div>
+              </h1> */}
+              <CourseTextAnimation />
               <div className="mt-6 flex flex-col justify-center items-center gap-4 md:mt-8 z-40">
                 <Link href="#course_intro">
                   <motion.button
@@ -147,9 +124,6 @@ const CoursePage = () => {
                     <ChevronDown className="h-10 w-10 stroke-[3] text-blue-900" />
                   </motion.button>
                 </Link>
-                {/* <Button title="Sign Up" variant="link" size="lg">
-                  Sign Up <ChevronRight />
-                </Button> */}
               </div>
             </div>
           </div>

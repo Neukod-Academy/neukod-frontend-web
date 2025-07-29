@@ -130,48 +130,19 @@ export default function ClassroomPage() {
 
   return (
     <main>
-      <div className="min-h-screen relative bg-gradient-to-r from-indigo-100 via-rose-50 to-sky-100">
-        {/* Header */}
-        {/* <header className="fixed top-0 w-full bg-white/90 backdrop-blur-sm z-50 border-b">
-        <div className="container mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-cyan-500 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">S</span>
-              </div>
-              <span className="text-xl font-bold text-gray-800">Skillline</span>
-            </div>
-            <nav className="hidden md:flex items-center space-x-8">
-              <a href="#" className="text-gray-600 hover:text-gray-900">
-                Home
-              </a>
-              <a href="#" className="text-gray-600 hover:text-gray-900">
-                Careers
-              </a>
-              <a href="#" className="text-gray-600 hover:text-gray-900">
-                Blog
-              </a>
-              <a href="#" className="text-gray-600 hover:text-gray-900">
-                About Us
-              </a>
-              <a href="#" className="text-gray-600 hover:text-gray-900">
-                Login
-              </a>
-              <Button className="bg-orange-500 hover:bg-orange-600 text-white px-6">Sign Up</Button>
-            </nav>
-          </div>
-        </div>
-      </header> */}
-
+      <div className="min-h-screen relative">
         {/* Hero Section */}
-        <section ref={heroRef} className="relative pt-20 pb-16 overflow-hidden">
+        <div ref={heroRef} className="relative pt-[100px] pb-20">
           <div
             ref={bannerRef}
-            className="absolute w-full min-h-screen bg-gradient-to-r from-orange-100 via-pink-50 to-blue-100 rounded-b-[50%]"
+            style={{
+              clipPath: "ellipse(180% 100% at 50% 0%)",
+            }}
+            className="absolute w-full min-h-screen  bg-gradient-to-r from-blue-200 via-rose-100 to-sky-400"
           ></div>
 
           <div className="container mx-auto px-6 relative z-10">
-            <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[600px]">
+            <div className="grid grid-cols-2 gap-12 items-center min-h-[600px]">
               {/* Content */}
               <div className="hero-content space-y-8">
                 <div>
@@ -271,7 +242,7 @@ export default function ClassroomPage() {
               </div>
             </div>
           </div>
-        </section>
+        </div>
 
         {/* Trust Section */}
         <section className="py-16 bg-white">
