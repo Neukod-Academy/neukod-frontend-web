@@ -1,6 +1,7 @@
-import CareerSection from "./careertrack"
-import FAQPage from "../faq/faqpage"
-import TeacherSection from "../teacher-section/page"
+import CareerSection from "./careertrack";
+import FAQPage from "../faq/faqpage";
+import TeacherSection from "../teacher-section/page";
+import TestimonialSection from "./careerComponent/testimonialSection";
 
 export default function Page() {
   return (
@@ -8,6 +9,7 @@ export default function Page() {
       <CareerSection />
       <FAQPage />
       <TeacherSection />
+      <TestimonialSection />
     </main>
-  )
+  );
 }
