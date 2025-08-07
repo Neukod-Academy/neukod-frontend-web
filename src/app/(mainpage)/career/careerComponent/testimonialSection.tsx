@@ -3,56 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import Image from "next/image";
-import { gsap } from "gsap"
-import Testi1 from "../../../images/career-track/testimoni/testi1.jpeg";
-import Testi2 from "../../../images/career-track/testimoni/testi2.jpeg";
-import Testi3 from "../../../images/career-track/testimoni/testi3.jpeg";
-import Testi4 from "../../../images/career-track/testimoni/testi4.jpeg";
-import Testi5 from "../../../images/career-track/testimoni/testi5.jpeg";
-
-// Sample testimonial data - replace with your actual student testimonials
-const testimonials = [
-  {
-    id: 1,
-    name: "Sarah Johnson",
-    image: Testi1,
-    quote:
-      "This course completely transformed my understanding of web development. The instructor's teaching style made complex concepts easy to grasp.",
-    course: "Full Stack Development",
-  },
-  {
-    id: 2,
-    name: "Michael Chen",
-    image: Testi2,
-    quote:
-      "I went from zero coding knowledge to building my own applications. The hands-on projects were incredibly valuable for my learning journey.",
-    course: "JavaScript Fundamentals",
-  },
-  {
-    id: 3,
-    name: "Emily Rodriguez",
-    image: Testi3,
-    quote:
-      "The course structure was perfect for working professionals. I could learn at my own pace while getting real-world experience.",
-    course: "React Development",
-  },
-  {
-    id: 4,
-    name: "David Thompson",
-    image: Testi4,
-    quote:
-      "Outstanding content and support from the community. This course helped me transition into a tech career successfully.",
-    course: "Python for Beginners",
-  },
-  {
-    id: 5,
-    name: "Lisa Park",
-    image: Testi5,
-    quote:
-      "The practical approach and real-world projects made all the difference. I'm now confident in my development skills.",
-    course: "UI/UX Design",
-  },
-];
+import { gsap } from "gsap";
+import { testimonials } from "@/app/utils/constant";
 
 const TestimonialSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -63,7 +15,7 @@ const TestimonialSection = () => {
   const contentRef = useRef<HTMLDivElement>(null);
   const timelineRef = useRef<gsap.core.Timeline>();
 
-  // Auto-play functionality
+  // Auto play delay 5000 ms
   useEffect(() => {
     const interval = setInterval(() => {
       if (!isAnimating) {
@@ -74,7 +26,6 @@ const TestimonialSection = () => {
     return () => clearInterval(interval);
   }, [isAnimating]);
 
-  // GSAP Animation function - much cleaner!
   const animateTransition = (newIndex: number, direction: "next" | "prev") => {
     if (isAnimating || !imageRef.current || !contentRef.current) return;
 
@@ -82,10 +33,8 @@ const TestimonialSection = () => {
     const exitX = direction === "next" ? -100 : 100;
     const enterX = direction === "next" ? 100 : -100;
 
-    // Kill any existing timeline
     timelineRef.current?.kill();
 
-    // Create new GSAP timeline
     const tl = gsap.timeline({
       onComplete: () => {
         setCurrentIndex(newIndex);
@@ -93,7 +42,7 @@ const TestimonialSection = () => {
       },
     });
 
-    // Exit animation
+    // Animation exit
     tl.to([imageRef.current, contentRef.current], {
       x: exitX,
       scale: 0.8,
@@ -102,11 +51,7 @@ const TestimonialSection = () => {
       ease: "power2.in",
       stagger: 0.2,
     })
-
-      // Update content in the middle of animation
       .call(() => setDisplayIndex(newIndex))
-
-      // Set starting position for entrance
       .set([imageRef.current, contentRef.current], {
         x: enterX,
         scale: 0.8,
@@ -114,14 +59,18 @@ const TestimonialSection = () => {
       })
 
       // Entrance animation
-      .to([imageRef.current, contentRef.current], {
-        x: 0,
-        scale: 1,
-        opacity: 1,
-        duration: 0.3,
-        ease: "back.out(1.7)",
-        stagger: 0.1,
-      },"+=0.4");
+      .to(
+        [imageRef.current, contentRef.current],
+        {
+          x: 0,
+          scale: 1,
+          opacity: 1,
+          duration: 0.3,
+          ease: "back.out(1.7)",
+          stagger: 0.1,
+        },
+        "+=0.4"
+      );
 
     timelineRef.current = tl;
   };
@@ -143,7 +92,6 @@ const TestimonialSection = () => {
     animateTransition(index, direction);
   };
 
-  // Cleanup GSAP timeline on unmount
   useEffect(() => {
     return () => {
       timelineRef.current?.kill();
@@ -167,7 +115,6 @@ const TestimonialSection = () => {
       <div className="relative bg-white rounded-2xl shadow-xl overflow-hidden min-h-[500px]">
         {/* Background gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-purple-50" />
-
         <div className="relative z-10 p-8 md:p-12">
           <div className="grid md:grid-cols-2 gap-8 items-center">
             {/* Image Section */}
@@ -182,13 +129,10 @@ const TestimonialSection = () => {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                {/* Decorative elements */}
                 <div className="absolute -top-4 -right-4 w-8 h-8 bg-blue-500 rounded-full opacity-20" />
                 <div className="absolute -bottom-6 -left-6 w-12 h-12 bg-purple-500 rounded-full opacity-20" />
               </div>
             </div>
-
-            {/* Content Section */}
             <div ref={contentRef} className="text-center md:text-left">
               <Quote className="w-12 h-12 text-blue-500 mb-6 mx-auto md:mx-0" />
 
@@ -207,8 +151,6 @@ const TestimonialSection = () => {
             </div>
           </div>
         </div>
-
-        {/* Stylish Navigation Buttons */}
         <div className="absolute left-6 top-1/2 -translate-y-1/2 z-20">
           <button
             className="group relative w-14 h-14 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden"
@@ -239,8 +181,6 @@ const TestimonialSection = () => {
           </button>
         </div>
       </div>
-
-      {/* Enhanced Dots Indicator */}
       <div className="flex justify-center mt-8 space-x-3">
         {testimonials.map((_, index) => (
           <button

@@ -6,6 +6,7 @@ import CourseCategory from "../courses/CourseCategory";
 import WelcomeText from "./WelcomeText";
 import FeaturesSection from "./FeatureSection";
 import SlidePage from "./SlidePage";
+import NewsletterSection from "../subscription/newsletter";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <SlidePage />
       {/* <Courses /> */}
       <AboutUs />
+      <NewsletterSection />
       {/* <ContactUs /> */}
       {/* <TrustedBy /> */}
     </main>

@@ -1,40 +1,8 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Badge } from "@/components/ui/badge"
+import { faqData } from "@/app/utils/constant"
 
 export default function Component() {
-  const faqData = [
-    {
-      id: "programs",
-      question: "What programs does Pennant Education offer?",
-      answer:
-        "We offer a wide range of programs including Software Development, Cybersecurity, Gaming, Data Science/AI, Design, and STEM-anchored K-12 programs. Additionally, we provide enrichment in English language/liberal arts, SAT/College Prep, and chess.",
-    },
-    {
-      id: "apply",
-      question: "How do I apply to Pennant Education?",
-      answer:
-        "You can apply to Pennant Education by visiting our admissions page and completing the online application form. Our admissions team will guide you through the process, which includes submitting transcripts, letters of recommendation, and a personal statement. We also offer virtual information sessions to help you learn more about our programs.",
-    },
-    {
-      id: "accredited",
-      question: "Are the programs at Pennant Education accredited?",
-      answer:
-        "Yes, all of our programs are fully accredited by recognized accrediting bodies. Our institution maintains high academic standards and is regularly reviewed to ensure we meet all educational requirements. This accreditation ensures that your credits and certifications will be recognized by employers and other educational institutions.",
-    },
-    {
-      id: "online",
-      question: "Can I take courses online?",
-      answer:
-        "We offer flexible learning options including fully online courses, hybrid programs, and in-person classes. Our online platform provides interactive learning experiences with live virtual classrooms, recorded lectures, and collaborative projects. You can choose the format that best fits your schedule and learning preferences.",
-    },
-    {
-      id: "support",
-      question: "What support services are available for students?",
-      answer:
-        "We provide comprehensive support services including academic advising, tutoring, career counseling, technical support, and mental health resources. Our dedicated student success team is available to help you navigate your educational journey, and we offer 24/7 online support for technical issues.",
-    },
-  ]
-
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
