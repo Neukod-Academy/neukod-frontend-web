@@ -22,35 +22,17 @@ const CourseTextAnimation = () => {
     let wordIndex = 0;
 
     // Initial entrance animation
-    const handleLoad = () => {
-      gsap.from(".slogan h1", {
-        y: -50,
-        opacity: 0,
-        duration: 1,
-        delay: 0.5,
-        stagger: 0.3,
-        ease: "power3.out",
-      });
-      gsap.from(".slogan p", {
-        y: 50,
-        opacity: 0,
-        duration: 1,
-        delay: 0.5,
-        stagger: 0.3,
-        ease: "power3.out",
-      });
-    };
 
     // Trigger entrance animation
-    handleLoad();
+    // handleLoad();
 
     // Optional: Add a subtle parallax effect that keeps text visible
     gsap.to("#homeIntro .content .slogan", {
-      y: -50,
+      y: -20,
       scrollTrigger: {
         trigger: "#homeIntro",
         start: "top top",
-        end: "bottom top",
+        end: "bottom bottom",
         scrub: 0.1,
         markers: false, // Debug markers to see trigger points
       },
@@ -105,7 +87,9 @@ const CourseTextAnimation = () => {
         className="relative items-center justify-center"
       >
         <div className="content max-w-4xl mx-auto px-6">
-          <div className="slogan text-left">
+          <div 
+            ref={sloganRef} 
+            className="slogan text-left">
             <h1 className="rb-5 mb-5 text-4xl md:text-6xl font-bold md:mb-6 text-blue-900">
               Unlock Your Potential with Our Expertise.
             </h1>

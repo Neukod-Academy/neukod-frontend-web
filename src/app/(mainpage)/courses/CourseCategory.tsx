@@ -2,32 +2,13 @@
 import Image from "next/image"
 import { ArrowUpRight } from 'lucide-react'
 import { Button } from "@/components/ui/button"
-import Course1 from '../../images/form/1.jpg'
+// import Course1 from '../../images/form/1.jpg'
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react"
 import Link from "next/link"
+import { categories } from "@/app/utils/constant"
 
 const CourseCategory = () => {
-    const categories = [
-        {
-            title: "Data Analytics",
-            description: "Master data-driven decision-making with essential analytics skills and tools.",
-            image: Course1,
-            link: "#",
-        },
-        {
-            title: "Marketing",
-            description: "Marketing is the art of connecting brands with people, driving engagement.",
-            image: Course1,
-            link: "",
-        },
-        {
-            title: "UI/UX",
-            description: "UI/UX design focuses on creating seamless, intuitive, and visually appealing experiences.",
-            image: Course1,
-            link: "",
-        },
-    ]
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
     // const containerRef = useRef<HTMLDivElement>(null);
 

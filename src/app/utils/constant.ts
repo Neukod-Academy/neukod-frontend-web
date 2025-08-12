@@ -20,6 +20,9 @@ import Testi3 from "../images/career-track/testimoni/testi3.jpeg";
 import Testi4 from "../images/career-track/testimoni/testi4.jpeg";
 import Testi5 from "../images/career-track/testimoni/testi5.jpeg";
 
+// COURSE - CATEGORY
+import Course1 from "../images/form/1.jpg";
+
 // -------------- COURSE DATA --------------
 
 export interface CourseHighlight {
@@ -268,3 +271,32 @@ export const faqData: FAQData[] = [
 ]
 
 // -------------- FAQ DATA END--------------
+
+
+export interface Categories {
+  title: string;
+  description: string;
+  image: StaticImageData;
+  link: string;
+}
+
+export const categories: Categories[] = [
+  {
+      title: "Data Analytics",
+      description: "Master data-driven decision-making with essential analytics skills and tools.",
+      image: Course1,
+      link: "#",
+  },
+  {
+      title: "Marketing",
+      description: "Marketing is the art of connecting brands with people, driving engagement.",
+      image: Course1,
+      link: "",
+  },
+  {
+      title: "UI/UX",
+      description: "UI/UX design focuses on creating seamless, intuitive, and visually appealing experiences.",
+      image: Course1,
+      link: "",
+  },
+]
