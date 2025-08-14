@@ -300,3 +300,39 @@ export const categories: Categories[] = [
       link: "",
   },
 ]
+
+// -------------- CONTACT US DATA --------------
+
+export interface ContactQuestion {
+  id: string;
+  title: string;
+  description: string;
+}
+
+export const contactQuestions: ContactQuestion[] = [
+  {
+    id: "1",
+    title: "What does Neukod do?",
+    description: "Neukod is a leading tech consulting firm that specializes in providing innovative technology solutions for businesses. We help companies leverage cutting-edge technologies to streamline operations, enhance productivity, and drive growth through digital transformation initiatives."
+  },
+  {
+    id:"2",
+    title: "What services does Neukod Tech Consulting offer?",
+    description: "Neukod is a leading tech consulting firm that specializes in providing innovative technology solutions for businesses. We help companies leverage cutting-edge technologies to streamline operations, enhance productivity, and drive growth through digital transformation initiatives."
+  },
+  {
+    id:"3",
+    title: "How can Neukod help my business grow?",
+    description: "Neukod is a leading tech consulting firm that specializes in providing innovative technology solutions for businesses. We help companies leverage cutting-edge technologies to streamline operations, enhance productivity, and drive growth through digital transformation initiatives."
+  },
+  {
+    id:"4",
+    title: "Why choose Neukod over other tech consulting firms?",
+    description: "Neukod is a leading tech consulting firm that specializes in providing innovative technology solutions for businesses. We help companies leverage cutting-edge technologies to streamline operations, enhance productivity, and drive growth through digital transformation initiatives."
+  },
+  {
+    id:"5",
+    title: "Does Neukod provide AI solutions for businesses?",
+    description: "Neukod is a leading tech consulting firm that specializes in providing innovative technology solutions for businesses. We help companies leverage cutting-edge technologies to streamline operations, enhance productivity, and drive growth through digital transformation initiatives."
+  },
+]

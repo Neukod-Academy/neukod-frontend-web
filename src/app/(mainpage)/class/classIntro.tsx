@@ -9,8 +9,8 @@ import { Play, Users, Calendar, CreditCard, UserCheck } from "lucide-react";
 import BannerClass from "../../images/slide/slide_banner3.webp";
 import InstructorImg from "../../images/slide/slide_banner4.webp";
 import StudentImg from "../../images/course/beginner.jpg";
-import TeacherImg from "../../images/class/image.png"
-import Teacher1 from "../../images/class/teacherthink.png"
+import TeacherImg from "../../images/class/image.png";
+import Teacher1 from "../../images/class/teacherthink.png";
 
 // Register GSAP plugins
 if (typeof window !== "undefined") {
@@ -155,8 +155,8 @@ export default function ClassroomPage() {
                 </div>
 
                 <p className="text-lg text-gray-600 max-w-md">
-                  Skillline is an interesting platform that will teach you in
-                  more an interactive way
+                  Neukod is an interesting platform that will teach you in more
+                  an interactive way
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4">
@@ -270,8 +270,8 @@ export default function ClassroomPage() {
                 <span className="text-orange-500">Cloud Software.</span>
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Skillline is one powerful online software suite that combines
-                all the tools needed to run a successful school or office.
+                Neukod is one powerful online software suite that combines all
+                the tools needed to run a successful school or office.
               </p>
             </div>
 
@@ -317,22 +317,21 @@ export default function ClassroomPage() {
                 </h3>
                 <p className="text-gray-600">
                   Automate and track emails to individuals or groups.
-                  Skillline's built-in system helps organize your organization
+                  Neukod built-in system helps organize your organization
                 </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* What is Skillline Section */}
         <section className="py-20 bg-white">
           <div className="container mx-auto px-6">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                What is <span className="text-orange-500">Skillline?</span>
+                What is <span className="text-orange-500">Neukod?</span>
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                Skillline is a platform that allows educators to create online
+                Neukod is a platform that allows educators to create online
                 classes whereby they can store the course materials online;
                 manage assignments, quizzes and exams; monitor due dates; grade
                 results and provide students with feedback all in one place.
@@ -393,22 +392,22 @@ export default function ClassroomPage() {
                   <div className="absolute top-20 left-3/4 w-[100px] h-[100px] bg-sky-400 rounded-full shadow-[rgba(233, 213, 255,50)_0px_0px_20px_2px]"></div>
                 </div>
                 <div className="relative z-10">
-                <h3 className="text-3xl font-bold text-gray-900 mb-6">
-                  Everything you can do in a physical classroom,{" "}
-                  <span className="text-orange-500">
-                    you can do with Skillline
-                  </span>
-                </h3>
-                
-                {/* <div className="bg-orange-100 text-orange-600 px-4 py-2 rounded-full mb-6">
+                  <h3 className="text-3xl font-bold text-gray-900 mb-6">
+                    Everything you can do in a physical classroom,{" "}
+                    <span className="text-orange-500">
+                      you can do with Neukod
+                    </span>
+                  </h3>
+
+                  {/* <div className="bg-orange-100 text-orange-600 px-4 py-2 rounded-full mb-6">
                 <span className="font-semibold">Everything you can do in a physical classroom, </span>
-                <span className="font-bold">you can do with Skillline</span>
+                <span className="font-bold">you can do with Neukod</span>
               </div> */}
-                <p className="text-gray-600 mb-6 leading-relaxed">
-                  Skillline's school management software helps traditional and
-                  online schools manage scheduling, attendance, payments and
-                  virtual classrooms all in one secure cloud-based system.
-                </p>
+                  <p className="text-gray-600 mb-6 leading-relaxed">
+                    Neukod school management software helps traditional and
+                    online schools manage scheduling, attendance, payments and
+                    virtual classrooms all in one secure cloud-based system.
+                  </p>
                 </div>
                 <Button
                   variant="link"
