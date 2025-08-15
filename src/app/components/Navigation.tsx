@@ -256,10 +256,10 @@ function MobileNavigation() {
         </Button>
       </SheetTrigger>
       <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-        <SheetHeader>
-          <SheetTitle className="text-left">Navigation</SheetTitle>
-        </SheetHeader>
-        <div className="mt-6 space-y-6">
+        <div className="mt-6 space-y-4 overflow-y-scroll max-h-screen">
+          <SheetHeader>
+            <SheetTitle className="text-left text-xl">Menu</SheetTitle>
+          </SheetHeader>
           <div>
             <h3 className="mb-3 text-sm font-semibold text-gray-900">
               Courses
