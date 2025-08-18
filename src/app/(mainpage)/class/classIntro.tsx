@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
@@ -11,6 +11,13 @@ import InstructorImg from "../../images/slide/slide_banner4.webp";
 import StudentImg from "../../images/course/beginner.jpg";
 import TeacherImg from "../../images/class/image.png";
 import Teacher1 from "../../images/class/teacherthink.png";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 // Register GSAP plugins
 if (typeof window !== "undefined") {
@@ -22,6 +29,15 @@ export default function ClassroomPage() {
   const bannerRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
   const floatingElementsRef = useRef<HTMLDivElement[]>([]);
+  const categoriesRef = useRef<HTMLDivElement>(null);
+  const classIntroRef = useRef<HTMLDivElement>(null);
+
+  const [selectedCategory, setSelectedCategory] = useState<
+    "backend" | "frontend"
+  >("backend");
+  const [selectedTab, setSelectedTab] = useState<"programs" | "competitions">(
+    "programs"
+  );
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -117,10 +133,118 @@ export default function ClassroomPage() {
         delay: 0.5,
         ease: "back.out(1.7)",
       });
+      gsap.fromTo(
+        ".class-intro-section",
+        { opacity: 0, x: -60 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 1,
+          scrollTrigger: {
+            trigger: ".class-intro-section",
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play none none reverse",
+            once: true,
+          },
+        }
+      );
+
+      gsap.fromTo(
+        ".category-card",
+        { opacity: 0, y: 40, scale: 0.9 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.8,
+          stagger: 0.2,
+          scrollTrigger: {
+            trigger: ".categories-section",
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play none none reverse",
+            once: true,
+          },
+        }
+      );
     });
 
     return () => ctx.revert();
   }, []);
+  const backendLanguages = [
+    {
+      name: "Go",
+      description:
+        "Fast, statically typed language perfect for microservices and cloud applications.",
+      icon: "🚀",
+      color: "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300",
+      level: "Intermediate",
+    },
+    {
+      name: "Python",
+      description:
+        "Versatile language ideal for web development, data science, and automation.",
+      icon: "🐍",
+      color:
+        "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300",
+      level: "Beginner",
+    },
+    {
+      name: "Rust",
+      description:
+        "Systems programming language focused on safety, speed, and concurrency.",
+      icon: "⚡",
+      color:
+        "bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300",
+      level: "Advanced",
+    },
+    {
+      name: "Java",
+      description:
+        "Enterprise-grade language for building scalable, robust backend systems.",
+      icon: "☕",
+      color: "bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300",
+      level: "Intermediate",
+    },
+  ];
+
+  const frontendLanguages = [
+    {
+      name: "HTML",
+      description:
+        "The foundation of web development, structuring content and creating semantic markup.",
+      icon: "🏗️",
+      color:
+        "bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300",
+      level: "Beginner",
+    },
+    {
+      name: "CSS",
+      description:
+        "Style and design web pages with modern layouts, animations, and responsive design.",
+      icon: "🎨",
+      color: "bg-pink-100 text-pink-800 dark:bg-pink-900/30 dark:text-pink-300",
+      level: "Beginner",
+    },
+    {
+      name: "JavaScript",
+      description:
+        "Dynamic programming language that brings interactivity and functionality to web pages.",
+      icon: "⚡",
+      color:
+        "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300",
+      level: "Intermediate",
+    },
+    {
+      name: "React JS",
+      description:
+        "Popular library for building user interfaces with component-based architecture.",
+      icon: "⚛️",
+      color: "bg-cyan-100 text-cyan-800 dark:bg-cyan-900/30 dark:text-cyan-300",
+      level: "Intermediate",
+    },
+  ];
 
   const addToRefs = (el: HTMLDivElement) => {
     if (el && !floatingElementsRef.current.includes(el)) {
@@ -316,8 +440,8 @@ export default function ClassroomPage() {
                   Customer Tracking
                 </h3>
                 <p className="text-gray-600">
-                  Automate and track emails to individuals or groups.
-                  Neukod built-in system helps organize your organization
+                  Automate and track emails to individuals or groups. Neukod
+                  built-in system helps organize your organization
                 </p>
               </div>
             </div>
@@ -424,6 +548,157 @@ export default function ClassroomPage() {
                   height={350}
                   className="w-full h-auto rounded-2xl"
                 />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Backend Class Introduction */}
+        <section ref={classIntroRef} className="class-intro-section py-20">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-4xl font-bold mb-8 text-center">
+                Our <span className="text-blue-900">Mastery</span> Program
+              </h2>
+              <Card className="p-8">
+                <CardContent className="space-y-6">
+                  <p className="text-lg text-muted-foreground leading-relaxed">
+                    Our comprehensive backend development course is designed to
+                    take you from beginner to professional. You'll learn
+                    industry-standard practices, work with real-world projects,
+                    and master the technologies that power today's most
+                    successful applications.
+                  </p>
+                  <div className="grid md:grid-cols-3 gap-6">
+                    <div className="text-center">
+                      <div className="text-3xl font-bold text-primary mb-2">
+                        12
+                      </div>
+                      <div className="text-sm text-muted-foreground">
+                        Weeks Duration
+                      </div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-3xl font-bold text-primary mb-2">
+                        4
+                      </div>
+                      <div className="text-sm text-muted-foreground">
+                        Programming Languages
+                      </div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-3xl font-bold text-primary mb-2">
+                        20+
+                      </div>
+                      <div className="text-sm text-muted-foreground">
+                        Real Projects
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        <section
+          ref={categoriesRef}
+          className="categories-section py-20 bg-card/30"
+        >
+          <div className="container mx-auto px-4">
+            <div className="max-w-6xl mx-auto">
+              {/* Category Toggle Buttons */}
+              <div className="flex justify-center mb-8">
+                <div className="flex bg-muted rounded-full p-1">
+                  <button
+                    onClick={() => setSelectedCategory("backend")}
+                    className={`px-8 py-3 rounded-full font-semibold transition-all duration-300 ${
+                      selectedCategory === "backend"
+                        ? "bg-blue-600 text-white shadow-lg"
+                        : "text-muted-foreground hover:text-foreground"
+                    }`}
+                  >
+                    Backend
+                  </button>
+                  <button
+                    onClick={() => setSelectedCategory("frontend")}
+                    className={`px-8 py-3 rounded-full font-semibold transition-all duration-300 ${
+                      selectedCategory === "frontend"
+                        ? "bg-blue-600 text-white shadow-lg"
+                        : "text-muted-foreground hover:text-foreground"
+                    }`}
+                  >
+                    Frontend
+                  </button>
+                </div>
+              </div>
+
+              {/* Tab Navigation */}
+              <div className="flex justify-center mb-12">
+                <div className="flex gap-8">
+                  <button
+                    onClick={() => setSelectedTab("programs")}
+                    className={`pb-2 font-semibold transition-all duration-300 ${
+                      selectedTab === "programs"
+                        ? "text-foreground border-b-2 border-blue-600"
+                        : "text-muted-foreground hover:text-foreground"
+                    }`}
+                  >
+                    Programs
+                  </button>
+                  <button
+                    onClick={() => setSelectedTab("competitions")}
+                    className={`pb-2 font-semibold transition-all duration-300 ${
+                      selectedTab === "competitions"
+                        ? "text-foreground border-b-2 border-blue-600"
+                        : "text-muted-foreground hover:text-foreground"
+                    }`}
+                  >
+                    Competitions
+                  </button>
+                </div>
+              </div>
+
+              {/* Category Header */}
+              <div className="text-center mb-8">
+                <div className="inline-block bg-blue-600 text-white px-8 py-3 rounded-full text-lg font-semibold mb-4">
+                  {selectedCategory === "backend"
+                    ? "Backend Development"
+                    : "Frontend Development"}
+                </div>
+              </div>
+
+              {/* Course Cards */}
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {(selectedCategory === "backend"
+                  ? backendLanguages
+                  : frontendLanguages
+                ).map((lang, index) => (
+                  <Card
+                    key={lang.name}
+                    className="category-card hover:shadow-lg transition-all duration-300 group bg-white dark:bg-card border border-border/50"
+                  >
+                    <CardHeader className="text-center pb-4">
+                      <div className="w-16 h-16 mx-auto mb-4 bg-muted rounded-lg flex items-center justify-center text-2xl group-hover:scale-110 transition-transform duration-300">
+                        {lang.icon}
+                      </div>
+                      <CardTitle className="text-lg font-semibold text-foreground">
+                        {lang.name}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent className="pt-0">
+                      <CardDescription className="text-center text-sm text-muted-foreground leading-relaxed mb-4">
+                        {lang.description}
+                      </CardDescription>
+                      <Button
+                        className="w-full bg-blue-600 hover:bg-blue-700 text-white transition-colors duration-300"
+                        size="sm"
+                      >
+                        Start {lang.name} Course
+                      </Button>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
             </div>
           </div>

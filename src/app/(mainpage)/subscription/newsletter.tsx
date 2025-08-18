@@ -58,7 +58,7 @@ const NewsletterSection = () => {
         trigger: section,
         start: "top 50%",
         end: "bottom 20%",
-        markers: true,
+        markers: false,
         once: true, // Animation happens only once
       }
     })

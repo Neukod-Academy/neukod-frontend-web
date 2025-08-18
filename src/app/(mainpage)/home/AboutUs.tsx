@@ -23,10 +23,6 @@ const AboutUs = () => {
             tagName: "p", // Ensure this matches the tag structure you want
             
         });
-
-        // Verify that the lines have been split
-        console.log("Split lines:", split.lines);
-
         // GSAP animation targeting the split lines
         gsap.from(".anim", { // Use the correct tag
             yPercent: 50,

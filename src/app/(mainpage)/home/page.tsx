@@ -18,7 +18,7 @@ export default function Home() {
       <CourseCategory />
       <SlidePage />
       {/* <Courses /> */}
-      <AboutUs />
+      {/* <AboutUs /> */}
       <NewsletterSection />
       {/* <ContactUs /> */}
       {/* <TrustedBy /> */}

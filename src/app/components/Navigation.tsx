@@ -66,23 +66,23 @@ const courseCategories = [
 
 const classes = [
   {
-    title: "Beginner Class",
+    title: "About Neukod Class",
     href: "/class",
     description: "Perfect for those starting their coding journey",
   },
   {
-    title: "Intermediate Class",
-    href: "/class",
+    title: "Backend Class",
+    href: "/class/backend",
     description: "Build upon your existing knowledge",
   },
   {
-    title: "Advanced Class",
-    href: "/class",
+    title: "Frontend Class",
+    href: "/class/frontend",
     description: "Master complex programming concepts",
   },
   {
-    title: "Professional Class",
-    href: "/class",
+    title: "Game Development",
+    href: "/",
     description: "Industry-level skills and practices",
   },
 ];
