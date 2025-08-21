@@ -7,6 +7,7 @@ import WelcomeText from "./WelcomeText";
 import FeaturesSection from "./FeatureSection";
 import SlidePage from "./SlidePage";
 import NewsletterSection from "../subscription/newsletter";
+import PricingSection from "../pricing/page.tsx";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
       <SlidePage />
       {/* <Courses /> */}
       {/* <AboutUs /> */}
+      <PricingSection />
       <NewsletterSection />
       {/* <ContactUs /> */}
       {/* <TrustedBy /> */}

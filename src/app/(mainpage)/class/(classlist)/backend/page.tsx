@@ -121,7 +121,7 @@ export default function BackendCoursePage() {
             trigger: ".frontend-categories-section",
             start: "top 80%",
             end: "bottom 20%",
-            toggleActions: "play none none reverse",
+            toggleActions: "play none none none",
             once: true,
           },
         }
@@ -130,6 +130,7 @@ export default function BackendCoursePage() {
 
     return () => ctx.revert();
   }, []);
+
   const handleScrollDown = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     const targetSection = document.querySelector("#backend-categories");
@@ -174,37 +175,6 @@ export default function BackendCoursePage() {
     },
   ];
 
-  //   const frontendLanguages = [
-  //     {
-  //       name: "HTML",
-  //       description: "The foundation of web development, structuring content and creating semantic markup.",
-  //       icon: "🏗️",
-  //       color: "bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300",
-  //       level: "Beginner",
-  //     },
-  //     {
-  //       name: "CSS",
-  //       description: "Style and design web pages with modern layouts, animations, and responsive design.",
-  //       icon: "🎨",
-  //       color: "bg-pink-100 text-pink-800 dark:bg-pink-900/30 dark:text-pink-300",
-  //       level: "Beginner",
-  //     },
-  //     {
-  //       name: "JavaScript",
-  //       description: "Dynamic programming language that brings interactivity and functionality to web pages.",
-  //       icon: "⚡",
-  //       color: "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300",
-  //       level: "Intermediate",
-  //     },
-  //     {
-  //       name: "React JS",
-  //       description: "Popular library for building user interfaces with component-based architecture.",
-  //       icon: "⚛️",
-  //       color: "bg-cyan-100 text-cyan-800 dark:bg-cyan-900/30 dark:text-cyan-300",
-  //       level: "Intermediate",
-  //     },
-  //   ]
-
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
@@ -230,7 +200,11 @@ export default function BackendCoursePage() {
               skills that power the modern web.
             </p>
             <Link href="#backend-categories">
-              <Button onClick={handleScrollDown} size="lg" className="bg-blue-600 text-lg px-8 py-6">
+              <Button
+                onClick={handleScrollDown}
+                size="lg"
+                className="bg-blue-600 text-lg px-8 py-6"
+              >
                 Start Your Journey
               </Button>
             </Link>
@@ -375,12 +349,16 @@ export default function BackendCoursePage() {
                   key={lang.name}
                   className="backend-category-card hover:shadow-lg transition-all duration-300 group"
                 >
-                  <CardHeader className="text-center">
+                  <CardHeader className="text-center items-center">
                     <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
                       {lang.icon}
                     </div>
                     <CardTitle className="text-2xl mb-2">{lang.name}</CardTitle>
-                    <Badge variant="secondary" className={lang.color}>
+
+                    <Badge
+                      variant="secondary"
+                      className={`${lang.color} w-fit text-center`}
+                    >
                       {lang.level}
                     </Badge>
                   </CardHeader>
