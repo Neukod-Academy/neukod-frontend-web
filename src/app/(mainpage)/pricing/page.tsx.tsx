@@ -62,7 +62,7 @@ const PricingSection = () => {
       ],
       buttonText: "Talk to Sales",
       buttonClass:
-        "bg-secondary shadow-[0px_1px_1px_-0.5px_rgba(16,24,40,0.20)] outline outline-1 outline-[#1e29391f] outline-offset-[-0.5px] text-gray-800 text-shadow-[0px_1px_1px_rgba(16,24,40,0.08)] hover:bg-blue-300",
+        "bg-secondary shadow-[0px_1px_1px_-0.5px_rgba(16,24,40,0.20)] outline outline-1 outline-[#1e29391f] outline-offset-[-0.5px] text-gray-800 text-shadow-[0px_1px_1px_rgba(16,24,40,0.08)] hover:bg-red-300",
       hotDeal: true,
     },
   ];
@@ -200,9 +200,7 @@ const PricingSection = () => {
               <div className="self-stretch flex flex-col justify-start items-start gap-8">
                 <div
                   className={`w-full h-5 text-sm font-medium leading-tight ${
-                    plan.popular
-                      ? "text-primary-foreground"
-                      : plan.hotDeal
+                    plan.popular || plan.hotDeal
                       ? "text-primary-foreground"
                       : "text-zinc-500"
                   }`}
@@ -227,8 +225,8 @@ const PricingSection = () => {
                   <div className="flex justify-start items-center gap-1.5">
                     <div
                       className={`relative h-10 flex items-center text-3xl font-medium leading-10 ${
-                        plan.popular
-                          ? "text-primary-foreground"
+                        plan.popular || plan.hotDeal
+                          ? "text-white"
                           : "text-zinc-500"
                       }`}
                     >
@@ -260,8 +258,8 @@ const PricingSection = () => {
                     </div>
                     <div
                       className={`text-center text-sm font-medium leading-tight ${
-                        plan.popular
-                          ? "text-primary-foreground/70"
+                        plan.popular || plan.hotDeal
+                          ? "text-white"
                           : "text-zinc-400"
                       }`}
                     >
@@ -270,8 +268,8 @@ const PricingSection = () => {
                   </div>
                   <div
                     className={`self-stretch text-sm font-medium leading-tight ${
-                      plan.popular
-                        ? "text-primary-foreground/70"
+                      plan.popular || plan.hotDeal
+                        ? "text-white"
                         : "text-zinc-400"
                     }`}
                   >
@@ -287,7 +285,7 @@ const PricingSection = () => {
                     className={`text-center text-sm font-medium leading-tight ${
                       plan.name === "Free"
                         ? "text-gray-800"
-                        : plan.name === "Pro"
+                        : plan.name === "Pro" || plan.name === "Ultra"
                         ? "text-primary"
                         : "text-zinc-950"
                     }`}
@@ -300,7 +298,7 @@ const PricingSection = () => {
             <div className="self-stretch flex flex-col justify-start items-start gap-4">
               <div
                 className={`self-stretch text-sm font-medium leading-tight ${
-                  plan.popular
+                  plan.popular || plan.hotDeal
                     ? "text-primary-foreground/70"
                     : "text-muted-foreground"
                 }`}
@@ -318,7 +316,7 @@ const PricingSection = () => {
                     <div className="w-4 h-4 flex items-center justify-center">
                       <Check
                         className={`w-full h-full ${
-                          plan.popular
+                          plan.popular || plan.hotDeal
                             ? "text-primary-foreground"
                             : "text-muted-foreground"
                         }`}
@@ -327,7 +325,7 @@ const PricingSection = () => {
                     </div>
                     <div
                       className={`leading-tight font-normal text-sm text-left ${
-                        plan.popular
+                        plan.popular || plan.hotDeal
                           ? "text-primary-foreground"
                           : "text-muted-foreground"
                       }`}

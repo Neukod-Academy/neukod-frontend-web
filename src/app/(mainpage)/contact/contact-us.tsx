@@ -29,12 +29,12 @@ const ContactPage = () => {
 
   return (
     <main className="relative">
-      <div className="relative h-[50vh] w-full overflow-hidden items-center justify-center">
+      <div className="relative  h-[40vh] lg:h-[40vh] w-full overflow-hidden items-center justify-center">
         <Image
           alt="Concact Banner"
           fill
           src={ContactUsBg}
-          className="w-full object-cover relative"
+          className="w-full object-cover"
         />
         <div className="z-50 h-full relative px-5 md:px-20 justify-center top-1/3">
           <h1 className="text-4xl md:text-6xl font-bold mb-2">Contact</h1>

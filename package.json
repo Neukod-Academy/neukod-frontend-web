@@ -33,6 +33,7 @@
     "lenis": "^1.1.14",
     "lucide-react": "^0.454.0",
     "next": "15.0.1",
+    "next-auth": "^4.24.11",
     "react": "^18",
     "react-dom": "^18",
     "react-phone-number-input": "^3.4.11",
