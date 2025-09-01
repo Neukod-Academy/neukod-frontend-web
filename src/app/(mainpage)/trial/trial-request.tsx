@@ -95,11 +95,11 @@ export function TrialRequestModal({ isOpen, onClose }: TrialRequestModalProps) {
           phone: formData.phone,
           country: formData.country,
         },
-        courses: formData.courses,
+        course: formData.courses,
         duration: Number.parseInt(formData.duration),
       }
 
-      const response = await fetch("http://10.8.58.35:5039/trials", {
+      const response = await fetch("http://127.0.0.1:4000/trials", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
