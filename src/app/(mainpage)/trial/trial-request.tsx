@@ -12,6 +12,9 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Checkbox } from "@/components/ui/checkbox"
 import { useToast } from "@/hooks/use-toast"
 import { Clock, User, BookOpen } from "lucide-react"
+import { PhoneInput } from "@/components/ui/phone-input"
+import type { E164Number } from "libphonenumber-js/core"
+import SuccessDialog from "./submit-dialog"
 
 interface TrialRequestModalProps {
   isOpen: boolean
@@ -31,30 +34,21 @@ export function TrialRequestModal({ isOpen, onClose }: TrialRequestModalProps) {
   })
 
   const courses = [
-    "Mathematics",
-    "Science",
-    "Language Arts",
-    "Programming",
-    "Art & Design",
-    "Music",
-    "History",
-    "Geography",
+    "Backend Development",
+    "Frontend Development",
+    "Fullstack Development",
+    "Game Development",
   ]
 
-  const countries = [
-    "United States",
-    "Canada",
-    "United Kingdom",
-    "Australia",
-    "Germany",
-    "France",
-    "Spain",
-    "Italy",
-    "Netherlands",
-    "Sweden",
-    "Other",
-  ]
+const countryList = require('country-list');
+const countries = countryList.getNames();
 
+const handlePhoneChange = (value: E164Number | undefined) => {
+    setFormData((prev) => ({
+      ...prev,
+      phone: value ? String(value) : "",
+    }))
+  }
   const handleCourseChange = (course: string, checked: boolean) => {
     setFormData((prev) => ({
       ...prev,
@@ -103,8 +97,6 @@ export function TrialRequestModal({ isOpen, onClose }: TrialRequestModalProps) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          // Add any required API keys or authentication headers here
-          // "Authorization": "Bearer YOUR_API_KEY",
         },
         body: JSON.stringify(requestData),
       })
@@ -159,12 +151,12 @@ export function TrialRequestModal({ isOpen, onClose }: TrialRequestModalProps) {
 
             <div className="grid md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="parentName">Full Name *</Label>
+                <Label htmlFor="parentName">Parent Name *</Label>
                 <Input
                   id="parentName"
                   value={formData.parentName}
                   onChange={(e) => setFormData((prev) => ({ ...prev, parentName: e.target.value }))}
-                  placeholder="Enter your full name"
+                  placeholder="Enter your parent name"
                   required
                 />
               </div>
@@ -185,27 +177,32 @@ export function TrialRequestModal({ isOpen, onClose }: TrialRequestModalProps) {
             <div className="grid md:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="phone">Phone Number *</Label>
-                <Input
-                  id="phone"
-                  type="tel"
-                  value={formData.phone}
-                  onChange={(e) => setFormData((prev) => ({ ...prev, phone: e.target.value }))}
-                  placeholder="Enter your phone number"
+                 <PhoneInput
+                  international
+                  countryCallingCodeEditable={false}
+                  value={formData.phone as E164Number | undefined}
+                  onChange={handlePhoneChange}
+                  addInternationalOption={true}
+                  formNoValidate
+                  placeholder="+1 (555) 000-0000"
+                  className="bg-background/50 border-accent/20 focus:border-accent/50 transition-colors"
                   required
                 />
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="country">Country *</Label>
+
                 <Select
                   value={formData.country}
                   onValueChange={(value) => setFormData((prev) => ({ ...prev, country: value }))}
+                  required
                 >
                   <SelectTrigger>
                     <SelectValue placeholder="Select your country" />
                   </SelectTrigger>
                   <SelectContent>
-                    {countries.map((country) => (
+                    {countries.map((country: string) => (
                       <SelectItem key={country} value={country}>
                         {country}
                       </SelectItem>
