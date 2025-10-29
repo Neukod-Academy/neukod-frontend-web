@@ -1,45 +1,47 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { Checkbox } from "@/components/ui/checkbox"
-import { useToast } from "@/hooks/use-toast"
-import { Clock, User, BookOpen } from "lucide-react"
+import { useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Checkbox } from "@/components/ui/checkbox";
+import { useToast } from "@/hooks/use-toast";
+import { Clock, User, BookOpen } from "lucide-react";
 
 interface TrialRequestModalProps {
-  isOpen: boolean
-  onClose: () => void
+  isOpen: boolean;
+  onClose: () => void;
 }
 
 export function TrialRequestModal({ isOpen, onClose }: TrialRequestModalProps) {
-  const { toast } = useToast()
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     parentName: "",
     email: "",
     phone: "",
     country: "",
-    courses: [] as string[],
+    courses: "",
     duration: "",
-  })
+  });
 
-  const courses = [
-    "Mathematics",
-    "Science",
-    "Language Arts",
-    "Programming",
-    "Art & Design",
-    "Music",
-    "History",
-    "Geography",
-  ]
+  const courses = ["Backend", "Frontend"];
 
   const countries = [
     "United States",
@@ -53,17 +55,19 @@ export function TrialRequestModal({ isOpen, onClose }: TrialRequestModalProps) {
     "Netherlands",
     "Sweden",
     "Other",
-  ]
+  ];
 
   const handleCourseChange = (course: string, checked: boolean) => {
     setFormData((prev) => ({
       ...prev,
-      courses: checked ? [...prev.courses, course] : prev.courses.filter((c) => c !== course),
-    }))
-  }
+      courses: checked
+        ? [...prev.courses, course]
+        : prev.courses.filter((c) => c !== course),
+    }));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
 
     // Basic validation
     if (
@@ -78,14 +82,14 @@ export function TrialRequestModal({ isOpen, onClose }: TrialRequestModalProps) {
         title: "Please fill in all fields",
         description: "All fields are required to book your trial class.",
         variant: "destructive",
-      })
-      return
+      });
+      return;
     }
 
-    setIsSubmitting(true)
+    setIsSubmitting(true);
 
     try {
-      const appointmentDate = new Date().toISOString()
+      const appointmentDate = new Date().toISOString();
 
       const requestData = {
         appointment: appointmentDate,
@@ -97,7 +101,7 @@ export function TrialRequestModal({ isOpen, onClose }: TrialRequestModalProps) {
         },
         course: formData.courses,
         duration: Number.parseInt(formData.duration),
-      }
+      };
 
       const response = await fetch("http://127.0.0.1:4000/trials", {
         method: "POST",
@@ -107,18 +111,19 @@ export function TrialRequestModal({ isOpen, onClose }: TrialRequestModalProps) {
           // "Authorization": "Bearer YOUR_API_KEY",
         },
         body: JSON.stringify(requestData),
-      })
+      });
 
-      const result = await response.json()
+      const result = await response.json();
 
       if (!response.ok) {
-        throw new Error(result.error || "Failed to submit trial request")
+        throw new Error(result.error || "Failed to submit trial request");
       }
 
       toast({
         title: "Trial Request Submitted!",
-        description: "We'll contact you within 24 hours to schedule your free trial class.",
-      })
+        description:
+          "We'll contact you within 24 hours to schedule your free trial class.",
+      });
 
       // Reset form and close modal
       setFormData({
@@ -128,25 +133,28 @@ export function TrialRequestModal({ isOpen, onClose }: TrialRequestModalProps) {
         country: "",
         courses: [],
         duration: "",
-      })
-      onClose()
+      });
+      onClose();
     } catch (error) {
-      console.error("Error submitting trial request:", error)
+      console.error("Error submitting trial request:", error);
       toast({
         title: "Submission Failed",
-        description: error instanceof Error ? error.message : "Please try again later.",
+        description:
+          error instanceof Error ? error.message : "Please try again later.",
         variant: "destructive",
-      })
+      });
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto p-5">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-bold text-center">Book Your Free Trial Class</DialogTitle>
+          <DialogTitle className="text-2xl font-bold text-center text-blue-800">
+            Book Your Free Trial Class
+          </DialogTitle>
         </DialogHeader>
 
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -159,11 +167,16 @@ export function TrialRequestModal({ isOpen, onClose }: TrialRequestModalProps) {
 
             <div className="grid md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="parentName">Full Name *</Label>
+                <Label htmlFor="parentName">Parent Name *</Label>
                 <Input
                   id="parentName"
                   value={formData.parentName}
-                  onChange={(e) => setFormData((prev) => ({ ...prev, parentName: e.target.value }))}
+                  onChange={(e) =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      parentName: e.target.value,
+                    }))
+                  }
                   placeholder="Enter your full name"
                   required
                 />
@@ -175,7 +188,9 @@ export function TrialRequestModal({ isOpen, onClose }: TrialRequestModalProps) {
                   id="email"
                   type="email"
                   value={formData.email}
-                  onChange={(e) => setFormData((prev) => ({ ...prev, email: e.target.value }))}
+                  onChange={(e) =>
+                    setFormData((prev) => ({ ...prev, email: e.target.value }))
+                  }
                   placeholder="Enter your email"
                   required
                 />
@@ -189,7 +204,9 @@ export function TrialRequestModal({ isOpen, onClose }: TrialRequestModalProps) {
                   id="phone"
                   type="tel"
                   value={formData.phone}
-                  onChange={(e) => setFormData((prev) => ({ ...prev, phone: e.target.value }))}
+                  onChange={(e) =>
+                    setFormData((prev) => ({ ...prev, phone: e.target.value }))
+                  }
                   placeholder="Enter your phone number"
                   required
                 />
@@ -199,7 +216,9 @@ export function TrialRequestModal({ isOpen, onClose }: TrialRequestModalProps) {
                 <Label htmlFor="country">Country *</Label>
                 <Select
                   value={formData.country}
-                  onValueChange={(value) => setFormData((prev) => ({ ...prev, country: value }))}
+                  onValueChange={(value) =>
+                    setFormData((prev) => ({ ...prev, country: value }))
+                  }
                 >
                   <SelectTrigger>
                     <SelectValue placeholder="Select your country" />
@@ -226,7 +245,7 @@ export function TrialRequestModal({ isOpen, onClose }: TrialRequestModalProps) {
               Select all courses you'd like to try (you can choose multiple)
             </p>
 
-            <div className="grid md:grid-cols-2 gap-3">
+            {/* <div className="grid md:grid-cols-2 gap-3">
               {courses.map((course) => (
                 <div key={course} className="flex items-center space-x-2">
                   <Checkbox
@@ -239,7 +258,22 @@ export function TrialRequestModal({ isOpen, onClose }: TrialRequestModalProps) {
                   </Label>
                 </div>
               ))}
-            </div>
+            </div> */}
+            {courses.map((course) => (
+              <div key={course} className="flex items-center space-x-2">
+                <RadioGroup 
+                  value={formData.courses}
+                  onValueChange={(value) =>{
+                    setFormData((prev) => ({ ...prev, courses: value}))
+                  }}
+                  >
+                    <RadioGroupItem value={course} id={course} />
+                  <Label htmlFor={course} className="text-sm font-normal">
+                    {course}
+                  </Label>
+                </RadioGroup>
+              </div>
+            ))}
           </div>
 
           {/* Duration Selection */}
@@ -251,14 +285,18 @@ export function TrialRequestModal({ isOpen, onClose }: TrialRequestModalProps) {
 
             <RadioGroup
               value={formData.duration}
-              onValueChange={(value) => setFormData((prev) => ({ ...prev, duration: value }))}
+              onValueChange={(value) =>
+                setFormData((prev) => ({ ...prev, duration: value }))
+              }
               className="grid md:grid-cols-2 gap-4"
             >
               <div className="flex items-center space-x-2 p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <RadioGroupItem value="30" id="30min" />
                 <Label htmlFor="30min" className="flex-1 cursor-pointer">
                   <div className="font-medium">30 Minutes</div>
-                  <div className="text-sm text-muted-foreground">Perfect for a quick introduction</div>
+                  <div className="text-sm text-muted-foreground">
+                    Perfect for a quick introduction
+                  </div>
                 </Label>
               </div>
 
@@ -266,7 +304,9 @@ export function TrialRequestModal({ isOpen, onClose }: TrialRequestModalProps) {
                 <RadioGroupItem value="60" id="60min" />
                 <Label htmlFor="60min" className="flex-1 cursor-pointer">
                   <div className="font-medium">60 Minutes</div>
-                  <div className="text-sm text-muted-foreground">Full experience with hands-on activities</div>
+                  <div className="text-sm text-muted-foreground">
+                    Full experience with hands-on activities
+                  </div>
                 </Label>
               </div>
             </RadioGroup>
@@ -285,7 +325,7 @@ export function TrialRequestModal({ isOpen, onClose }: TrialRequestModalProps) {
             </Button>
             <Button
               type="submit"
-              className="flex-1 hover:bg-accent hover:text-accent-foreground transition-colors"
+              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl duration-200 transform hover:scale-105 flex-1 hover:bg-accent hover:text-accent-foreground transition-colors"
               disabled={isSubmitting}
             >
               {isSubmitting ? "Submitting..." : "Submit Request"}
@@ -294,5 +334,5 @@ export function TrialRequestModal({ isOpen, onClose }: TrialRequestModalProps) {
         </form>
       </DialogContent>
     </Dialog>
-  )
+  );
 }

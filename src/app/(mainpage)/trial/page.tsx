@@ -96,7 +96,7 @@ export default function TrialPage() {
       {/* Hero Section */}
       <section className="relative py-20 px-4 text-center bg-gradient-to-b from-card to-background">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-6xl font-bold text-balance mb-6">
+          <h1 className="text-4xl md:text-6xl font-bold text-balance mb-6 text-blue-800">
             Experience Learning Like Never Before!
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground text-balance mb-8 max-w-3xl mx-auto">
@@ -105,7 +105,7 @@ export default function TrialPage() {
           </p>
           <Button
             size="lg"
-            className="text-lg px-8 py-6 hover:bg-accent hover:text-accent-foreground transition-colors"
+            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105"
             onClick={() => setIsModalOpen(true)}
           >
             Start Your Free Trial
@@ -117,7 +117,7 @@ export default function TrialPage() {
       {/* Benefits Section */}
       <section className="py-16 px-4">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-balance">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-balance text-blue-800">
             Why Try Our Classes?
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -134,7 +134,7 @@ export default function TrialPage() {
       {/* Courses Section */}
       <section className="py-16 px-4 bg-card">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-balance">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-balance text-blue-800">
             Available Trial Courses
           </h2>
           <p className="text-xl text-center text-muted-foreground mb-12 text-balance">
@@ -171,7 +171,7 @@ export default function TrialPage() {
       {/* Testimonials Section */}
       <section className="py-16 px-4">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-balance">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-balance text-blue-800">
             What Parents Are Saying
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
@@ -205,7 +205,7 @@ export default function TrialPage() {
       {/* CTA Section */}
       <section className="py-20 px-4 bg-card text-center">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-balance">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-balance text-blue-800">
             Ready to Get Started?
           </h2>
           <p className="text-xl text-muted-foreground mb-8 text-balance">
@@ -214,7 +214,7 @@ export default function TrialPage() {
           </p>
           <Button
             size="lg"
-            className="text-lg px-8 py-6 hover:bg-accent hover:text-accent-foreground transition-colors"
+            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105"
             onClick={() => setIsModalOpen(true)}
           >
             Book Your Free Trial Now
