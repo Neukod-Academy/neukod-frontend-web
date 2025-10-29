@@ -2,6 +2,7 @@
 
 import type React from "react";
 
+<<<<<<< HEAD
 import { useState } from "react";
 import {
   Dialog,
@@ -23,6 +24,21 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
 import { Clock, User, BookOpen } from "lucide-react";
+=======
+import { useState } from "react"
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { Checkbox } from "@/components/ui/checkbox"
+import { useToast } from "@/hooks/use-toast"
+import { Clock, User, BookOpen } from "lucide-react"
+import { PhoneInput } from "@/components/ui/phone-input"
+import type { E164Number } from "libphonenumber-js/core"
+import SuccessDialog from "./submit-dialog"
+>>>>>>> refs/remotes/origin/dev
 
 interface TrialRequestModalProps {
   isOpen: boolean;
@@ -41,6 +57,7 @@ export function TrialRequestModal({ isOpen, onClose }: TrialRequestModalProps) {
     duration: "",
   });
 
+<<<<<<< HEAD
   const courses = ["Backend", "Frontend"];
 
   const countries = [
@@ -56,7 +73,24 @@ export function TrialRequestModal({ isOpen, onClose }: TrialRequestModalProps) {
     "Sweden",
     "Other",
   ];
+=======
+  const courses = [
+    "Backend Development",
+    "Frontend Development",
+    "Fullstack Development",
+    "Game Development",
+  ]
 
+const countryList = require('country-list');
+const countries = countryList.getNames();
+>>>>>>> refs/remotes/origin/dev
+
+const handlePhoneChange = (value: E164Number | undefined) => {
+    setFormData((prev) => ({
+      ...prev,
+      phone: value ? String(value) : "",
+    }))
+  }
   const handleCourseChange = (course: string, checked: boolean) => {
     setFormData((prev) => ({
       ...prev,
@@ -107,8 +141,6 @@ export function TrialRequestModal({ isOpen, onClose }: TrialRequestModalProps) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          // Add any required API keys or authentication headers here
-          // "Authorization": "Bearer YOUR_API_KEY",
         },
         body: JSON.stringify(requestData),
       });
@@ -171,6 +203,7 @@ export function TrialRequestModal({ isOpen, onClose }: TrialRequestModalProps) {
                 <Input
                   id="parentName"
                   value={formData.parentName}
+<<<<<<< HEAD
                   onChange={(e) =>
                     setFormData((prev) => ({
                       ...prev,
@@ -178,6 +211,10 @@ export function TrialRequestModal({ isOpen, onClose }: TrialRequestModalProps) {
                     }))
                   }
                   placeholder="Enter your full name"
+=======
+                  onChange={(e) => setFormData((prev) => ({ ...prev, parentName: e.target.value }))}
+                  placeholder="Enter your parent name"
+>>>>>>> refs/remotes/origin/dev
                   required
                 />
               </div>
@@ -200,6 +237,7 @@ export function TrialRequestModal({ isOpen, onClose }: TrialRequestModalProps) {
             <div className="grid md:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="phone">Phone Number *</Label>
+<<<<<<< HEAD
                 <Input
                   id="phone"
                   type="tel"
@@ -208,23 +246,40 @@ export function TrialRequestModal({ isOpen, onClose }: TrialRequestModalProps) {
                     setFormData((prev) => ({ ...prev, phone: e.target.value }))
                   }
                   placeholder="Enter your phone number"
+=======
+                 <PhoneInput
+                  international
+                  countryCallingCodeEditable={false}
+                  value={formData.phone as E164Number | undefined}
+                  onChange={handlePhoneChange}
+                  addInternationalOption={true}
+                  formNoValidate
+                  placeholder="+1 (555) 000-0000"
+                  className="bg-background/50 border-accent/20 focus:border-accent/50 transition-colors"
+>>>>>>> refs/remotes/origin/dev
                   required
                 />
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="country">Country *</Label>
+
                 <Select
                   value={formData.country}
+<<<<<<< HEAD
                   onValueChange={(value) =>
                     setFormData((prev) => ({ ...prev, country: value }))
                   }
+=======
+                  onValueChange={(value) => setFormData((prev) => ({ ...prev, country: value }))}
+                  required
+>>>>>>> refs/remotes/origin/dev
                 >
                   <SelectTrigger>
                     <SelectValue placeholder="Select your country" />
                   </SelectTrigger>
                   <SelectContent>
-                    {countries.map((country) => (
+                    {countries.map((country: string) => (
                       <SelectItem key={country} value={country}>
                         {country}
                       </SelectItem>

@@ -222,11 +222,12 @@ export default function TrialPage() {
           </Button>
         </div>
       </section>
-
+{ isModalOpen &&
       <TrialRequestModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
       />
+    }
     </div>
   );
 }
