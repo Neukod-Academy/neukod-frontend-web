@@ -2,29 +2,6 @@
 
 import type React from "react";
 
-<<<<<<< HEAD
-import { useState } from "react";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Checkbox } from "@/components/ui/checkbox";
-import { useToast } from "@/hooks/use-toast";
-import { Clock, User, BookOpen } from "lucide-react";
-=======
 import { useState } from "react"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
@@ -38,7 +15,6 @@ import { Clock, User, BookOpen } from "lucide-react"
 import { PhoneInput } from "@/components/ui/phone-input"
 import type { E164Number } from "libphonenumber-js/core"
 import SuccessDialog from "./submit-dialog"
->>>>>>> refs/remotes/origin/dev
 
 interface TrialRequestModalProps {
   isOpen: boolean;
@@ -57,23 +33,6 @@ export function TrialRequestModal({ isOpen, onClose }: TrialRequestModalProps) {
     duration: "",
   });
 
-<<<<<<< HEAD
-  const courses = ["Backend", "Frontend"];
-
-  const countries = [
-    "United States",
-    "Canada",
-    "United Kingdom",
-    "Australia",
-    "Germany",
-    "France",
-    "Spain",
-    "Italy",
-    "Netherlands",
-    "Sweden",
-    "Other",
-  ];
-=======
   const courses = [
     "Backend Development",
     "Frontend Development",
@@ -83,7 +42,6 @@ export function TrialRequestModal({ isOpen, onClose }: TrialRequestModalProps) {
 
 const countryList = require('country-list');
 const countries = countryList.getNames();
->>>>>>> refs/remotes/origin/dev
 
 const handlePhoneChange = (value: E164Number | undefined) => {
     setFormData((prev) => ({
@@ -91,14 +49,14 @@ const handlePhoneChange = (value: E164Number | undefined) => {
       phone: value ? String(value) : "",
     }))
   }
-  const handleCourseChange = (course: string, checked: boolean) => {
-    setFormData((prev) => ({
-      ...prev,
-      courses: checked
-        ? [...prev.courses, course]
-        : prev.courses.filter((c) => c !== course),
-    }));
-  };
+  // const handleCourseChange = (course: string, checked: boolean) => {
+  //   setFormData((prev) => ({
+  //     ...prev,
+  //     courses: checked
+  //       ? [...prev.courses, course]
+  //       : prev.courses.filter((c) => c !== course),
+  //   }));
+  // };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -163,7 +121,7 @@ const handlePhoneChange = (value: E164Number | undefined) => {
         email: "",
         phone: "",
         country: "",
-        courses: [],
+        courses: "",
         duration: "",
       });
       onClose();
@@ -203,18 +161,8 @@ const handlePhoneChange = (value: E164Number | undefined) => {
                 <Input
                   id="parentName"
                   value={formData.parentName}
-<<<<<<< HEAD
-                  onChange={(e) =>
-                    setFormData((prev) => ({
-                      ...prev,
-                      parentName: e.target.value,
-                    }))
-                  }
-                  placeholder="Enter your full name"
-=======
                   onChange={(e) => setFormData((prev) => ({ ...prev, parentName: e.target.value }))}
                   placeholder="Enter your parent name"
->>>>>>> refs/remotes/origin/dev
                   required
                 />
               </div>
@@ -237,16 +185,6 @@ const handlePhoneChange = (value: E164Number | undefined) => {
             <div className="grid md:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="phone">Phone Number *</Label>
-<<<<<<< HEAD
-                <Input
-                  id="phone"
-                  type="tel"
-                  value={formData.phone}
-                  onChange={(e) =>
-                    setFormData((prev) => ({ ...prev, phone: e.target.value }))
-                  }
-                  placeholder="Enter your phone number"
-=======
                  <PhoneInput
                   international
                   countryCallingCodeEditable={false}
@@ -256,7 +194,6 @@ const handlePhoneChange = (value: E164Number | undefined) => {
                   formNoValidate
                   placeholder="+1 (555) 000-0000"
                   className="bg-background/50 border-accent/20 focus:border-accent/50 transition-colors"
->>>>>>> refs/remotes/origin/dev
                   required
                 />
               </div>
@@ -266,14 +203,8 @@ const handlePhoneChange = (value: E164Number | undefined) => {
 
                 <Select
                   value={formData.country}
-<<<<<<< HEAD
-                  onValueChange={(value) =>
-                    setFormData((prev) => ({ ...prev, country: value }))
-                  }
-=======
                   onValueChange={(value) => setFormData((prev) => ({ ...prev, country: value }))}
                   required
->>>>>>> refs/remotes/origin/dev
                 >
                   <SelectTrigger>
                     <SelectValue placeholder="Select your country" />

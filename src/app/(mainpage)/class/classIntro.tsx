@@ -178,7 +178,7 @@ export default function ClassroomPage() {
       description:
         "Fast, statically typed language perfect for microservices and cloud applications.",
       icon: "🚀",
-      color: "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300",
+      color: "bg-blue-100 text-blue-900 dark:bg-blue-900/30 dark:text-blue-300",
       level: "Intermediate",
     },
     {
@@ -284,7 +284,7 @@ export default function ClassroomPage() {
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 text-lg">
+                  <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 text-lg">
                     Join for free
                   </Button>
                   <Button
@@ -351,7 +351,7 @@ export default function ClassroomPage() {
 
                 <div
                   ref={addToRefs}
-                  className="floating-element absolute bottom-10 -left-5 bg-orange-500 text-white rounded-lg shadow-lg p-4"
+                  className="floating-element absolute bottom-10 -left-5 bg-pink-500 text-white rounded-lg shadow-lg p-4"
                 >
                   <div className="flex items-center gap-2">
                     <div className="text-2xl">🎉</div>
@@ -391,7 +391,7 @@ export default function ClassroomPage() {
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold text-gray-900 mb-4">
                 All-In-One{" "}
-                <span className="text-orange-500">Cloud Software.</span>
+                <span className="text-blue-900">Cloud Software.</span>
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                 Neukod is one powerful online software suite that combines all
@@ -418,7 +418,7 @@ export default function ClassroomPage() {
 
               {/* Feature 2 */}
               <div className="text-center">
-                <div className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                <div className="w-16 h-16 bg-blue-900 rounded-full flex items-center justify-center mx-auto mb-6">
                   <Calendar className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">
@@ -452,7 +452,7 @@ export default function ClassroomPage() {
           <div className="container mx-auto px-6">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                What is <span className="text-orange-500">Neukod?</span>
+                What is <span className="text-blue-900">Neukod?</span>
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
                 Neukod is a platform that allows educators to create online
@@ -518,7 +518,7 @@ export default function ClassroomPage() {
                 <div className="relative z-10">
                   <h3 className="text-3xl font-bold text-gray-900 mb-6">
                     Everything you can do in a physical classroom,{" "}
-                    <span className="text-orange-500">
+                    <span className="text-blue-900">
                       you can do with Neukod
                     </span>
                   </h3>
@@ -535,7 +535,7 @@ export default function ClassroomPage() {
                 </div>
                 <Button
                   variant="link"
-                  className="text-orange-500 p-0 font-semibold"
+                  className="text-blue-900 p-0 font-semibold"
                 >
                   Learn more →
                 </Button>
@@ -709,7 +709,7 @@ export default function ClassroomPage() {
           <div className="container mx-auto px-6">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                Our <span className="text-orange-500">Features</span>
+                Our <span className="text-blue-900">Features</span>
               </h2>
               <p className="text-lg text-gray-600">
                 This very extraordinary feature, can make learning activities
@@ -736,7 +736,7 @@ export default function ClassroomPage() {
 
               <div>
                 <h3 className="text-3xl font-bold text-gray-900 mb-6">
-                  A <span className="text-orange-500">user interface</span>{" "}
+                  A <span className="text-blue-900">user interface</span>{" "}
                   designed
                   <br />
                   for the classroom
@@ -755,7 +755,7 @@ export default function ClassroomPage() {
 
                   <div className="flex items-start gap-4">
                     <div className="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                      <div className="w-4 h-4 bg-orange-500 rounded"></div>
+                      <div className="w-4 h-4 bg-blue-900 rounded"></div>
                     </div>
                     <p className="text-gray-600">
                       TA's and presenters can be moved to the front of the
@@ -780,7 +780,7 @@ export default function ClassroomPage() {
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div>
                 <h3 className="text-3xl font-bold text-gray-900 mb-6">
-                  <span className="text-orange-500">Tools</span> For Teachers
+                  <span className="text-blue-900">Tools</span> For Teachers
                   <br />
                   And Learners
                 </h3>
@@ -791,7 +791,7 @@ export default function ClassroomPage() {
                 </p>
                 <Button
                   variant="link"
-                  className="text-orange-500 p-0 font-semibold"
+                  className="text-blue-900 p-0 font-semibold"
                 >
                   See more features →
                 </Button>

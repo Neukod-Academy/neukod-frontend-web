@@ -19,7 +19,7 @@ import { useEffect, useRef, useState } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
 import { coursePage, type CoursePage } from "../../utils/constant";
-import CourseTextAnimation from "./courseComponent/courseText"
+import CourseTextAnimation from "./courseComponent/courseText";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -204,7 +204,7 @@ const CoursePage = () => {
         </div>
       </section>
 
-      <section id="course_category" className="container mx-auto px-4 py-8">
+      <section id="course_category" className="relative items-center justify-center mx-auto px-4 py-8">
         <motion.section
           className="mb-12 text-center"
           initial={{ opacity: 0, y: 30 }}
@@ -214,7 +214,9 @@ const CoursePage = () => {
           transition={{ duration: 2 }}
           viewport={{ once: true }}
         >
-          <h1 className="text-4xl font-bold mb-4">Welcome to Our Courses</h1>
+          <h1 className="text-4xl font-bold mb-4">
+            Welcome to <span className="text-blue-900">Our Courses</span>
+          </h1>
           <p className="text-xl text-muted-foreground">
             Discover a wide range of courses designed to enhance your skills and
             knowledge in various fields. From programming to design, we have
@@ -277,10 +279,23 @@ const CoursePage = () => {
               </motion.div>
             ))}
           </div>
+          <motion.div
+            className="relative text-center mx-auto pt-14"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+          >
+            <Button
+              size="lg"
+              className="hover:scale-105 transition-all duration-200 bg-redFlag hover:bg-redFlag/60"
+            >
+              Explore All Courses
+            </Button>
+          </motion.div>
         </motion.section>
 
         {/* All Courses Section */}
-        <motion.section
+        {/* <motion.section
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 2 }}
@@ -322,14 +337,9 @@ const CoursePage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
           >
-            <Button
-              size="lg"
-              className="hover:scale-105 transition-all duration-200 bg-redFlag hover:bg-redFlag/60"
-            >
-              Explore All Courses
-            </Button>
+            
           </motion.div>
-        </motion.section>
+        </motion.section> */}
       </section>
     </main>
   );

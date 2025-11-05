@@ -319,42 +319,6 @@ function MobileNavigation() {
   );
 }
 
-function TrialDialog() {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogTrigger asChild>
-        <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105">
-          Start Free Trial
-        </Button>
-      </DialogTrigger>
-      <DialogHeader>
-        <DialogTitle className="sr-only"></DialogTitle>
-      </DialogHeader>
-      <DialogContent className="sm:max-w-[500px]">
-        <div className="text-center space-y-4 p-6">
-          <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            Start Your Learning Journey
-          </h2>
-          <p className="text-muted-foreground">
-            Get access to all our courses and start learning today. No credit
-            card required.
-          </p>
-          <div className="space-y-3 pt-4">
-            <Button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
-              Sign Up with Email
-            </Button>
-            <Button variant="outline" className="w-full bg-transparent">
-              Continue with Google
-            </Button>
-          </div>
-        </div>
-      </DialogContent>
-    </Dialog>
-  );
-}
-
 export default function Navbar() {
   return (
     <nav className="sticky top-0 z-50 w-full border-b bg-white/80 backdrop-blur-md supports-[backdrop-filter]:bg-white/60">
@@ -377,10 +341,15 @@ export default function Navbar() {
 
           {/* Right side actions */}
           <div className="flex items-center space-x-3">
-            <div className="hidden lg:block">
+            <div className="hidden lg:block space-x-2">
+              <Link href="/trial">
+                <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105">
+                  Start Free Trial
+                </Button>
+              </Link>
+
               <LanguageSelector />
             </div>
-            <TrialDialog />
             <MobileNavigation />
           </div>
         </div>

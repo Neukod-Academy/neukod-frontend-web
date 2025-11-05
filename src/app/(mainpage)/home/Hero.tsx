@@ -69,7 +69,7 @@ export default function Component() {
                 <Button
                   size="lg"
                   onClick={() => setIsOpen(!isOpen)}
-                  className="bg-redFlag text-white hover:bg-red-800"
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white"
                 >
                   Start Your Trial
                 </Button>
