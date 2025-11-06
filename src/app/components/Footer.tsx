@@ -1,10 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Facebook, Instagram, Twitter } from "lucide-react";
+import { Facebook, Instagram, Twitter, Github } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Image from "next/image";
+import NeukodLogo from "@/app/images/logo_neukod.png";
 
 const AnimatedLink = ({
   href,
@@ -15,12 +17,12 @@ const AnimatedLink = ({
 }) => (
   <motion.a
     href={href}
-    className="relative inline-block text-gray-600 hover:text-gray-900 transition-colors "
+    className="relative inline-block text-gray-600 text-sm transition-colors hover:text-blue-500"
     whileHover="hover"
   >
     {children}
     <motion.span
-      className="absolute left-0 bottom-0 w-full h-[1px] bg-gray-900 origin-left"
+      className="absolute left-0 bottom-0 w-full h-[1px] bg-blue-500 origin-left"
       initial={{ scaleX: 0 }}
       variants={{
         hover: {
@@ -37,102 +39,156 @@ const AnimatedLink = ({
 
 export default function Footer() {
   return (
-    <footer className="w-full mx-auto px-4 py-12 md:py-16 border-t-2 border-gray-200">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
-        {/* Company Info */}
-        <div className="space-y-4">
-          <h2 className="font-semibold text-lg md:text-2xl text-blue-800">
-            NEUKOD.EDU | INDEPENDENT.
-          </h2>
-          <h3 className="font-medium text-base md:text-lg">E-LEARNING</h3>
-          <p className="text-gray-600 text-sm md:text-base leading-relaxed">
-            Address: Jl. Kyai H. Raden Asnawi No.126, Gendang Sewu,
-            Bakalankrapyak, Kec. Kaliwungu, Kabupaten Kudus, Jawa Tengah 59332
-            Hours: Open ⋅ Closes 5.00 pm Phone: (0291) 433255 Province: Central
-            Java
-          </p>
-          <div className="relative space-y-2">
-            <p className="font-medium text-gray-600 text-base md:text-lg">CONTACT US :</p>
-            <AnimatedLink href="mailto:info@neukod.com">
-              <span className="hover:text-blue-800">
-              info@neukod.com
-              </span>
-            </AnimatedLink>
-            <br />
-            <AnimatedLink href="mailto:info@neukod.com">
-              <span className="hover:text-blue-800">
-              +62-858-5181-6241
-              </span>
-            </AnimatedLink>
-          </div>
-        </div>
+    <footer className="bg-gray-50 border-t border-gray-200">
+      {/* Main Footer Content */}
+      <div className="max-w-7xl mx-auto px-6 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
+          {/* Brand Section */}
+          <div className="lg:col-span-1">
+            <div className="flex items-center gap-2 mb-4">
+              <Image
+                alt="Neukod Logo"
+                src={NeukodLogo}
+                className="w-1/2 h-1/2"
+              />
+              {/* <span className="text-lg font-bold text-gray-900">Neukod edu</span> */}
+            </div>
+            <p className="text-sm text-gray-600 mb-6 leading-relaxed">
+              Neukod website for education purpose.
+            </p>
 
-        <div className="space-y-4">
-          <h2 className="font-semibold text-lg md:text-2xl text-blue-800">
-            QUICK LINKS
-          </h2>
-          <nav className="space-y-3">
-            {[
-              "FAQs",
-              "Pricing",
-              "Locations",
-              "About us",
-              "Refund Policy",
-              "Terms of Service",
-              "Accessibility",
-            ].map((link) => (
-              <div key={link}>
-                <AnimatedLink href="#">{link}</AnimatedLink>
+            {/* Social Icons */}
+            <div className="flex gap-4 mb-6">
+              <a
+                href="#"
+                className="text-gray-400 hover:text-gray-600 transition"
+              >
+                <Twitter size={18} />
+              </a>
+              <a
+                href="#"
+                className="text-gray-400 hover:text-gray-600 transition"
+              >
+                <Github size={18} />
+              </a>
+
+              <a
+                href="#"
+                className="text-gray-400 hover:text-gray-600 transition"
+              >
+                <Instagram size={18} />
+              </a>
+            </div>
+          </div>
+
+          {/* Product Column */}
+          <div>
+            <h3 className="font-semibold text-gray-900 mb-4">Course</h3>
+            <ul className="space-y-3">
+              <li>
+                <AnimatedLink href="">About Our Course</AnimatedLink>
+                <span className="bg-green-100 text-green-700 text-xs px-2 py-0.5 rounded">
+                  New
+                </span>
+              </li>
+              <li>
+                <AnimatedLink href="">Explore our Course</AnimatedLink>
+              </li>
+            </ul>
+
+            <h3 className="font-semibold text-gray-900 mt-8 mb-4">Class</h3>
+            <ul className="space-y-3">
+              <li>
+                <AnimatedLink href="#">Feed</AnimatedLink>
+              </li>
+              <li>
+                <AnimatedLink href="#">Case studies</AnimatedLink>
+              </li>
+              <li>
+                <AnimatedLink href="#">Class list</AnimatedLink>
+              </li>
+              <li>
+                <AnimatedLink href="#">Referral Program</AnimatedLink>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-semibold text-gray-900 mb-4">Career</h3>
+            <ul className="space-y-3">
+              <li>
+                <AnimatedLink href="#">Join Us!</AnimatedLink>
+              </li>
+              <li>
+                <AnimatedLink href="#">View Career</AnimatedLink>
+              </li>
+              <li>
+                <AnimatedLink href="#">Media</AnimatedLink>
+              </li>
+              <li>
+                <AnimatedLink href="#">Changelog</AnimatedLink>
+              </li>
+              <li>
+                <AnimatedLink href="#">Feature Requests</AnimatedLink>
+              </li>
+            </ul>
+          </div>
+
+          {/* Right Columns */}
+          <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-8">
+            {/* Partner Section */}
+            <div>
+              <h3 className="font-semibold text-gray-900 mb-4">
+                Partner with us
+              </h3>
+              <ul className="space-y-3">
+                <li>
+                  <AnimatedLink href="#">Sini cik</AnimatedLink>
+                </li>
+              </ul>
+            </div>
+
+            {/* Support Section */}
+            <div>
+              <h3 className="font-semibold text-gray-900 mb-4">Support</h3>
+              <ul className="space-y-3">
+                <li>
+                  <AnimatedLink href="#">Support docs</AnimatedLink>
+                </li>
+                <li>
+                  <AnimatedLink href="#">Contact</AnimatedLink>
+                </li>
+                <li>
+                  <AnimatedLink href="#">Join discord</AnimatedLink>
+                </li>
+              </ul>
+
+              <div className="mt-8 font-semibold">
+                <AnimatedLink href="">Subscribe ❤️</AnimatedLink>
               </div>
-            ))}
-          </nav>
+            </div>
+          </div>
         </div>
 
-        {/* Newsletter */}
-        <div className="space-y-4">
-          <h2 className="font-semibold text-lg md:text-2xl text-blue-800">
-            STAY IN TOUCH
-          </h2>
-          <p className="text-gray-600 text-sm md:text-base">
-            Subscribe to receive updates, access to exclusive deals, and more.
+        {/* Bottom Border */}
+        <div className="border-t border-gray-200"></div>
+
+        {/* Footer Bottom */}
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-8">
+          <p className="text-sm text-gray-600">
+            © 2025 Neukod - Education Corp Inc.
           </p>
-          <form className="space-y-3">
-            <Input
-              type="email"
-              placeholder="Enter your email address"
-              className="w-full max-w-2xl"
-            />
-            <Button type="submit" className="w-full max-w-2xl bg-redFlag">
-              SUBSCRIBE
-            </Button>
-          </form>
-          <div className="relative">
-            <h1 className="font-medium text-gray-600 text-base md:text-lg">
-              SOCIAL MEDIA :
-            </h1>
+          <div className="flex gap-6">
+            <AnimatedLink href="#">
+              Privacy Policy
+            </AnimatedLink>
+            <AnimatedLink href="#">
+              Terms
+            </AnimatedLink>
+            <AnimatedLink href="#">
+              Code of conduct
+            </AnimatedLink>
           </div>
-          <div className="flex space-x-4 group">
-            <Link href="#" className="hover:scale-110 duration-200 transform">
-              <Facebook className="h-5 w-5 md:h-8 md:w-8 text-black hover:text-blue-800" />
-            </Link>
-            <Link href="#" className="hover:scale-110 duration-200 transform">
-              <Instagram className="h-5 w-5 md:h-8 md:w-8 text-black hover:text-blue-800" />
-            </Link>
-            <Link href="#" className="hover:scale-110 duration-200 transform">
-              <Twitter className="h-5 w-5 md:h-8 md:w-8 text-black hover:text-blue-800" />
-            </Link>
-          </div>
-        </div>
-      </div>
-
-      {/* Bottom Bar */}
-      <div className="mt-12 pt-8 border-t border-gray-200">
-        <div className="flex flex-col md:flex-row items-center justify-center space-y-2 md:space-y-0 md:space-x-4 text-sm text-gray-500">
-          <span>© NEUKOD.EDU</span>
-          <span className="hidden md:inline">|</span>
-          <AnimatedLink href="#">TERMS OF SERVICE</AnimatedLink>
-          <span className="hidden md:inline">|</span>
-          <AnimatedLink href="#">PRIVACY POLICY</AnimatedLink>
         </div>
       </div>
     </footer>

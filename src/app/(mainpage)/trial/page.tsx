@@ -133,7 +133,7 @@ export default function TrialPage() {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {benefits.map((benefit, index) => (
                 <div key={index} className="flex items-start gap-3 p-4">
-                  <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+                  <CheckCircle className="h-6 w-6 text-blue-500 flex-shrink-0 mt-1" />
                   <p className="text-lg">{benefit}</p>
                 </div>
               ))}
@@ -195,7 +195,7 @@ export default function TrialPage() {
                       {[...Array(testimonial.rating)].map((_, i) => (
                         <Star
                           key={i}
-                          className="h-5 w-5 fill-accent text-accent"
+                          className="h-5 w-5 fill-yellow-300 text-accent text-yellow-200"
                         />
                       ))}
                     </div>

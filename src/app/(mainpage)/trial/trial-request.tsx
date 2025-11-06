@@ -2,19 +2,30 @@
 
 import type React from "react";
 
-import { useState } from "react"
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { Checkbox } from "@/components/ui/checkbox"
-import { useToast } from "@/hooks/use-toast"
-import { Clock, User, BookOpen } from "lucide-react"
-import { PhoneInput } from "@/components/ui/phone-input"
-import type { E164Number } from "libphonenumber-js/core"
-import SuccessDialog from "./submit-dialog"
+import { useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Checkbox } from "@/components/ui/checkbox";
+import { useToast } from "@/hooks/use-toast";
+import { Clock, User, BookOpen } from "lucide-react";
+import { PhoneInput } from "@/components/ui/phone-input";
+import type { E164Number } from "libphonenumber-js/core";
+import SuccessDialog from "./submit-dialog";
 
 interface TrialRequestModalProps {
   isOpen: boolean;
@@ -38,17 +49,17 @@ export function TrialRequestModal({ isOpen, onClose }: TrialRequestModalProps) {
     "Frontend Development",
     "Fullstack Development",
     "Game Development",
-  ]
+  ];
 
-const countryList = require('country-list');
-const countries = countryList.getNames();
+  const countryList = require("country-list");
+  const countries = countryList.getNames();
 
-const handlePhoneChange = (value: E164Number | undefined) => {
+  const handlePhoneChange = (value: E164Number | undefined) => {
     setFormData((prev) => ({
       ...prev,
       phone: value ? String(value) : "",
-    }))
-  }
+    }));
+  };
   // const handleCourseChange = (course: string, checked: boolean) => {
   //   setFormData((prev) => ({
   //     ...prev,
@@ -157,18 +168,23 @@ const handlePhoneChange = (value: E164Number | undefined) => {
 
             <div className="grid md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="parentName">Parent Name *</Label>
+                <Label htmlFor="parentName">Parent Name <span className="text-red-500">*</span></Label>
                 <Input
                   id="parentName"
                   value={formData.parentName}
-                  onChange={(e) => setFormData((prev) => ({ ...prev, parentName: e.target.value }))}
+                  onChange={(e) =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      parentName: e.target.value,
+                    }))
+                  }
                   placeholder="Enter your parent name"
                   required
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="email">Email Address *</Label>
+                <Label htmlFor="email">Email Address <span className="text-red-500">*</span></Label>
                 <Input
                   id="email"
                   type="email"
@@ -184,8 +200,8 @@ const handlePhoneChange = (value: E164Number | undefined) => {
 
             <div className="grid md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="phone">Phone Number *</Label>
-                 <PhoneInput
+                <Label htmlFor="phone">Phone Number <span className="text-red-500">*</span></Label>
+                <PhoneInput
                   international
                   countryCallingCodeEditable={false}
                   value={formData.phone as E164Number | undefined}
@@ -199,11 +215,13 @@ const handlePhoneChange = (value: E164Number | undefined) => {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="country">Country *</Label>
+                <Label htmlFor="country">Country <span className="text-red-500">*</span></Label>
 
                 <Select
                   value={formData.country}
-                  onValueChange={(value) => setFormData((prev) => ({ ...prev, country: value }))}
+                  onValueChange={(value) =>
+                    setFormData((prev) => ({ ...prev, country: value }))
+                  }
                   required
                 >
                   <SelectTrigger>
@@ -225,10 +243,10 @@ const handlePhoneChange = (value: E164Number | undefined) => {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold flex items-center gap-2">
               <BookOpen className="h-5 w-5 text-primary" />
-              Course Interest *
+              Course Interest <span className="text-red-500">*</span>
             </h3>
             <p className="text-sm text-muted-foreground">
-              Select all courses you'd like to try (you can choose multiple)
+              Select one courses you'd like to try
             </p>
 
             {/* <div className="grid md:grid-cols-2 gap-3">
@@ -245,28 +263,31 @@ const handlePhoneChange = (value: E164Number | undefined) => {
                 </div>
               ))}
             </div> */}
-            {courses.map((course) => (
-              <div key={course} className="flex items-center space-x-2">
-                <RadioGroup 
-                  value={formData.courses}
-                  onValueChange={(value) =>{
-                    setFormData((prev) => ({ ...prev, courses: value}))
-                  }}
+            <div className="grid md:grid-cols-2 gap-3">
+              {courses.map((course) => (
+                <div key={course} className="flex items-center space-x-2">
+                  <RadioGroup
+                    value={formData.courses}
+                    onValueChange={(value) => {
+                      setFormData((prev) => ({ ...prev, courses: value }));
+                    }}
                   >
-                    <RadioGroupItem value={course} id={course} />
-                  <Label htmlFor={course} className="text-sm font-normal">
-                    {course}
-                  </Label>
-                </RadioGroup>
-              </div>
-            ))}
+                    <div className="flex-1 space-x-2">
+                      <RadioGroupItem value={course} id={course} />
+                      <Label htmlFor={course} className="text-sm font-normal">
+                        {course}
+                      </Label>
+                    </div>
+                  </RadioGroup>
+                </div>
+              ))}
+            </div>
           </div>
-
           {/* Duration Selection */}
           <div className="space-y-4">
             <h3 className="text-lg font-semibold flex items-center gap-2">
               <Clock className="h-5 w-5 text-primary" />
-              Trial Duration *
+              Trial Duration <span className="text-red-500">*</span>
             </h3>
 
             <RadioGroup
