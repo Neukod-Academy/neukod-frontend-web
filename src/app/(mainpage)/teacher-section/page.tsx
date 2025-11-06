@@ -9,8 +9,6 @@ import Teacher2 from "../../images/top-teacher/teacher-2-thumb.jpg"
 import Teacher3 from "../../images/top-teacher/teacher-3-thumb.jpg"
 import Teacher4 from "../../images/top-teacher/teacher-4-thumb.jpg"
 
-
-// Register ScrollTrigger plugin
 if (typeof window !== "undefined") {
     gsap.registerPlugin(ScrollTrigger)
 }

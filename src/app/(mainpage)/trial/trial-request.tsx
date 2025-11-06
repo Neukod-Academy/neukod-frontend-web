@@ -1,7 +1,6 @@
 "use client";
 
 import type React from "react";
-
 import { useState } from "react";
 import {
   Dialog,
@@ -20,12 +19,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
 import { Clock, User, BookOpen } from "lucide-react";
 import { PhoneInput } from "@/components/ui/phone-input";
 import type { E164Number } from "libphonenumber-js/core";
-import SuccessDialog from "./submit-dialog";
 
 interface TrialRequestModalProps {
   isOpen: boolean;
@@ -168,7 +165,9 @@ export function TrialRequestModal({ isOpen, onClose }: TrialRequestModalProps) {
 
             <div className="grid md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="parentName">Parent Name <span className="text-red-500">*</span></Label>
+                <Label htmlFor="parentName">
+                  Parent Name <span className="text-red-500">*</span>
+                </Label>
                 <Input
                   id="parentName"
                   value={formData.parentName}
@@ -184,7 +183,9 @@ export function TrialRequestModal({ isOpen, onClose }: TrialRequestModalProps) {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="email">Email Address <span className="text-red-500">*</span></Label>
+                <Label htmlFor="email">
+                  Email Address <span className="text-red-500">*</span>
+                </Label>
                 <Input
                   id="email"
                   type="email"
@@ -200,7 +201,9 @@ export function TrialRequestModal({ isOpen, onClose }: TrialRequestModalProps) {
 
             <div className="grid md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="phone">Phone Number <span className="text-red-500">*</span></Label>
+                <Label htmlFor="phone">
+                  Phone Number <span className="text-red-500">*</span>
+                </Label>
                 <PhoneInput
                   international
                   countryCallingCodeEditable={false}
@@ -215,7 +218,9 @@ export function TrialRequestModal({ isOpen, onClose }: TrialRequestModalProps) {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="country">Country <span className="text-red-500">*</span></Label>
+                <Label htmlFor="country">
+                  Country <span className="text-red-500">*</span>
+                </Label>
 
                 <Select
                   value={formData.country}
