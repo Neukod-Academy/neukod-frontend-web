@@ -141,6 +141,7 @@ export default function BackendCoursePage() {
   const backendLanguages = [
     {
       name: "Go",
+      href: "/python",
       description:
         "Fast, statically typed language perfect for microservices and cloud applications.",
       icon: "🚀",
@@ -149,6 +150,7 @@ export default function BackendCoursePage() {
     },
     {
       name: "Python",
+      href: "/class/backend/python",
       description:
         "Versatile language ideal for web development, data science, and automation.",
       icon: "🐍",
@@ -158,6 +160,7 @@ export default function BackendCoursePage() {
     },
     {
       name: "Rust",
+      href: "/python",
       description:
         "Systems programming language focused on safety, speed, and concurrency.",
       icon: "⚡",
@@ -167,6 +170,7 @@ export default function BackendCoursePage() {
     },
     {
       name: "Java",
+      href: "/python",
       description:
         "Enterprise-grade language for building scalable, robust backend systems.",
       icon: "☕",
@@ -366,12 +370,14 @@ export default function BackendCoursePage() {
                     <CardDescription className="text-center leading-relaxed">
                       {lang.description}
                     </CardDescription>
-                    <Button
-                      className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300 bg-transparent"
-                      variant="outline"
-                    >
-                      Start {lang.name} Course
-                    </Button>
+                    <Link href={lang.href}>
+                      <Button
+                        className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300 bg-transparent"
+                        variant="outline"
+                      >
+                        Start {lang.name} Course
+                      </Button>
+                    </Link>
                   </CardContent>
                 </Card>
               ))}
