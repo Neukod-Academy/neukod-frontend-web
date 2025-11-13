@@ -4,17 +4,17 @@ import { faqData } from "@/app/utils/constant"
 
 export default function Component() {
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
+    <div className="relative w-full bg-gray-50 py-20 px-4 sm:px-2 lg:px-4">
+      <div className="relative max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-5 items-start">
           {/* Left Column - Header and Description */}
           <div className="space-y-6">
-            <Badge variant="outline" className="w-fit px-3 py-1 text-sm font-medium">
+            <Badge variant="outline" className="w-fit px-3 py-1 text-sm font-semibold">
               F.A.Q
             </Badge>
 
             <div className="space-y-4">
-              <h1 className="text-4xl font-bold text-gray-900 leading-tight">Frequently Asked Questions</h1>
+              <h1 className="text-4xl font-bold text-blue-800 leading-tight">Frequently Asked Questions</h1>
 
               <p className="text-gray-600 text-lg leading-relaxed">
                 At Pennant Education, we understand that you may have questions about our programs, enrollment process,

@@ -104,7 +104,7 @@ const TestimonialSection = () => {
     <div className="w-full max-w-4xl mx-auto p-6">
       <div className="text-center mb-12">
         <h2 className="text-3xl font-bold text-gray-900 mb-4">
-          What Our Students Say
+          What Our <span className="text-blue-800">Ex-student says :)</span>
         </h2>
         <p className="text-gray-600 max-w-2xl mx-auto">
           Hear from students who have transformed their careers through our

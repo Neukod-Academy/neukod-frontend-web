@@ -1,39 +1,58 @@
-"use client"
+"use client";
 
-import { useEffect, useRef } from "react"
-import { gsap } from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+import Image from "next/image";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
+import FrontendBanner from "@/app/images/banner_neukod _crop.webp";
 
 // Register GSAP plugins
 if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger)
+  gsap.registerPlugin(ScrollTrigger);
 }
 
 export default function BackendCoursePage() {
-  const heroRef = useRef<HTMLDivElement>(null)
-  const introRef = useRef<HTMLDivElement>(null)
-  const classIntroRef = useRef<HTMLDivElement>(null)
-  const categoriesRef = useRef<HTMLDivElement>(null)
+  const heroRef = useRef<HTMLDivElement>(null);
+  const introRef = useRef<HTMLDivElement>(null);
+  const classIntroRef = useRef<HTMLDivElement>(null);
+  const categoriesRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Hero section animations
-      gsap.fromTo(".hero-title", { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1, ease: "power2.out" })
+      gsap.fromTo(
+        ".hero-title",
+        { opacity: 0, y: 50 },
+        { opacity: 1, y: 0, duration: 1, ease: "power2.out" }
+      );
 
       gsap.fromTo(
         ".hero-subtitle",
         { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 1, delay: 0.3, ease: "power2.out" },
-      )
+        { opacity: 1, y: 0, duration: 1, delay: 0.3, ease: "power2.out" }
+      );
 
       gsap.fromTo(
         ".hero-button",
         { opacity: 0, scale: 0.8 },
-        { opacity: 1, scale: 1, duration: 0.8, delay: 0.6, ease: "back.out(1.7)" },
-      )
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 0.8,
+          delay: 0.6,
+          ease: "back.out(1.7)",
+        }
+      );
 
       // ScrollTrigger animations for sections
       gsap.fromTo(
@@ -49,8 +68,8 @@ export default function BackendCoursePage() {
             end: "bottom 20%",
             toggleActions: "play none none reverse",
           },
-        },
-      )
+        }
+      );
 
       gsap.fromTo(
         ".class-intro-section",
@@ -65,26 +84,8 @@ export default function BackendCoursePage() {
             end: "bottom 20%",
             toggleActions: "play none none reverse",
           },
-        },
-      )
-
-      gsap.fromTo(
-        ".backend-category-card",
-        { opacity: 0, y: 40, scale: 0.9 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.8,
-          stagger: 0.2,
-          scrollTrigger: {
-            trigger: ".backend-categories-section",
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleActions: "play none none reverse",
-          },
-        },
-      )
+        }
+      );
 
       gsap.fromTo(
         ".frontend-category-card",
@@ -101,74 +102,57 @@ export default function BackendCoursePage() {
             end: "bottom 20%",
             toggleActions: "play none none reverse",
           },
-        },
-      )
-    })
+        }
+      );
+    });
 
-    return () => ctx.revert()
-  }, [])
-
-  const backendLanguages = [
-    {
-      name: "Go",
-      description: "Fast, statically typed language perfect for microservices and cloud applications.",
-      icon: "🚀",
-      color: "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300",
-      level: "Intermediate",
-    },
-    {
-      name: "Python",
-      description: "Versatile language ideal for web development, data science, and automation.",
-      icon: "🐍",
-      color: "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300",
-      level: "Beginner",
-    },
-    {
-      name: "Rust",
-      description: "Systems programming language focused on safety, speed, and concurrency.",
-      icon: "⚡",
-      color: "bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300",
-      level: "Advanced",
-    },
-    {
-      name: "Java",
-      description: "Enterprise-grade language for building scalable, robust backend systems.",
-      icon: "☕",
-      color: "bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300",
-      level: "Intermediate",
-    },
-  ]
+    return () => ctx.revert();
+  }, []);
 
   const frontendLanguages = [
     {
       name: "HTML",
-      description: "The foundation of web development, structuring content and creating semantic markup.",
+      description:
+        "The foundation of web development, structuring content and creating semantic markup.",
       icon: "🏗️",
-      color: "bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300",
+      color:
+        "bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300",
       level: "Beginner",
     },
     {
       name: "CSS",
-      description: "Style and design web pages with modern layouts, animations, and responsive design.",
+      description:
+        "Style and design web pages with modern layouts, animations, and responsive design.",
       icon: "🎨",
       color: "bg-pink-100 text-pink-800 dark:bg-pink-900/30 dark:text-pink-300",
       level: "Beginner",
     },
     {
       name: "JavaScript",
-      description: "Dynamic programming language that brings interactivity and functionality to web pages.",
+      description:
+        "Dynamic programming language that brings interactivity and functionality to web pages.",
       icon: "⚡",
-      color: "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300",
+      color:
+        "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300",
       level: "Intermediate",
     },
     {
       name: "React JS",
-      description: "Popular library for building user interfaces with component-based architecture.",
+      description:
+        "Popular library for building user interfaces with component-based architecture.",
       icon: "⚛️",
       color: "bg-cyan-100 text-cyan-800 dark:bg-cyan-900/30 dark:text-cyan-300",
       level: "Intermediate",
     },
-  ]
+  ];
+
+  const handleScrollDown = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    const targetSection = document.querySelector("#frontend-categories");
+    if (targetSection) {
+      targetSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -177,18 +161,32 @@ export default function BackendCoursePage() {
         ref={heroRef}
         className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/5 via-background to-accent/5"
       >
-        <div className="container mx-auto px-4 text-center">
+        <Image
+          alt="Backend Banner"
+          src={FrontendBanner}
+          fill
+          className="object-cover w-full"
+        />
+         <div className="absolute inset-0 bg-black/40" />
+        <div className="container mx-auto px-4 text-center z-20">
           <div className="max-w-4xl mx-auto">
-            <h1 className="hero-title text-5xl md:text-7xl font-bold mb-6">
-              Master <span className="text-primary">Backend</span> Development
+            <h1 className="hero-title text-white text-5xl md:text-7xl font-bold mb-6">
+              Master <span className="text-blue-800">Frontend Development</span>
             </h1>
-            <p className="hero-subtitle text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed">
-              Build powerful, scalable server-side applications with industry-leading technologies. From APIs to
-              databases, learn the skills that power the modern web.
+            <p className="hero-subtitle text-xl md:text-2xl text-white mb-8 leading-relaxed">
+              Build powerful, scalable server-side applications with
+              industry-leading technologies. From APIs to databases, learn the
+              skills that power the modern web.
             </p>
-            <Button size="lg" className="hero-button text-lg px-8 py-6">
-              Start Your Journey
-            </Button>
+            <Link href="#frontend-categories">
+              <Button
+                onClick={handleScrollDown}
+                size="lg"
+                className="bg-blue-600 text-lg px-8 py-6"
+              >
+                Start Your Journey
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -198,32 +196,41 @@ export default function BackendCoursePage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl font-bold mb-8">
-              What is <span className="text-accent">Backend Development</span>?
+              What is{" "}
+              <span className="text-blue-800">Frontend Development</span>?
             </h2>
             <div className="grid md:grid-cols-2 gap-8 text-left">
               <div>
                 <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                  Backend development is the server-side of web development that focuses on databases, scripting, and
-                  website architecture. It's the behind-the-scenes functionality that users don't see but is essential
-                  for any web application.
+                  Backend development is the server-side of web development that
+                  focuses on databases, scripting, and website architecture.
+                  It's the behind-the-scenes functionality that users don't see
+                  but is essential for any web application.
                 </p>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  Backend developers work with servers, databases, APIs, and application logic to ensure everything on
-                  the client-side works smoothly.
+                  Backend developers work with servers, databases, APIs, and
+                  application logic to ensure everything on the client-side
+                  works smoothly.
                 </p>
               </div>
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 bg-primary rounded-full"></div>
-                  <span className="text-lg">Server-side logic and architecture</span>
+                  <span className="text-lg">
+                    Server-side logic and architecture
+                  </span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 bg-primary rounded-full"></div>
-                  <span className="text-lg">Database design and management</span>
+                  <span className="text-lg">
+                    Database design and management
+                  </span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 bg-primary rounded-full"></div>
-                  <span className="text-lg">API development and integration</span>
+                  <span className="text-lg">
+                    API development and integration
+                  </span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 bg-primary rounded-full"></div>
@@ -240,27 +247,41 @@ export default function BackendCoursePage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-4xl font-bold mb-8 text-center">
-              Our <span className="text-accent">Backend Mastery</span> Program
+              Our <span className="text-blur-800t">Frontend Mastery</span> Program
             </h2>
             <Card className="p-8">
               <CardContent className="space-y-6">
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  Our comprehensive backend development course is designed to take you from beginner to professional.
-                  You'll learn industry-standard practices, work with real-world projects, and master the technologies
-                  that power today's most successful applications.
+                  Our comprehensive backend development course is designed to
+                  take you from beginner to professional. You'll learn
+                  industry-standard practices, work with real-world projects,
+                  and master the technologies that power today's most successful
+                  applications.
                 </p>
                 <div className="grid md:grid-cols-3 gap-6">
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-primary mb-2">12</div>
-                    <div className="text-sm text-muted-foreground">Weeks Duration</div>
+                    <div className="text-3xl font-bold text-primary mb-2">
+                      12
+                    </div>
+                    <div className="text-sm text-muted-foreground">
+                      Weeks Duration
+                    </div>
                   </div>
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-primary mb-2">4</div>
-                    <div className="text-sm text-muted-foreground">Programming Languages</div>
+                    <div className="text-3xl font-bold text-primary mb-2">
+                      4
+                    </div>
+                    <div className="text-sm text-muted-foreground">
+                      Programming Languages
+                    </div>
                   </div>
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-primary mb-2">20+</div>
-                    <div className="text-sm text-muted-foreground">Real Projects</div>
+                    <div className="text-3xl font-bold text-primary mb-2">
+                      20+
+                    </div>
+                    <div className="text-sm text-muted-foreground">
+                      Real Projects
+                    </div>
                   </div>
                 </div>
               </CardContent>
@@ -269,55 +290,15 @@ export default function BackendCoursePage() {
         </div>
       </section>
 
-      {/* Backend Programming Language Categories */}
-      <section ref={categoriesRef} className="backend-categories-section py-20 bg-card/30">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-4xl font-bold mb-4 text-center">
-              <span className="text-primary">Backend</span> Programming Path
-            </h2>
-            <p className="text-lg text-muted-foreground text-center mb-12">
-              Master server-side development with these powerful backend technologies
-            </p>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {backendLanguages.map((lang, index) => (
-                <Card
-                  key={lang.name}
-                  className="backend-category-card hover:shadow-lg transition-all duration-300 group"
-                >
-                  <CardHeader className="text-center">
-                    <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                      {lang.icon}
-                    </div>
-                    <CardTitle className="text-2xl mb-2">{lang.name}</CardTitle>
-                    <Badge variant="secondary" className={lang.color}>
-                      {lang.level}
-                    </Badge>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <CardDescription className="text-center leading-relaxed">{lang.description}</CardDescription>
-                    <Button
-                      className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300 bg-transparent"
-                      variant="outline"
-                    >
-                      Start {lang.name} Course
-                    </Button>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section className="frontend-categories-section py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-4xl font-bold mb-4 text-center">
-              <span className="text-accent">Frontend</span> Programming Path
+              <span className="text-blue-800">Frontend</span> Programming Path
             </h2>
             <p className="text-lg text-muted-foreground text-center mb-12">
-              Create stunning user interfaces with these essential frontend technologies
+              Create stunning user interfaces with these essential frontend
+              technologies
             </p>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {frontendLanguages.map((lang, index) => (
@@ -335,7 +316,9 @@ export default function BackendCoursePage() {
                     </Badge>
                   </CardHeader>
                   <CardContent className="space-y-4">
-                    <CardDescription className="text-center leading-relaxed">{lang.description}</CardDescription>
+                    <CardDescription className="text-center leading-relaxed">
+                      {lang.description}
+                    </CardDescription>
                     <Button
                       className="w-full group-hover:bg-accent group-hover:text-accent-foreground transition-colors duration-300 bg-transparent"
                       variant="outline"
@@ -350,5 +333,5 @@ export default function BackendCoursePage() {
         </div>
       </section>
     </div>
-  )
+  );
 }

@@ -13,7 +13,7 @@ import {
   Award,
   ArrowRight,
 } from "lucide-react";
-import PythonImage from "@/app/images/class/backend/python-class.jpg";
+import GoImage from "@/app/images/class/backend/golang-class.jpg";
 import { AnimatedLink } from "@/app/components/AnimatedLink";
 
 const PythonClass = () => {
@@ -97,7 +97,7 @@ const PythonClass = () => {
               className="flex justify-center md:justify-start"
             >
               <Image
-                src={PythonImage}
+                src={GoImage}
                 alt="Course Python preview"
                 className="w-[500px] h-[400px] max-w-md rounded-lg shadow-lg object-cover"
               />
@@ -116,7 +116,7 @@ const PythonClass = () => {
                   ))}
                 </div>
                 <span className="text-sm text-gray-600">
-                  Python Basic Course Path
+                  Go Basic Course Path
                 </span>
               </div>
 

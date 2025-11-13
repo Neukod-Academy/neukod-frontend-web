@@ -107,25 +107,6 @@ export default function BackendCoursePage() {
           },
         }
       );
-
-      gsap.fromTo(
-        ".frontend-category-card",
-        { opacity: 0, y: 40, scale: 0.9 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.8,
-          stagger: 0.2,
-          scrollTrigger: {
-            trigger: ".frontend-categories-section",
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleActions: "play none none none",
-            once: true,
-          },
-        }
-      );
     });
 
     return () => ctx.revert();
@@ -141,7 +122,7 @@ export default function BackendCoursePage() {
   const backendLanguages = [
     {
       name: "Go",
-      href: "/python",
+      href: "/class/backend/go",
       description:
         "Fast, statically typed language perfect for microservices and cloud applications.",
       icon: "🚀",
@@ -289,7 +270,7 @@ export default function BackendCoursePage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-4xl font-bold mb-8 text-center">
-              Our <span className="text-accent">Backend Mastery</span> Program
+              Our <span className="text-blue-800">Backend Mastery</span> Program
             </h2>
             <Card className="p-8">
               <CardContent className="space-y-6">
@@ -341,7 +322,7 @@ export default function BackendCoursePage() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-4xl font-bold mb-4 text-center">
-              <span className="text-primary">Backend</span> Programming Path
+              Backend <span className="text-blue-800">Programming Path</span>
             </h2>
             <p className="text-lg text-muted-foreground text-center mb-12">
               Master server-side development with these powerful backend
