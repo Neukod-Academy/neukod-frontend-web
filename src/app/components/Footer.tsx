@@ -99,16 +99,16 @@ export default function Footer() {
             <h3 className="font-semibold text-gray-900 mt-8 mb-4">Class</h3>
             <ul className="space-y-3">
               <li>
-                <AnimatedLink href="#">Feed</AnimatedLink>
+                <AnimatedLink href="#">Classroom</AnimatedLink>
               </li>
               <li>
-                <AnimatedLink href="#">Case studies</AnimatedLink>
+                <AnimatedLink href="#">Backend</AnimatedLink>
               </li>
               <li>
-                <AnimatedLink href="#">Class list</AnimatedLink>
+                <AnimatedLink href="#">Frontend</AnimatedLink>
               </li>
               <li>
-                <AnimatedLink href="#">Referral Program</AnimatedLink>
+                <AnimatedLink href="#">Game</AnimatedLink>
               </li>
             </ul>
           </div>
@@ -121,15 +121,6 @@ export default function Footer() {
               </li>
               <li>
                 <AnimatedLink href="#">View Career</AnimatedLink>
-              </li>
-              <li>
-                <AnimatedLink href="#">Media</AnimatedLink>
-              </li>
-              <li>
-                <AnimatedLink href="#">Changelog</AnimatedLink>
-              </li>
-              <li>
-                <AnimatedLink href="#">Feature Requests</AnimatedLink>
               </li>
             </ul>
           </div>
@@ -153,9 +144,6 @@ export default function Footer() {
               <h3 className="font-semibold text-gray-900 mb-4">Support</h3>
               <ul className="space-y-3">
                 <li>
-                  <AnimatedLink href="#">Support docs</AnimatedLink>
-                </li>
-                <li>
                   <AnimatedLink href="#">Contact</AnimatedLink>
                 </li>
                 <li>
@@ -164,7 +152,7 @@ export default function Footer() {
               </ul>
 
               <div className="mt-8 font-semibold">
-                <AnimatedLink href="">Subscribe ❤️</AnimatedLink>
+                <AnimatedLink href="">Subscribe Neukod ❤️</AnimatedLink>
               </div>
             </div>
           </div>

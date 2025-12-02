@@ -375,12 +375,12 @@ export default function ClassroomPage() {
               Trusted by 5,000+ Companies Worldwide
             </h3>
             <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
-              <div className="text-2xl font-bold text-gray-400">Google</div>
+              <div className="text-2xl font-bold text-gray-400">Alibaba</div>
               <div className="text-2xl font-bold text-gray-400">NETFLIX</div>
-              <div className="text-2xl font-bold text-gray-400">airbnb</div>
+              <div className="text-2xl font-bold text-gray-400">AWS</div>
               <div className="text-2xl font-bold text-gray-400">amazon</div>
-              <div className="text-2xl font-bold text-gray-400">facebook</div>
-              <div className="text-2xl font-bold text-gray-400">Grab</div>
+              <div className="text-2xl font-bold text-gray-400">Facebook</div>
+              <div className="text-2xl font-bold text-gray-400">Google Dev</div>
             </div>
           </div>
         </section>
@@ -601,13 +601,12 @@ export default function ClassroomPage() {
           </div>
         </section>
 
-        <section
+        {/* <section
           ref={categoriesRef}
           className="categories-section py-20 bg-card/30"
         >
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
-              {/* Category Toggle Buttons */}
               <div className="flex justify-center mb-8">
                 <div className="flex bg-muted rounded-full p-1">
                   <button
@@ -632,8 +631,6 @@ export default function ClassroomPage() {
                   </button>
                 </div>
               </div>
-
-              {/* Tab Navigation */}
               <div className="flex justify-center mb-12">
                 <div className="flex gap-8">
                   <button
@@ -658,8 +655,6 @@ export default function ClassroomPage() {
                   </button>
                 </div>
               </div>
-
-              {/* Category Header */}
               <div className="text-center mb-8">
                 <div className="inline-block bg-blue-600 text-white px-8 py-3 rounded-full text-lg font-semibold mb-4">
                   {selectedCategory === "backend"
@@ -667,8 +662,6 @@ export default function ClassroomPage() {
                     : "Frontend Development"}
                 </div>
               </div>
-
-              {/* Course Cards */}
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {(selectedCategory === "backend"
                   ? backendLanguages
@@ -702,7 +695,7 @@ export default function ClassroomPage() {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* Our Features Section */}
         <section className="py-20 bg-gray-50">
