@@ -253,8 +253,6 @@ export default function SlidePage() {
         },
         [activeIndex, isTransitioning, clearAllTimers, startTimer],
     )
-
-    // Initialize GSAP
     useEffect(() => {
         const ctx = gsap.context(() => {
             gsap.set(".section", {
