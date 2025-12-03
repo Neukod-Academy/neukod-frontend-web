@@ -18,6 +18,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import FloatingCard from "./classComponent/FloatingCard";
 
 // Register GSAP plugins
 if (typeof window !== "undefined") {
@@ -556,7 +557,7 @@ export default function ClassroomPage() {
         {/* Backend Class Introduction */}
         <section ref={classIntroRef} className="class-intro-section py-20">
           <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
+            <div className="w-full mx-auto">
               <h2 className="text-4xl font-bold mb-8 text-center">
                 Our <span className="text-blue-900">Mastery</span> Program
               </h2>
@@ -569,32 +570,7 @@ export default function ClassroomPage() {
                     and master the technologies that power today's most
                     successful applications.
                   </p>
-                  <div className="grid md:grid-cols-3 gap-6">
-                    <div className="text-center">
-                      <div className="text-3xl font-bold text-primary mb-2">
-                        12
-                      </div>
-                      <div className="text-sm text-muted-foreground">
-                        Weeks Duration
-                      </div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-3xl font-bold text-primary mb-2">
-                        4
-                      </div>
-                      <div className="text-sm text-muted-foreground">
-                        Programming Languages
-                      </div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-3xl font-bold text-primary mb-2">
-                        20+
-                      </div>
-                      <div className="text-sm text-muted-foreground">
-                        Real Projects
-                      </div>
-                    </div>
-                  </div>
+                  <FloatingCard />
                 </CardContent>
               </Card>
             </div>
