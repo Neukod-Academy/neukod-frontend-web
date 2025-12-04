@@ -1,11 +1,7 @@
 "use client";
 
 import React, { useEffect, useLayoutEffect, useRef } from "react";
-import {
-  Award,
-  Briefcase,
-  Zap,
-} from "lucide-react";
+import { Award, Briefcase, Zap } from "lucide-react";
 import {
   Card,
   CardContent,
@@ -22,7 +18,6 @@ import Image from "next/image";
 import Link from "next/link";
 import FrontendSection from "./component/SectionFrontend";
 
-
 const App = () => {
   const heroRef = useRef(null);
   const featuresRef = useRef(null);
@@ -35,7 +30,6 @@ const App = () => {
     gsap.registerPlugin(ScrollTrigger);
     if (typeof window === "undefined" || !wrapperRef.current) return;
     const ctx = gsap.context(() => {
-  
       // HERO
       gsap.from(".hero-text-element", {
         y: 50,
@@ -45,7 +39,7 @@ const App = () => {
         ease: "power3.out",
         delay: 0.5,
       });
-  
+
       gsap.from(".hero-grid-item", {
         scale: 0.5,
         opacity: 0,
@@ -62,7 +56,7 @@ const App = () => {
         yoyo: true,
         ease: "sine.inOut",
       });
-  
+
       // INTRO SECTION (fixed)
       gsap.fromTo(
         introRef.current,
@@ -78,7 +72,7 @@ const App = () => {
           },
         }
       );
-  
+
       // FEATURES
       gsap.fromTo(
         ".feature-card",
@@ -95,7 +89,7 @@ const App = () => {
           },
         }
       );
-  
+
       // GOALS HEADER
       gsap.fromTo(
         ".goal-header",
@@ -110,11 +104,18 @@ const App = () => {
           },
         }
       );
-  
-    },wrapperRef);  // <--- IMPORTANT: PARENT WRAPPER
-  
+    }, wrapperRef); // <--- IMPORTANT: PARENT WRAPPER
+
     return () => ctx.revert();
   }, []);
+
+  const handleScrollDown = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    const targetSection = document.querySelector("#intro-section");
+    if (targetSection) {
+      targetSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   const FrontendLanguages = [
     {
@@ -158,12 +159,15 @@ const App = () => {
   ];
 
   return (
-    <main ref={wrapperRef} className="text-gray-800 bg-white overflow-x-hidden selection:bg-purple-100 selection:text-purple-600">
+    <main
+      ref={wrapperRef}
+      className="text-gray-800 bg-white overflow-x-hidden selection:bg-purple-100 selection:text-purple-600"
+    >
       <section
         ref={heroRef}
-        className="pt-5 pb-10 px-6 md:px-12 lg:px-24 min-h-screen flex flex-col lg:flex-row items-center gap-12 bg-gradient-to-b from-purple-50/50 to-white"
+        className="pt-5 pb-10 px-6 md:px-12 lg:px-24 min-h-screen flex lg:flex-row items-center gap-12 bg-gradient-to-b from-purple-50/50 to-white"
       >
-        <div className="absolute top-0 right-0 w-full h-screen">
+        <div className="absolute top-0 right-0 w-full h-[90vh]">
           <Image
             fill
             src={BannerFrontend}
@@ -201,21 +205,25 @@ const App = () => {
           </p>
 
           <div className="hero-text-element flex flex-wrap items-center gap-4">
-            <Button className="bg-[#525FE1] hover:bg-[#404bc2] text-white p-5 text-base rounded-full font-semibold shadow-lg shadow-purple-200 transition-all hover:-translate-y-1">
+            <Button
+              onClick={handleScrollDown}
+              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105 hover:-translate-y-1"
+            >
               Get Started
             </Button>
           </div>
         </div>
 
         {/* RIGHT GRID */}
-        <div className="flex-1 relative w-full max-w-lg lg:max-w-xl mx-auto opacity-0 md:opacity-100">
+        <div className="flex-1 relative w-full max-w-lg lg:max-w-xl mx-auto hidden md:block">
           {/* Grid Container: Clean 3x3 layout with gap */}
           <div className="grid grid-cols-3 gap-4 auto-rows-[1fr]">
             {/* --- ROW 1 --- */}
             {/* 1. Top Left Photo */}
             <div className="hero-grid-item aspect-square rounded-2xl overflow-hidden shadow-sm bg-gray-100">
               <Image
-                fill
+                width={400}
+                height={400}
                 src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=400"
                 alt="Student"
                 className="w-full h-full object-cover"
@@ -223,13 +231,13 @@ const App = () => {
             </div>
 
             {/* 2. Top Middle (Blue) - Fan Blade UP (Rounded Top-Right) */}
-            <div className="hero-grid-item aspect-square bg-[#525FE1] rounded-tr-[80px] rounded-tl-2xl rounded-bl-2xl rounded-br-2xl flex items-center justify-center shadow-sm">
-            </div>
+            <div className="hero-grid-item aspect-square bg-[#525FE1] rounded-tr-[80px] rounded-tl-2xl rounded-bl-2xl rounded-br-2xl flex items-center justify-center shadow-sm"></div>
 
             {/* 3. Top Right Photo */}
             <div className="hero-grid-item aspect-square rounded-2xl overflow-hidden shadow-sm bg-gray-100">
               <Image
-                fill
+                width={400}
+                height={400}
                 src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&q=80&w=400"
                 alt="Student"
                 className="w-full h-full object-cover"
@@ -243,7 +251,8 @@ const App = () => {
             {/* 5. CENTER Photo (Circle) */}
             <div className="hero-grid-item aspect-square rounded-full border-4 border-white shadow-xl overflow-hidden z-20 scale-105">
               <Image
-                fill
+                width={400}
+                height={400}
                 src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=400"
                 alt="Main Student"
                 className="w-full h-full object-cover"
@@ -257,7 +266,8 @@ const App = () => {
             {/* 7. Bottom Left Photo */}
             <div className="hero-grid-item aspect-square rounded-2xl overflow-hidden shadow-sm bg-gray-100">
               <Image
-                fill
+                width={400}
+                height={400}
                 src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&q=80&w=400"
                 alt="Student"
                 className="w-full h-full object-cover"
@@ -266,22 +276,13 @@ const App = () => {
 
             {/* 8. Bottom Middle (Yellow) - Fan Blade DOWN (Rounded Bottom-Left) */}
             <div className="hero-grid-item aspect-square bg-[#FDC500] rounded-bl-[80px] rounded-tr-2xl rounded-tl-2xl rounded-br-2xl flex items-center justify-center shadow-sm">
-              <div className="w-full h-full flex items-center justify-center text-white/40">
-                <svg
-                  width="40"
-                  height="40"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <circle cx="12" cy="12" r="4" />
-                </svg>
-              </div>
             </div>
 
             {/* 9. Bottom Right Photo */}
             <div className="hero-grid-item aspect-square rounded-2xl overflow-hidden shadow-sm bg-gray-100">
               <Image
-                fill
+                width={400}
+                height={400}
                 src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=400"
                 alt="Student"
                 className="w-full h-full object-cover"
@@ -292,12 +293,16 @@ const App = () => {
       </section>
 
       {/* What is Frontend Section */}
-      <section ref={introRef} className="intro-section py-10 bg-card/50">
+      <section
+        ref={introRef}
+        id="intro-section"
+        className="intro-section py-20 bg-card/50"
+      >
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl font-bold mb-8">
-              What is <span className="text-blue-900">Frontend Development</span>
-              ?
+              What is{" "}
+              <span className="text-blue-900">Frontend Development</span>?
             </h2>
             <div className="grid md:grid-cols-2 gap-8 text-left">
               <Card className="p-5">
@@ -360,10 +365,11 @@ const App = () => {
       </section>
 
       {/* --- GOALS / BENEFITS SECTION --- */}
-      <section ref={goalsRef} className="py-5 px-6 md:px-12 lg:px-24 bg-white">
+      <section ref={goalsRef} className="py-20 px-6 md:px-12 lg:px-24 bg-white">
         <div className="text-center max-w-2xl mx-auto mb-16 goal-header">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Achieve Your Goals With <span className="text-blue-800">Neukod</span>
+            Achieve Your Goals With{" "}
+            <span className="text-blue-800">Neukod</span>
           </h2>
           <p className="text-gray-500">
             It Is A Long Established Fact That A Reader Will Be Distracted By

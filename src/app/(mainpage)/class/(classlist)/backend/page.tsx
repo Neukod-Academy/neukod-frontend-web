@@ -167,13 +167,15 @@ export default function BackendCoursePage() {
         ref={heroRef}
         className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/5 via-background to-accent/5"
       >
-        <Image
-          alt="Backend Banner"
-          src={BackendBanner}
-          fill
-          className="object-cover w-full"
-        />
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute top-0 right-0 w-full h-[90vh]">
+          <Image
+            alt="Backend Banner"
+            src={BackendBanner}
+            fill
+            className="object-cover w-full"
+          />
+          <div className="absolute inset-0 bg-black/40" />
+        </div>
         <div className="container relative mx-auto text-center">
           <div className="max-w-4xl mx-auto relative">
             <h1 className="hero-title text-5xl md:text-7xl font-bold mb-6 text-white">
