@@ -12,7 +12,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import BannerFrontend from "@/app/images/class/frontend/frontend_banner.png";
+import BannerFrontend from "@/app/images/class/frontend/frontend_banner.webp";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
