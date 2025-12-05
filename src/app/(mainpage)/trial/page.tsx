@@ -1,6 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -22,8 +24,89 @@ import { TrialRequestModal } from "@/app/(mainpage)/trial/trial-request";
 import BannerTrial from "@/app/images/trial/banner_trial2.jpg";
 import Image from "next/image";
 
-export default function TrialPage() {
+const TrialPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const heroRef = useRef(null);
+  const herotextRef = useRef<HTMLDivElement | null>(null)
+  const benefitsRef = useRef<HTMLDivElement | null>(null)
+  const coursesRef = useRef<HTMLDivElement | null>(null)
+  const testimonialsRef = useRef<HTMLDivElement | null>(null)
+  const ctaRef = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const ctx = gsap.context(() => {
+      gsap.from(".hero-section", {
+        opacity: 0,
+        y: 30,
+        duration: 1,
+        ease: "power3.in",
+        delay: 0.2,
+      });
+      gsap.from(".hero-text", {
+        opacity: 0,
+        y: 40,
+        duration: 1,
+        ease: "power3.in",
+        delay: 0.5,
+      });
+      gsap.from(".benefit-section", {
+        opacity: 0,
+        y: 50,
+        duration: 1.2,
+        ease: "power3.out",
+        delay: 0.6,
+      });
+
+      gsap.fromTo(
+        ".course-section",
+        { y: 80, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          stagger: 0.3,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: coursesRef.current,
+            start: "top 70%",
+          },
+        }
+      );
+
+      gsap.fromTo(
+        ".testi-section",
+        { y: 80, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          stagger: 0.3,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: testimonialsRef.current,
+            start: "top 80%",
+          },
+        }
+      );
+      gsap.fromTo(
+        ".cta-section",
+        { y: 80, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          stagger: 0.3,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ctaRef.current,
+            start: "top 80%",
+          },
+        }
+      );
+    });
+    return () => ctx.revert();
+  }, []);
 
   const courses = [
     {
@@ -95,37 +178,42 @@ export default function TrialPage() {
 
   return (
     <main className="relative">
-      <div className="relative  h-[40vh] lg:h-[60vh] w-full overflow-hidden items-center justify-center">
+      <div
+        ref={heroRef}
+        className="hero-section relative h-[40vh] lg:h-[60vh] w-full overflow-hidden items-center justify-center"
+      >
         <Image
           alt="Banner Trial"
           fill
           src={BannerTrial}
           className="w-full object-cover"
         />
-          <div className="z-20 pt-24 relative text-center max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-6xl font-bold text-balance mb-6 text-blue-200">
-              Experience Learning Like Never Before!
-            </h1>
-            <p className="text-xl md:text-2xl text-white text-balance mb-8 max-w-3xl mx-auto">
-              Give your child the opportunity to discover their potential with
-              our free trial classes. No commitment, just pure learning
-              excitement.
-            </p>
-            <Button
-              size="lg"
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white text-base lg:text-xl shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105 p-8"
-              onClick={() => setIsModalOpen(true)}
-            >
-              Start Your Free Trial
-              <Calendar className="ml-2 h-5 w-5" />
-            </Button>
-          </div>
+        <div
+          ref={herotextRef}
+          className="hero-text z-20 pt-24 relative text-center max-w-4xl mx-auto"
+        >
+          <h1 className="text-4xl md:text-6xl font-bold text-balance mb-6 text-blue-200">
+            Experience Learning Like Never Before!
+          </h1>
+          <p className="text-xl md:text-2xl text-white text-balance mb-8 max-w-3xl mx-auto">
+            Give your child the opportunity to discover their potential with our
+            free trial classes. No commitment, just pure learning excitement.
+          </p>
+          <Button
+            size="lg"
+            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white text-base lg:text-xl shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105 p-8"
+            onClick={() => setIsModalOpen(true)}
+          >
+            Start Your Free Trial
+            <Calendar className="ml-2 h-5 w-5" />
+          </Button>
+        </div>
       </div>
       <div className="min-h-screen bg-background">
         {/* Hero Section */}
 
         {/* Benefits Section */}
-        <section className="py-16 px-4">
+        <section ref={benefitsRef} className="benefit-section py-16 px-4">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-balance">
               Why Try <span className="text-blue-800">Our Classes</span>?
@@ -142,7 +230,7 @@ export default function TrialPage() {
         </section>
 
         {/* Courses Section */}
-        <section className="py-16 px-4 bg-card">
+        <section ref={coursesRef} className="course-section py-16 px-4 bg-card">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-balance">
               Available <span className="text-blue-800">Trial Courses</span>
@@ -182,7 +270,7 @@ export default function TrialPage() {
         </section>
 
         {/* Testimonials Section */}
-        <section className="py-16 px-4">
+        <section ref={testimonialsRef} className="testi-section py-16 px-4">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-balance text-blue-800">
               What Parents Are Saying
@@ -195,7 +283,7 @@ export default function TrialPage() {
                       {[...Array(testimonial.rating)].map((_, i) => (
                         <Star
                           key={i}
-                          className="h-5 w-5 fill-accent text-accent"
+                          className="h-5 w-5 fill-yellow-400 text-yellow-400 bg-yellow"
                         />
                       ))}
                     </div>
@@ -216,7 +304,7 @@ export default function TrialPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 px-4 bg-card text-center">
+        <section ref={ctaRef} className="cta-section py-20 px-4 bg-card text-center">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-balance text-blue-800">
               Ready to Get Started?
@@ -244,4 +332,5 @@ export default function TrialPage() {
       </div>
     </main>
   );
-}
+};
+export default TrialPage;

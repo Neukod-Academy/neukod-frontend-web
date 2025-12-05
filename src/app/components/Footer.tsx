@@ -46,11 +46,13 @@ export default function Footer() {
           {/* Brand Section */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <Image
-                alt="Neukod Logo"
-                src={NeukodLogo}
-                className="w-1/2 h-1/2"
-              />
+              <Link href="/">
+                <Image
+                  alt="Neukod Logo"
+                  src={NeukodLogo}
+                  className="w-1/2 h-1/2"
+                />
+              </Link>
               {/* <span className="text-lg font-bold text-gray-900">Neukod edu</span> */}
             </div>
             <p className="text-sm text-gray-600 mb-6 leading-relaxed">
@@ -59,25 +61,25 @@ export default function Footer() {
 
             {/* Social Icons */}
             <div className="flex gap-4 mb-6">
-              <a
+              <Link
                 href="#"
                 className="text-gray-400 hover:text-gray-600 transition"
               >
                 <Twitter size={18} />
-              </a>
-              <a
+              </Link>
+              <Link
                 href="#"
                 className="text-gray-400 hover:text-gray-600 transition"
               >
                 <Github size={18} />
-              </a>
+              </Link>
 
-              <a
+              <Link
                 href="#"
                 className="text-gray-400 hover:text-gray-600 transition"
               >
                 <Instagram size={18} />
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -86,26 +88,26 @@ export default function Footer() {
             <h3 className="font-semibold text-gray-900 mb-4">Course</h3>
             <ul className="space-y-3">
               <li>
-                <AnimatedLink href="">About Our Course</AnimatedLink>
+                <AnimatedLink href="/courses">About Our Course</AnimatedLink>
                 <span className="bg-green-100 text-green-700 text-xs px-2 py-0.5 rounded">
                   New
                 </span>
               </li>
-              <li>
+              {/* <li>
                 <AnimatedLink href="">Explore our Course</AnimatedLink>
-              </li>
+              </li> */}
             </ul>
 
             <h3 className="font-semibold text-gray-900 mt-8 mb-4">Class</h3>
             <ul className="space-y-3">
               <li>
-                <AnimatedLink href="#">Classroom</AnimatedLink>
+                <AnimatedLink href="/class">Classroom</AnimatedLink>
               </li>
               <li>
-                <AnimatedLink href="#">Backend</AnimatedLink>
+                <AnimatedLink href="/class/backend">Backend</AnimatedLink>
               </li>
               <li>
-                <AnimatedLink href="#">Frontend</AnimatedLink>
+                <AnimatedLink href="/class/frontend">Frontend</AnimatedLink>
               </li>
               <li>
                 <AnimatedLink href="#">Game</AnimatedLink>
@@ -116,11 +118,11 @@ export default function Footer() {
           <div>
             <h3 className="font-semibold text-gray-900 mb-4">Career</h3>
             <ul className="space-y-3">
-              <li>
+              {/* <li>
                 <AnimatedLink href="#">Join Us!</AnimatedLink>
-              </li>
+              </li> */}
               <li>
-                <AnimatedLink href="#">View Career</AnimatedLink>
+                <AnimatedLink href="/career">View Career</AnimatedLink>
               </li>
             </ul>
           </div>
@@ -144,7 +146,7 @@ export default function Footer() {
               <h3 className="font-semibold text-gray-900 mb-4">Support</h3>
               <ul className="space-y-3">
                 <li>
-                  <AnimatedLink href="#">Contact</AnimatedLink>
+                  <AnimatedLink href="/contact">Contact</AnimatedLink>
                 </li>
                 <li>
                   <AnimatedLink href="#">Join discord</AnimatedLink>
@@ -152,7 +154,7 @@ export default function Footer() {
               </ul>
 
               <div className="mt-8 font-semibold">
-                <AnimatedLink href="">Subscribe Neukod ❤️</AnimatedLink>
+                <AnimatedLink href="/#newsletter-section">Subscribe Neukod ❤️</AnimatedLink>
               </div>
             </div>
           </div>
@@ -167,15 +169,9 @@ export default function Footer() {
             © 2025 Neukod - Education Corp Inc.
           </p>
           <div className="flex gap-6">
-            <AnimatedLink href="#">
-              Privacy Policy
-            </AnimatedLink>
-            <AnimatedLink href="#">
-              Terms
-            </AnimatedLink>
-            <AnimatedLink href="#">
-              Code of conduct
-            </AnimatedLink>
+            <AnimatedLink href="#">Privacy Policy</AnimatedLink>
+            <AnimatedLink href="#">Terms</AnimatedLink>
+            <AnimatedLink href="#">Code of conduct</AnimatedLink>
           </div>
         </div>
       </div>

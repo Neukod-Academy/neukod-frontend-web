@@ -687,19 +687,19 @@ export default function ClassroomPage() {
             </div>
 
             <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
-              <div className="relative">
+              <div className="group relative">
                 <div className="relative z-50">
                   <Image
                     src={InstructorImg}
                     alt="User interface design"
-                    className="w-full h-auto rounded-2xl z-90"
+                    className="w-full h-auto rounded-2xl z-90 group-hover:scale-105 transition-all duration-300 delay-100"
                   />
                 </div>
                 {/* Decorative elements */}
                 <div className="z-0">
-                  <div className="absolute inset-0 -top-4 -left-4 w-[200px] h-[200px] bg-green-400 rounded-2xl shadow-[rgba(187,247,208,50)_0px_0px_20px_2px]" />
-                  <div className="absolute top-20 -right-4 w-[400px] h-[400px] bg-blue-400 rounded-2xl shadow-[rgba(191,219,254,50)_0px_0px_20px_2px]" />
-                  <div className="absolute -bottom-4 -left-5 w-[100px] h-[100px] bg-orange-400 rounded-2xl shadow-[rgba(253,230,138,50)_0px_0px_20px_2px]" />
+                  <div className="absolute inset-0 -top-4 -left-4 group-hover:scale-110 transition-all duration-400 delay-100 w-[200px] h-[200px] bg-green-400 rounded-2xl shadow-[rgba(187,247,208,50)_0px_0px_20px_2px]" />
+                  <div className="absolute -bottom-10 -right-6 group-hover:scale-110 transition-all duration-300 delay-300 w-[200px] h-[150px] md:w-[400px] md:h-[200px] bg-blue-400 rounded-2xl shadow-[rgba(191,219,254,50)_0px_0px_20px_2px]" />
+                  <div className="absolute -bottom-4 -left-5 group-hover:scale-110 transition-all duration-300 delay-300 w-[100px] h-[100px] bg-orange-400 rounded-2xl shadow-[rgba(253,230,138,50)_0px_0px_20px_2px]" />
                 </div>
               </div>
 
