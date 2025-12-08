@@ -82,7 +82,7 @@ const classes = [
   },
   {
     title: "Game Development",
-    href: "/",
+    href: "/class/game",
     description: "Industry-level skills and practices",
   },
 ];

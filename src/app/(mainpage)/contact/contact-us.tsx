@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -15,9 +15,58 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 import ContactUsBg from "@/app/images/contactUs/contactus_bg.png";
 import { contactQuestions } from "@/app/utils/constant";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const ContactPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const heroRef = useRef(null);
+  const herotextRef = useRef<HTMLDivElement | null >(null);
+  const contactRef = useRef<HTMLDivElement | null >(null);
+  const faqRef = useRef<HTMLDivElement | null >(null);
+
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const ctx = gsap.context(() => {
+      gsap.from(".hero-banner", {
+        opacity: 0,
+        y: 50,
+        duration: 0.8,
+        ease: "power2.in",
+        delay: 0.3,
+      });
+      gsap.from(".hero-text", {
+        opacity: 0,
+        y: 50,
+        duration: 0.8,
+        ease: "power2.in",
+        delay: 0.3,
+      });
+      gsap.from(".contact", {
+        opacity: 0,
+        y: 50,
+        duration: 0.8,
+        ease: "power2.in",
+        delay: 0.6,
+      });
+      gsap.fromTo(".faq", {
+        y:90,
+        opacity: 0
+      },{
+        y: 0,
+        opacity: 1,
+        duration: 1.2,
+        stagger: 0.2,
+        ease: "power1.inOut",
+        scrollTrigger: {
+          trigger: faqRef.current,
+          start: "top 80%",
+        }
+      })
+    });
+    return () => ctx.revert();
+  })
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -29,24 +78,24 @@ const ContactPage = () => {
 
   return (
     <main className="relative">
-      <div className="relative  h-[40vh] lg:h-[40vh] w-full overflow-hidden items-center justify-center">
+      <div ref={heroRef} className="hero-banner relative h-[40vh] lg:h-[40vh] w-full overflow-hidden items-center justify-center">
         <Image
           alt="Concact Banner"
           fill
           src={ContactUsBg}
           className="w-full object-cover"
         />
-        <div className="z-50 h-full relative px-5 md:px-20 justify-center top-1/3">
+        <div ref={herotextRef} className="hero-text z-50 h-full relative px-5 md:px-20 justify-center top-1/3">
           <h1 className="text-4xl md:text-6xl font-bold mb-2">Contact</h1>
           <h2 className="text-2xl md:text-4xl font-bold text-blue-800 mb-6">
             And get help from our team
           </h2>
         </div>
       </div>
-      <div className="min-h-screen bg-gray-50 py-24 px-4 sm:px-6 lg:px-8">
+      <div className="contact min-h-screen bg-gray-50 py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           {/* Contact Section */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+          <div ref={contactRef} className="contact grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
             {/* Left Side - Contact Info */}
             <div className="space-y-8">
               <div>
@@ -195,7 +244,7 @@ const ContactPage = () => {
           </div>
 
           {/* FAQ Section */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+          <div ref={faqRef} className="faq grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Left Side - FAQ Header */}
             <div className="lg:col-span-1">
               <h2 className="text-4xl font-bold text-gray-900 mb-2">
@@ -214,12 +263,8 @@ const ContactPage = () => {
 
             {/* Right Side - FAQ Accordion */}
             <div className="lg:col-span-2 space-y-2">
-                <Accordion
-                  type="single"
-                  collapsible
-                  className="space-y-4"
-                >
-                 {contactQuestions.map((item) => (
+              <Accordion type="single" collapsible className="space-y-4">
+                {contactQuestions.map((item) => (
                   <AccordionItem
                     key={item.id}
                     value={item.id}
@@ -229,13 +274,15 @@ const ContactPage = () => {
                       {item.title}
                     </AccordionTrigger>
                     <AccordionContent className="px-6 pb-2">
-                    <div className="pt-2 border-t border-gray-100">
-                      <p className="text-gray-700 leading-relaxed">{item.description}</p>
-                    </div>
+                      <div className="pt-2 border-t border-gray-100">
+                        <p className="text-gray-700 leading-relaxed">
+                          {item.description}
+                        </p>
+                      </div>
                     </AccordionContent>
                   </AccordionItem>
-                  ))}
-                </Accordion>
+                ))}
+              </Accordion>
             </div>
           </div>
         </div>

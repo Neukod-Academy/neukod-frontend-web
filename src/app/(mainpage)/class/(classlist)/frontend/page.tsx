@@ -211,6 +211,9 @@ const App = () => {
             >
               Get Started
             </Button>
+            <Button className="px-8 py-4 bg-slate-800/50 border border-slate-700 text-white rounded-xl font-bold hover:bg-slate-800 hover:border-purple-500/50 transition-all duration-300">
+              View Demo Reel
+            </Button>
           </div>
         </div>
 
