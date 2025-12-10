@@ -329,7 +329,7 @@ const RoadmapFrontend = () => {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     setGsapReady(true);
-    const ctx = window.gsap.context(() => {
+    const ctx = gsap.context(() => {
       // Header Animation
       gsap.from(".header-element", {
         y: 30,

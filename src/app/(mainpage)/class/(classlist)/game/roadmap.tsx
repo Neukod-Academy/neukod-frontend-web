@@ -326,7 +326,6 @@ const RoadmapCard = ({ item, index, onSelect }: RoadmapCardProps) => {
 // --- MAIN APP COMPONENT ---
 const RoadmapGameDev = () => {
   const [selectedItem, setSelectedItem] = useState(null);
-  const [gsapReady, setGsapReady] = useState(false);
   const containerRef = useRef(null);
 
   // 2. Setup Animations
