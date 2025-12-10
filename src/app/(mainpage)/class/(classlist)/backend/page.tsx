@@ -47,12 +47,11 @@ const Hero = () => {
         <div className="absolute inset-0 bg-black/40" />
       </div>
 
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+      {/* <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
         <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-emerald-600/10 rounded-full blur-[120px]" />
         <div className="absolute bottom-[0%] right-[-5%] w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[100px]" />
-        {/* Grid Pattern Overlay */}
-        {/* <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div> */}
-      </div>
+        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
+      </div> */}
 
       <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
         {/* Text Content */}
@@ -438,24 +437,28 @@ const PathSection = () => {
       icon: <Code2 className="w-8 h-8 text-white" />,
       color: "from-slate-900/90 to-slate-900/60",
       accent: "hover:text-green-400",
+      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
     },
     {
       title: "Go (Golang)",
       icon: <Cpu className="w-8 h-8 text-cyan-400" />,
       color: "from-slate-900/90 to-slate-900/60",
       accent: "hover:text-cyan-400",
+      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
     },
     {
       title: "Rust Lang",
       icon: <Shield className="w-8 h-8 text-orange-400" />,
       color: "from-slate-900/90 to-slate-900/60",
       accent: "hover:text-orange-400",
+      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
     },
     {
       title: "DevOps & K8s",
       icon: <Cloud className="w-8 h-8 text-blue-400" />,
       color: "from-slate-900/90 to-slate-900/60",
       accent: "hover:text-blue-400",
+      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
     },
   ];
 
@@ -471,24 +474,19 @@ const PathSection = () => {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="group grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {paths.map((path, idx) => (
             <div
               key={idx}
               className={`
-                    group
                   relative 
                   bg-gradient-to-b ${path.color} 
                   p-8 rounded-2xl border
+                  transform hover:scale-105
                   transition-all duration-300 
-                  transform
-                  hover:-translate-y-2 
-                  hover:scale-110 
-                  hover:shadow-xl 
+                  hover:shadow-xl
                   cursor-pointer 
-                  overflow-hidden 
-                  path-card 
-                  opacity-0 translate-y-10
+                  path-card will-change-transform
                 `}
             >
               <div className="relative z-10 flex flex-col items-center text-center">
@@ -507,8 +505,8 @@ const PathSection = () => {
                   {path.title}
                 </h3>
 
-                <p className="text-slate-500 text-sm mb-6">
-                  Zero to Production
+                <p className="text-slate-300 text-sm mb-6">
+                  {path.desc}
                 </p>
 
                 <Button
@@ -517,8 +515,8 @@ const PathSection = () => {
                       bg-slate-800 text-slate-300 
                       text-xs font-bold uppercase tracking-wider 
                       transition-colors
-                      group-hover:bg-emerald-500 
-                      group-hover:text-slate-950
+                      hover:bg-emerald-500 
+                      hover:text-slate-950
                     "
                 >
                   Select Stack
@@ -617,12 +615,18 @@ const BackendPage = () => {
     });
 
     gsap.utils.toArray<HTMLElement>(".path-card").forEach((card, i) => {
-      gsap.to(card, {
-        scrollTrigger: { trigger: ".path-card", start: "top 90%" },
+      gsap.fromTo(".path-card",
+        {scale:0.8 , y:0, opacity:0 }, 
+        {
+        scale: 1 ,
         opacity: 1,
         y: 0,
         duration: 0.5,
         delay: i * 0.1,
+        scrollTrigger: { 
+          trigger: ".path-card", 
+          start: "top 90%" },
+        
       });
     });
   });

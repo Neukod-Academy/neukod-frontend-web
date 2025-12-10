@@ -10,11 +10,7 @@ import {
   ChevronRight,
   GitBranch,
 } from "lucide-react";
-import {
-  Card,
-  CardContent,
-  CardFooter
-} from "@/components/ui/card";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Button } from "@/components/ui/button";
@@ -127,7 +123,7 @@ const roadmapData: roadmapDataProps[] = [
   },
 ];
 interface DetailModalProps {
-  item: roadmapDataProps;
+  item: any;
   onClose: () => void;
 }
 const DetailModal = ({ item, onClose }: DetailModalProps) => {
@@ -135,14 +131,25 @@ const DetailModal = ({ item, onClose }: DetailModalProps) => {
   const contentRef = useRef(null);
   const overlayRef = useRef(null);
 
-  const handleClose = () => {
-    if (!window.gsap) {
-      onClose();
-      return;
-    }
+  useEffect(() => {
+    const tl = gsap.timeline();
 
+    tl.fromTo(
+      overlayRef.current,
+      { opacity: 0 },
+      { opacity: 1, duration: 0.3, ease: "power2.out" }
+    );
+    tl.fromTo(
+      contentRef.current,
+      { scale: 0.5, opacity: 0, y: 50 },
+      { scale: 1, opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.7)" },
+      "-=0.2"
+    );
+  });
+
+  const handleClose = () => {
     // Animasi Keluar
-    const tl = window.gsap.timeline({
+    const tl = gsap.timeline({
       onComplete: onClose,
     });
 
@@ -151,7 +158,12 @@ const DetailModal = ({ item, onClose }: DetailModalProps) => {
       opacity: 0,
       y: 20,
       duration: 0.3,
-    }).to(overlayRef.current, { opacity: 0, duration: 0.2 }, "-=0.1");
+    });
+    tl.to(overlayRef.current, { 
+      opacity: 0, 
+      duration: 0.2,
+      ease: "powr1.out" 
+    }, "-=0.1");
   };
 
   return (
@@ -459,7 +471,6 @@ const RoadmapSection = () => {
       ref={containerRef}
       className="min-h-screen text-slate-200 font-sans pb-20 overflow-x-hidden"
     >
-      {/* Background Grid */}
       <div
         className="fixed inset-0 z-0 pointer-events-none opacity-20"
         style={{
@@ -470,7 +481,7 @@ const RoadmapSection = () => {
       ></div>
 
       {/* Spotlight */}
-      <div className="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-cyan-500/20 blur-[120px] rounded-full pointer-events-none z-0"></div>
+      <div className="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-emerald-400/20 blur-[120px] rounded-full pointer-events-none z-0"></div>
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 pt-20">
         {/* Header Section */}

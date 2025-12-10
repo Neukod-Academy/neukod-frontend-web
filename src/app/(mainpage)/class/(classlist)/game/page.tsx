@@ -23,54 +23,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import GameBanner from "@/app/images/class/game/gamedev_banner.webp";
 import PProfile from "@/app/images/class/game/pak_vincent.png"
-
-// const Navbar = () => {
-//   const [isOpen, setIsOpen] = useState(false);
-//     gsap.registerPlugin(ScrollTrigger);
-
-//   return (
-//     <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-purple-500/20">
-//       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-//         <div className="flex items-center gap-2 group cursor-pointer">
-//           <div className="p-2 bg-purple-600 rounded-lg group-hover:bg-purple-500 transition-colors">
-//             <Gamepad2 className="w-6 h-6 text-black" />
-//           </div>
-//           <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-cyan-400">
-//             NEUKOD<span className="text-black">.GG</span>
-//           </span>
-//         </div>
-
-//         {/* Desktop Menu */}
-//         <div className="hidden md:flex items-center gap-8">
-//           {['Quests', 'Skill Trees', 'Career Mode', 'Guild'].map((item) => (
-//             <a key={item} href="#" className="text-slate-300 hover:text-purple-400 font-medium transition-colors">
-//               {item}
-//             </a>
-//           ))}
-//           <button className="px-6 py-2.5 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full font-bold text-black hover:scale-105 hover:shadow-[0_0_20px_rgba(139,92,246,0.5)] transition-all duration-300 ease-out">
-//             Start Game
-//           </button>
-//         </div>
-
-//         {/* Mobile Toggle */}
-//         <button className="md:hidden text-black" onClick={() => setIsOpen(!isOpen)}>
-//           {isOpen ? <X /> : <Menu />}
-//         </button>
-//       </div>
-
-//       {/* Mobile Menu */}
-//       {isOpen && (
-//         <div className="md:hidden bg-slate-900 border-b border-purple-500/20 p-6 flex flex-col gap-4">
-//            {['Quests', 'Skill Trees', 'Career Mode', 'Guild'].map((item) => (
-//             <a key={item} href="#" className="text-slate-300 hover:text-purple-400 text-lg">
-//               {item}
-//             </a>
-//           ))}
-//         </div>
-//       )}
-//     </nav>
-//   );
-// };
+import Roadmap from "./roadmap";
+import { Button } from "@/components/ui/button";
 
 const Hero = () => {
   return (
@@ -92,16 +46,16 @@ const Hero = () => {
       <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
         {/* Text Content */}
         <div className="hero-text opacity-0 translate-y-10">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-900/30 border border-purple-500/30 text-purple-300 mb-6">
+          {/* <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-900/30 border border-purple-500/30 text-purple-300 mb-6">
             <span className="relative flex h-3 w-3">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-3 w-3 bg-purple-500"></span>
             </span>
             New Server: Unreal Engine 5 Course Live
-          </div>
+          </div> */}
           <h1 className="text-5xl lg:text-7xl font-extrabold leading-[1.1] mb-6">
             Master the art of <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400">
               Game Dev.
             </span>
           </h1>
@@ -110,13 +64,13 @@ const Hero = () => {
             building actual AAA-quality projects. No grinding required.
           </p>
           <div className="flex flex-wrap gap-4">
-            <button className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:text-white/80 rounded-xl font-bold hover:bg-purple-50 hover:scale-105 transition-all duration-300 flex items-center gap-2 group">
-              Start Journey{" "}
+            <Button className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:text-white/80 rounded-xl font-bold hover:bg-purple-50 hover:scale-105 transition-all duration-300 flex items-center gap-2 group">
+              Start Course{" "}
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
-            <button className="px-8 py-4 bg-slate-800/50 border border-slate-700 rounded-xl font-bold hover:bg-slate-800 hover:border-purple-500/50 transition-all duration-300">
-              View Demo Reel
-            </button>
+            </Button>
+            <Button className="px-8 py-4 bg-slate-800/50 border border-slate-700 rounded-xl font-bold hover:bg-slate-800 hover:border-purple-500/50 transition-all duration-300">
+              View Roadmap
+            </Button>
           </div>
         </div>
 
@@ -191,7 +145,7 @@ const InfoSection = () => {
     <section className="py-20">
       <div className="max-w-7xl mx-auto px-6">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-black mb-16 info-title opacity-0">
-          What is <span className="text-blue-800">Game Development?</span>
+          What is <span className="text-purple-800">Game Development?</span>
         </h2>
 
         <div className="grid md:grid-cols-2 gap-8 lg:gap-16">
@@ -200,7 +154,7 @@ const InfoSection = () => {
               <div className="p-2 bg-blue-600/20 rounded-lg">
                 <Cpu className="w-6 h-6 text-blue-400" />
               </div>
-              <span className="text-blue-800">The Engine (Back-end)</span>
+              <span className="text-purple-600">The Engine (Back-end)</span>
             </h3>
             <p className="text-black leading-relaxed mb-6">
               Focuses on the logic, physics, and architecture behind the scenes.
@@ -218,7 +172,7 @@ const InfoSection = () => {
                   key={item}
                   className="flex items-center gap-2 text-black text-sm"
                 >
-                  <div className="w-1.5 h-1.5 bg-blue-500 rounded-full" />{" "}
+                  <div className="w-1.5 h-1.5 bg-purple-600 rounded-full" />{" "}
                   {item}
                 </li>
               ))}
@@ -228,9 +182,9 @@ const InfoSection = () => {
           <div className="p-8 rounded-3xl border border-slate-800 hover:border-blue-800 hover:shadow-lg transition-all duration-300 info-card opacity-0 translate-y-10">
             <h3 className="text-xl font-bold text-black mb-4 flex items-center gap-3">
               <div className="p-2 bg-pink-600/20 rounded-lg">
-                <Layers className="w-6 h-6 text-pink-400" />
+                <Layers className="w-6 h-6 text-pink-800" />
               </div>
-              <span className="text-blue-800">The Gameplay (Front-end)</span>
+              <span className="text-purple-600">The Gameplay (Front-end)</span>
             </h3>
             <p className="text-black leading-relaxed mb-6">
               The "feel" of the game. Designers and gameplay programmers work
@@ -248,7 +202,7 @@ const InfoSection = () => {
                   key={item}
                   className="flex items-center gap-2 text-black text-sm"
                 >
-                  <div className="w-1.5 h-1.5 bg-pink-500 rounded-full" />{" "}
+                  <div className="w-1.5 h-1.5 bg-pink-800 rounded-full" />{" "}
                   {item}
                 </li>
               ))}
@@ -283,10 +237,10 @@ const GoalsSection = () => {
   ];
 
   return (
-    <section className="py-20 border-t border-slate-800">
+    <section className="py-20">
       <div className="max-w-7xl mx-auto px-6 text-center">
         <h2 className="text-3xl font-bold text-black mb-4 goal-title">
-          Achieve Your <span className="text-blue-800">Main Quest</span>
+          Achieve Your <span className="text-purple-800">Main Quest</span>
         </h2>
         <p className="text-black mb-16 max-w-2xl mx-auto goal-subtitle">
           Our curriculum is designed to take you from "Hello World" to
@@ -297,7 +251,7 @@ const GoalsSection = () => {
           {cards.map((card, idx) => (
             <div
               key={idx}
-              className={`p-8 rounded-2xl border ${card.color} hover:bg-blue-400 transition-all duration-300 hover:-translate-y-2 goal-card opacity-0 translate-y-10 group cursor-default`}
+              className={`p-8 rounded-2xl border ${card.color} hover:bg-purple-600/50 transition-all duration-300 hover:-translate-y-2 goal-card opacity-0 translate-y-10 group cursor-default`}
             >
               <div className="w-14 h-14 mx-auto bg-slate-900 rounded-xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform">
                 {card.icon}
@@ -319,15 +273,15 @@ const GoalsSection = () => {
 const WhyLearnSection = () => {
   return (
     <section className="py-24 relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-l from-blue-400/40 to-transparent pointer-events-none" />
+      <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-l from-purple-600/40 to-transparent pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
         {/* Left Image Side */}
         <div className="relative why-img opacity-0 -translate-x-10">
-          <div className="relative z-10 rounded-3xl overflow-hidden border-2 border-slate-700/50 shadow-2xl">
-            <div className="bg-blue-400 h-[500px] w-full flex items-center justify-center relative">
+          <div className="relative z-10 rounded-3xl overflow-hidden border-2 border-purple-400/50 shadow-2xl">
+            <div className="bg-purple-600 h-[500px] w-full flex items-center justify-center relative">
               {/* Placeholder for "Instructor" - Stylized Avatar */}
-              <div className="absolute inset-0 bg-gradient-to-b from-blue-800/50 to-slate-900"></div>
+              <div className="absolute inset-0 bg-gradient-to-b from-purple-800/50 to-slate-900/90"></div>
               <div className="relative z-10 w-48 h-48 rounded-full border-4 border-white/10 overflow-hidden bg-slate-100/20 flex items-center justify-center shadow-[0_0_50px_rgba(79,70,229,0.3)]">
                 <Image
                   src={PProfile}
@@ -340,7 +294,7 @@ const WhyLearnSection = () => {
               {/* Floating Badges */}
               <div className="absolute top-10 right-10 bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/20 animate-bounce delay-700">
                 <div className="flex gap-2 items-center">
-                  <div className="w-3 h-3 rounded-full bg-green-400"></div>
+                  <div className="w-3 h-3 rounded-full bg-purple-400/70"></div>
                   <span className="text-black font-bold text-xs">
                     Senior Dev
                   </span>
@@ -360,18 +314,18 @@ const WhyLearnSection = () => {
             </div>
           </div>
           {/* Decorative Elements */}
-          <div className="absolute -bottom-6 -right-6 w-full h-full border-2 border-dashed border-slate-700 rounded-3xl -z-10" />
+          <div className="absolute -bottom-6 -right-6 w-full h-full border-2 border-dashed border-purple-400 rounded-3xl -z-10" />
         </div>
 
         {/* Right Content Side */}
         <div className="why-text opacity-0 translate-x-10">
           <h2 className="text-4xl font-bold text-black mb-6">
             Why Choose the <br />
-            <span className="text-transparent bg-clip-text bg-blue-800">
+            <span className="text-transparent bg-clip-text bg-purple-800">
               Neukod Guild?
             </span>
           </h2>
-          <p className="text-slate-400 mb-8 text-lg">
+          <p className="text-slate-600 mb-8 text-lg">
             We don't just teach syntax. We teach you how to think like a Game
             Designer and solve problems like a Senior Engineer.
           </p>
@@ -384,13 +338,13 @@ const WhyLearnSection = () => {
               "Discord Community",
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-3">
-                <CheckCircle2 className="w-5 h-5 text-green-400 flex-shrink-0" />
-                <span className="text-slate-300 font-medium">{item}</span>
+                <CheckCircle2 className="w-5 h-5 text-purple-800 flex-shrink-0" />
+                <span className="text-slate-800 font-medium">{item}</span>
               </div>
             ))}
           </div>
 
-          <button className="w-full sm:w-auto px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-400 hover:bg-gradient-to-r hover:from-blue-300 from-50% hover:to-purple-200 text-black/80 hover:text-black/60 font-bold rounded-lg shadow-[0_4px_20px_rgba(147,51,234,0.3)] hover:shadow-[0_4px_25px_rgba(147,51,234,0.5)] transition-all transform-all hover:-translate-y-1 duration-300">
+          <button className="w-full sm:w-auto px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-400 hover:bg-gradient-to-r hover:from-blue-300 from-50% hover:to-purple-200 text-white hover:text-black/60 font-bold rounded-lg shadow-[0_4px_20px_rgba(147,51,234,0.3)] hover:shadow-[0_4px_25px_rgba(147,51,234,0.5)] transition-all transform-all hover:-translate-y-1 duration-300">
             Join the Guild
           </button>
         </div>
@@ -403,29 +357,29 @@ const PathSection = () => {
   const paths = [
     {
       title: "Unity Engine",
-      icon: <Box className="w-8 h-8 text-black" />,
-      color: "from-slate-800 to-slate-900",
+      icon: <Box className="w-8 h-8 text-white/80" />,
+      color: "from-purple-300/20 to-purple-600/20",
       accent: "group-hover:text-black",
-      border: "hover:border-white",
+      border: "hover:border-purple-200",
     },
     {
       title: "Unreal 5",
       icon: <MonitorPlay className="w-8 h-8 text-blue-400" />,
-      color: "from-slate-800 to-slate-900",
+      color: "from-purple-300/20 to-purple-600/20",
       accent: "group-hover:text-blue-400",
       border: "hover:border-blue-500",
     },
     {
       title: "C# Scripting",
       icon: <Code2 className="w-8 h-8 text-purple-400" />,
-      color: "from-slate-800 to-slate-900",
+      color: "from-purple-300/20 to-purple-600/20",
       accent: "group-hover:text-purple-400",
       border: "hover:border-purple-500",
     },
     {
       title: "Blender 3D",
       icon: <Layers className="w-8 h-8 text-orange-400" />,
-      color: "from-slate-800 to-slate-900",
+      color: "from-purple-300/20 to-purple-600/20",
       accent: "group-hover:text-orange-400",
       border: "hover:border-orange-500",
     },
@@ -436,16 +390,16 @@ const PathSection = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16 path-header opacity-0">
           <h2 className="text-3xl font-bold text-black mb-4">
-            Programming <span className="text-blue-500">Skill Tree</span>
+            Programming <span className="text-purple-800">Skill Tree</span>
           </h2>
-          <p className="text-slate-400">Select your specialization class.</p>
+          <p className="text-slate-600">Select your specialization class.</p>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {paths.map((path, idx) => (
             <div
               key={idx}
-              className={`group relative bg-gradient-to-b ${path.color} p-8 rounded-2xl border border-slate-800 ${path.border} transition-all duration-300 hover:-translate-y-2 cursor-pointer overflow-hidden path-card opacity-0 translate-y-10`}
+              className={`group relative bg-gradient-to-b ${path.color} p-8 rounded-2xl border border-slate-400 ${path.border} transition-all duration-300 hover:-translate-y-2 cursor-pointer overflow-hidden path-card opacity-0 translate-y-10`}
             >
               <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="relative z-10 flex flex-col items-center text-center">
@@ -458,7 +412,7 @@ const PathSection = () => {
                   {path.title}
                 </h3>
                 <p className="text-slate-500 text-sm mb-6">Beginner to Pro</p>
-                <button className="px-4 py-2 rounded-lg bg-slate-800 text-slate-300 text-xs font-bold uppercase tracking-wider group-hover:bg-white group-hover:text-slate-900 transition-colors">
+                <button className="px-4 py-2 rounded-lg bg-purple-600/80 text-slate-200 text-sm font-bold uppercase tracking-wider group-hover:bg-white group-hover:text-slate-900 transition-colors">
                   Start Class
                 </button>
               </div>
@@ -470,45 +424,6 @@ const PathSection = () => {
   );
 };
 
-// const Footer = () => {
-//   return (
-//     <footer className="bg-slate-950 border-t border-slate-900 pt-16 pb-8">
-//       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12 mb-12">
-//         <div className="col-span-1 md:col-span-1">
-//           <div className="flex items-center gap-2 mb-6">
-//             <Gamepad2 className="w-6 h-6 text-purple-500" />
-//             <span className="text-xl font-bold text-black">NEUKOD</span>
-//           </div>
-//           <p className="text-slate-500 text-sm leading-relaxed">
-//             The premier destination for aspiring game developers. Built by gamers, for gamers.
-//           </p>
-//         </div>
-
-//         {[
-//           { header: "Course", links: ["Unreal Engine", "Unity", "C# Mastery", "Blender"] },
-//           { header: "Career", links: ["Job Board", "Portfolio Review", "Mock Interviews"] },
-//           { header: "Support", links: ["Discord", "Help Center", "Report Bug"] }
-//         ].map((col, idx) => (
-//           <div key={idx}>
-//             <h4 className="text-black font-bold mb-6">{col.header}</h4>
-//             <ul className="space-y-3">
-//               {col.links.map(link => (
-//                 <li key={link}>
-//                   <a href="#" className="text-slate-500 hover:text-purple-400 text-sm transition-colors">
-//                     {link}
-//                   </a>
-//                 </li>
-//               ))}
-//             </ul>
-//           </div>
-//         ))}
-//       </div>
-//       <div className="text-center border-t border-slate-900 pt-8">
-//         <p className="text-slate-600 text-sm">© 2024 Neukod.GG. All rights reserved. GG WP.</p>
-//       </div>
-//     </footer>
-//   );
-// };
 
 const App = () => {
   const mainRef = useRef(null);
@@ -608,12 +523,19 @@ const App = () => {
   return (
     <div
       ref={mainRef}
-      className="min-h-screen text-slate-200 selection:bg-purple-500 selection:text-black font-sans overflow-x-hidden"
+      className="min-h-screen text-slate-200 selection:bg-purple-500 selection:text-black font-sans z-50 overflow-x-hidden"
     >
+      <div className="fixed inset-0 -z-99 pointer-events-none opacity-40" 
+           style={{ 
+             backgroundImage: 'radial-gradient(#a855f7 1px, transparent 1px)',
+             backgroundSize: '50px 50px'
+           }}>
+      </div>
       <Hero />
       <InfoSection />
       <GoalsSection />
       <WhyLearnSection />
+      <Roadmap />
       <PathSection />
     </div>
   );
