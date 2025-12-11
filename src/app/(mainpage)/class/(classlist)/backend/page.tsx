@@ -68,13 +68,13 @@ const Hero = () => {
             with confidence.
           </p>
           <div className="flex flex-wrap gap-4">
-            <button className="px-8 py-4 bg-emerald-500 text-slate-950 rounded-xl font-bold hover:bg-emerald-400 hover:scale-105 transition-all duration-300 flex items-center gap-2 group shadow-[0_0_20px_rgba(16,185,129,0.3)]">
+            <Button className="px-8 py-4 bg-emerald-500 text-slate-950 rounded-xl font-bold hover:bg-emerald-400 hover:scale-105 transition-all duration-300 flex items-center gap-2 group shadow-[0_0_20px_rgba(16,185,129,0.3)]">
               Start Learning{" "}
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
-            <button className="px-8 py-4 bg-slate-800/50 border border-slate-700 text-white rounded-xl font-bold hover:bg-slate-800 hover:border-emerald-500/50 transition-all duration-300 font-mono">
+            </Button>
+            <Button className="px-8 py-4 bg-slate-800/50 border border-slate-700 text-white rounded-xl font-bold hover:bg-slate-800 hover:border-emerald-500/50 transition-all duration-300 font-mono">
               View Roadmap
-            </button>
+            </Button>
           </div>
         </div>
 

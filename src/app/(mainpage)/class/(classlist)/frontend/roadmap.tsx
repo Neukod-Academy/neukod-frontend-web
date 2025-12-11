@@ -322,13 +322,11 @@ const RoadmapCard = ({ item, index, onSelect} : RoadmapCardProps) => {
 // --- MAIN APP COMPONENT ---
 const RoadmapFrontend = () => {
   const [selectedItem, setSelectedItem] = useState(null);
-  const [gsapReady, setGsapReady] = useState(false);
   const containerRef = useRef(null);
 
   // 2. Setup Animations
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-    setGsapReady(true);
     const ctx = gsap.context(() => {
       // Header Animation
       gsap.from(".header-element", {
