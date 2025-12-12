@@ -1,7 +1,34 @@
+"use client"
+import { gsap } from "gsap";
+import { useEffect, useRef } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 const WelcomeText = () => {
+  const textRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    let ctx = gsap.context(() => {
+      gsap.fromTo(textRef.current, { opacity: 0 , y: 130}, {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power1.inOut",
+        scrollTrigger: {
+          trigger: textRef.current,
+          start: "top 80%",
+          toggleActions: "play none none none",
+        },
+      });
+      return () => ctx.revert;
+    })
+
+  });
+
+
   return (
     <div className="container py-12 md:py-16 lg:py-20 mx-auto">
-      <div className="items-center justify-center mx-auto">
+      <div ref={textRef} className="welcome-text items-center justify-center mx-auto">
         <h2 className="text-xl md:text-3xl lg:text-4xl font-bold text-center">
           Welcome To Neukod{" "}
         </h2>

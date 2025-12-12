@@ -15,6 +15,7 @@ import {
   ArrowRight,
   Menu,
   X,
+  Heart,
   MousePointer2,
   Monitor,
 } from "lucide-react";
@@ -41,21 +42,21 @@ const Hero = () => {
           <div className="absolute top-0 right-[500px] w-12 h-16 bg-transparent rounded-tr-[3rem] shadow-[20px_-20px_0_20px_#ffffff] pointer-events-none"></div>
           <div className="text-top flex gap-10 items-start ml-10 py-5">
             <div className="flex flex-col gap-2">
-              <h3 className="text-4xl font-semibold text-blue-600">Fun</h3>
+              <h3 className="text-4xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-70% to-cyan-500">4+</h3>
               <p className="text-sm text-gray-500 max-w-[120px] leading-relaxed">
-                Our course is so fun
+                We have many different course.
               </p>
             </div>
 
             <div className="flex flex-col gap-2">
-              <h3 className="text-4xl font-semibold text-blue-600">10+</h3>
+              <h3 className="text-4xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-70% to-cyan-500">50+</h3>
               <p className="text-sm text-gray-500 max-w-[120px] leading-relaxed">
-                10+ student happy with our class
+                50+ student happy with our class.
               </p>
             </div>
 
             <div className="flex flex-col gap-2">
-              <h3 className="text-4xl font-semibold text-blue-600">Go</h3>
+              <h3 className="text-4xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-70% to-cyan-500">100%</h3>
               <p className="text-sm text-gray-500 max-w-[120px] leading-relaxed">
                 Claim your best offer today!
               </p>

@@ -7,50 +7,24 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import NeukodLogo from "@/app/images/logo_neukod.png";
+import { AnimatedLink, AnimateText } from "@/app/components/AnimatedLink";
 
-const AnimatedLink = ({
-  href,
-  children,
-}: {
-  href: string;
-  children: React.ReactNode;
-}) => (
-  <motion.a
-    href={href}
-    className="relative inline-block text-gray-600 text-sm transition-colors hover:text-blue-500"
-    whileHover="hover"
-  >
-    {children}
-    <motion.span
-      className="absolute left-0 bottom-0 w-full h-[1px] bg-blue-500 origin-left"
-      initial={{ scaleX: 0 }}
-      variants={{
-        hover: {
-          scaleX: 1,
-          transition: {
-            duration: 0.3,
-            ease: "easeInOut",
-          },
-        },
-      }}
-    />
-  </motion.a>
-);
+
 
 export default function Footer() {
   return (
     <footer className="bg-gray-50 border-t border-gray-200">
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-12 mb-12">
           {/* Brand Section */}
-          <div className="lg:col-span-1">
+          <div className="md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
               <Link href="/">
                 <Image
                   alt="Neukod Logo"
                   src={NeukodLogo}
-                  className="w-1/2 h-1/2"
+                  className="w-[150px] h-[60px] md:w-1/2 md:h-1/2 lg:w-3/4 lg:h-3/4"
                 />
               </Link>
               {/* <span className="text-lg font-bold text-gray-900">Neukod edu</span> */}
@@ -58,38 +32,36 @@ export default function Footer() {
             <p className="text-sm text-gray-600 mb-6 leading-relaxed">
               Neukod website for education purpose.
             </p>
-
-            {/* Social Icons */}
             <div className="flex gap-4 mb-6">
               <Link
                 href="#"
-                className="text-gray-400 hover:text-gray-600 transition"
+                className="text-blue-400 hover:text-blue-600 transition"
               >
-                <Twitter size={18} />
+                <Twitter size={20} />
               </Link>
               <Link
                 href="#"
-                className="text-gray-400 hover:text-gray-600 transition"
+                className="text-blue-400 hover:text-blue-600 transition"
               >
-                <Github size={18} />
+                <Github size={20} />
               </Link>
 
               <Link
                 href="#"
-                className="text-gray-400 hover:text-gray-600 transition"
+                className="text-blue-400 hover:text-blue-600 transition"
               >
-                <Instagram size={18} />
+                <Instagram size={20} />
               </Link>
             </div>
           </div>
-
-          {/* Product Column */}
           <div>
-            <h3 className="font-semibold text-gray-900 mb-4">Course</h3>
+            <h3 className="font-semibold text-blue-800 mb-4">Course</h3>
             <ul className="space-y-3">
               <li>
-                <AnimatedLink href="/courses">About Our Course</AnimatedLink>
-                <span className="bg-green-100 text-green-700 text-xs px-2 py-0.5 rounded">
+                <AnimatedLink href="/courses">
+                  <span className="text-sm md:text-base">About Our Course</span>
+                </AnimatedLink>
+                <span className="bg-green-100 text-green-700 text-xs px-2 py-0.5 rounded-lg">
                   New
                 </span>
               </li>
@@ -97,66 +69,81 @@ export default function Footer() {
                 <AnimatedLink href="">Explore our Course</AnimatedLink>
               </li> */}
             </ul>
-
-            <h3 className="font-semibold text-gray-900 mt-8 mb-4">Class</h3>
+            <h3 className="font-semibold text-blue-800 mt-8 mb-4">Class</h3>
             <ul className="space-y-3">
               <li>
-                <AnimatedLink href="/class">Classroom</AnimatedLink>
+                <AnimatedLink href="/class">
+                  <span className="text-sm md:text-base">Classroom</span>
+                </AnimatedLink>
               </li>
               <li>
-                <AnimatedLink href="/class/backend">Backend</AnimatedLink>
+                <AnimatedLink href="/class/backend">
+                  <span className="text-sm md:text-base">Backend </span>
+                </AnimatedLink>
               </li>
               <li>
-                <AnimatedLink href="/class/frontend">Frontend</AnimatedLink>
+                <AnimatedLink href="/class/frontend">
+                  <span className="text-sm md:text-base">Frontend</span>
+                </AnimatedLink>
               </li>
               <li>
-                <AnimatedLink href="#">Game</AnimatedLink>
+                <AnimatedLink href="#">
+                  <span className="text-sm md:text-base">Game</span>
+                </AnimatedLink>
               </li>
             </ul>
           </div>
 
           <div>
-            <h3 className="font-semibold text-gray-900 mb-4">Career</h3>
+            <h3 className="font-semibold text-blue-800 mb-4">Career</h3>
             <ul className="space-y-3">
-              {/* <li>
-                <AnimatedLink href="#">Join Us!</AnimatedLink>
-              </li> */}
               <li>
-                <AnimatedLink href="/career">View Career</AnimatedLink>
+                <AnimatedLink href="/career">
+                  <span className="text-sm md:text-base">View Career</span>
+                </AnimatedLink>
+              </li>
+            </ul>
+            <h3 className="font-semibold text-blue-800 mt-8 mb-4">
+              Partner with us
+            </h3>
+            <ul className="space-y-3">
+              <li>
+                <AnimatedLink href="#">
+                  <span className="text-sm md:text-base">Sini cik</span>
+                </AnimatedLink>
+              </li>
+            </ul>
+            <h3 className="font-semibold text-blue-800 mt-8 mb-4">Support</h3>
+            <ul className="space-y-3">
+              <li>
+                <AnimatedLink href="/contact">
+                  <span className="text-sm md:text-base">Contact</span>
+                </AnimatedLink>
               </li>
             </ul>
           </div>
-
+          <div className="hidden lg:block w-[1px] bg-gray-200 mx-10 self-stretch"></div>
           {/* Right Columns */}
-          <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-8">
-            {/* Partner Section */}
-            <div>
-              <h3 className="font-semibold text-gray-900 mb-4">
-                Partner with us
-              </h3>
-              <ul className="space-y-3">
-                <li>
-                  <AnimatedLink href="#">Sini cik</AnimatedLink>
-                </li>
-              </ul>
-            </div>
-
-            {/* Support Section */}
-            <div>
-              <h3 className="font-semibold text-gray-900 mb-4">Support</h3>
-              <ul className="space-y-3">
-                <li>
-                  <AnimatedLink href="/contact">Contact</AnimatedLink>
-                </li>
-                <li>
-                  <AnimatedLink href="#">Join discord</AnimatedLink>
-                </li>
-              </ul>
-
-              <div className="mt-8 font-semibold">
-                <AnimatedLink href="/#newsletter-section">Subscribe Neukod ❤️</AnimatedLink>
-              </div>
-            </div>
+          <div className="flex gap-4 font-semibold">
+            <ul className="space-y-10">
+              <li>
+                <AnimatedLink href="/#newsletter-section">
+                  <span className="text-sm md:text-base">
+                    Subscribe Neukod ❤️
+                  </span>
+                </AnimatedLink>
+              </li>
+              <li>
+                <AnimatedLink href="#">
+                  <span className="text-sm md:text-base">
+                    Join Neukod Discord
+                  </span>
+                </AnimatedLink>
+              </li>
+              <li>
+                  <AnimateText href="#">Start Trial</AnimateText>
+              </li>
+            </ul>
           </div>
         </div>
 

@@ -22,7 +22,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import GameBanner from "@/app/images/class/game/gamedev_banner.webp";
-import PProfile from "@/app/images/class/game/pak_vincent.png"
+import PProfile from "@/app/images/class/game/pak_vincent.png";
 import Roadmap from "./roadmap";
 import { Button } from "@/components/ui/button";
 
@@ -37,6 +37,32 @@ const Hero = () => {
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-transparent" />
+        <div className="absolute top-0 right-0 bg-white w-[500px] h-[150px] rounded-bl-[3rem] hidden md:block">
+          <div className="absolute top-[150px] right-0 w-12 h-16 bg-transparent rounded-tr-[3rem] shadow-[20px_-20px_0_20px_#ffffff] pointer-events-none"></div>
+          <div className="absolute top-0 right-[500px] w-12 h-16 bg-transparent rounded-tr-[3rem] shadow-[20px_-20px_0_20px_#ffffff] pointer-events-none"></div>
+          <div className="text-top flex gap-10 items-start ml-10 py-5">
+            <div className="flex flex-col gap-2 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400">
+              <h3 className="text-4xl font-semibold">4+</h3>
+              <p className="text-sm text-gray-500 max-w-[120px] leading-relaxed">
+                We have many different course.
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-2 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400">
+              <h3 className="text-4xl font-semibold">50+</h3>
+              <p className="text-sm text-gray-500 max-w-[120px] leading-relaxed">
+                50+ student happy with our class.
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-2 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400">
+              <h3 className="text-4xl font-semibold">100%</h3>
+              <p className="text-sm text-gray-500 max-w-[120px] leading-relaxed">
+                Claim your best offer today!
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
         <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-purple-600/20 rounded-full blur-[120px]" />
@@ -259,9 +285,7 @@ const GoalsSection = () => {
               <h3 className="text-xl font-bold text-black mb-3">
                 {card.title}
               </h3>
-              <p className="text-black text-sm leading-relaxed">
-                {card.desc}
-              </p>
+              <p className="text-black text-sm leading-relaxed">{card.desc}</p>
             </div>
           ))}
         </div>
@@ -424,7 +448,6 @@ const PathSection = () => {
   );
 };
 
-
 const App = () => {
   const mainRef = useRef(null);
 
@@ -463,6 +486,22 @@ const App = () => {
         delay: i * 0.2,
       });
     });
+
+    gsap.fromTo(
+      ".text-top",
+      {
+        opacity: 0,
+        y: -100,
+      },
+      {
+        scrollTrigger: { trigger: ".text-top", start: "top 70%" },
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power3.out",
+        delay: 0.3,
+      }
+    );
 
     // Goals Section
     gsap.to(".goal-title", {
@@ -525,12 +564,13 @@ const App = () => {
       ref={mainRef}
       className="min-h-screen text-slate-200 selection:bg-purple-500 selection:text-black font-sans z-50 overflow-x-hidden"
     >
-      <div className="fixed inset-0 -z-99 pointer-events-none opacity-40" 
-           style={{ 
-             backgroundImage: 'radial-gradient(#a855f7 1px, transparent 1px)',
-             backgroundSize: '50px 50px'
-           }}>
-      </div>
+      <div
+        className="fixed inset-0 -z-99 pointer-events-none opacity-40"
+        style={{
+          backgroundImage: "radial-gradient(#a855f7 1px, transparent 1px)",
+          backgroundSize: "50px 50px",
+        }}
+      ></div>
       <Hero />
       <InfoSection />
       <GoalsSection />

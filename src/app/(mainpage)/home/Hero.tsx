@@ -27,8 +27,7 @@ export default function Component() {
           duration: 1.3,
           delay: 0.3,
         });
-      }),
-      TextEffect;
+      });
     return () => ctx.revert();
   });
 

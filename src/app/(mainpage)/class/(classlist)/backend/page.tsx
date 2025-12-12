@@ -45,6 +45,32 @@ const Hero = () => {
           className="object-cover"
         />
         <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute top-0 right-0 bg-white w-[500px] h-[150px] rounded-bl-[3rem] hidden md:block">
+          <div className="absolute top-[150px] right-0 w-12 h-16 bg-transparent rounded-tr-[3rem] shadow-[20px_-20px_0_20px_#ffffff] pointer-events-none"></div>
+          <div className="absolute top-0 right-[500px] w-12 h-16 bg-transparent rounded-tr-[3rem] shadow-[20px_-20px_0_20px_#ffffff] pointer-events-none"></div>
+          <div className="text-top flex gap-10 items-start ml-10 py-5">
+            <div className="flex flex-col gap-2 ">
+              <h3 className="text-4xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400">4+</h3>
+              <p className="text-sm text-gray-500 max-w-[120px] leading-relaxed">
+                We have many different course.
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <h3 className="text-4xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400">50+</h3>
+              <p className="text-sm text-gray-500 max-w-[120px] leading-relaxed">
+                50+ student happy with our class.
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <h3 className="text-4xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400">100%</h3>
+              <p className="text-sm text-gray-500 max-w-[120px] leading-relaxed">
+                Claim your best offer today!
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
@@ -568,6 +594,22 @@ const BackendPage = () => {
         delay: i * 0.2,
       });
     });
+
+     gsap.fromTo(
+          ".text-top",
+          {
+            opacity: 0,
+            y: -100,
+          },
+          {
+            scrollTrigger: { trigger: ".text-top", start: "top 70%" },
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: "power3.out",
+            delay: 0.3,
+          }
+        );
 
     // Goals Section
     gsap.to(".goal-title", {
