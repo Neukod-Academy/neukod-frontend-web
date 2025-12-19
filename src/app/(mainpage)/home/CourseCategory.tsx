@@ -127,9 +127,9 @@ const CourseCategory = () => {
           <div className="inline-block px-4 py-1.5 rounded-full bg-blue-100 text-blue-700 text-sm font-semibold mb-4 border border-blue-200">
             Explore Categories
           </div>
-          <h1 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tight leading-tight">
+          <h1 className="text-xl md:text-3xl font-bold text-slate-900 tracking-tight leading-tight">
             Find Your Path in <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600">
+            <span className="text-2xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-800 via-indigo-800 to-purple-600">
               Technology & Design
             </span>
           </h1>

@@ -89,9 +89,8 @@ const Hero = () => {
             </span>
           </h1>
           <p className="text-slate-600 text-lg mb-8 max-w-lg leading-relaxed">
-            Kuasai seni Frontend Engineering. Gabungkan estetika desain dengan
-            logika kode React yang kompleks untuk membangun web modern yang
-            interaktif.
+          Master the art of Frontend Engineering. Combine design aesthetics with
+          complex React code logic to build modern, interactive websites.
           </p>
           <div className="flex items-center flex-wrap gap-4">
             <Button className="px-8 py-6 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 hover:scale-105 transition-all duration-300 flex items-center gap-2 group shadow-xl shadow-blue-500/20">
@@ -227,9 +226,7 @@ const InfoSection = () => {
               The Logic (Engineering)
             </h3>
             <p className="text-slate-600 leading-relaxed mb-6">
-              Bukan sekadar HTML/CSS. Frontend modern melibatkan manajemen state
-              yang kompleks, integrasi API, optimasi performa (Core Web Vitals),
-              dan arsitektur komponen yang scalable.
+            It's not just HTML/CSS. Modern frontend involves complex state management, API integration, performance optimization (Core Web Vitals), and scalable component architecture.
             </p>
             <ul className="space-y-2">
               {[
@@ -256,9 +253,9 @@ const InfoSection = () => {
               The Visuals (UI/UX)
             </h3>
             <p className="text-slate-600 leading-relaxed mb-6">
-              Menerjemahkan desain Figma menjadi kode yang hidup. Mengatur
-              animasi, transisi yang halus, tipografi, dan memastikan tampilan
-              responsif di semua perangkat.
+            Translate Figma designs into live code. Set up
+              animations, smooth transitions, typography, and ensure a responsive display
+              on all devices.
             </p>
             <ul className="space-y-2">
               {[
@@ -287,19 +284,19 @@ const GoalsSection = () => {
     {
       icon: <Monitor className="w-6 h-6 text-blue-600" />,
       title: "Modern Stack",
-      desc: "Kuasai React 19, Next.js App Router, dan Tailwind CSS. Teknologi yang dipakai startup Unicorn.",
+      desc: "Master React 19, Next.js App Router, and Tailwind CSS.",
       color: "border-blue-100 bg-blue-50/50 hover:bg-blue-50",
     },
     {
       icon: <Layers className="w-6 h-6 text-indigo-600" />,
       title: "Design System",
-      desc: "Belajar membuat komponen yang reusable, atomic design, dan storybook dokumentasi.",
+      desc: "Learn to create reusable components, atomic design, and storybook documentation.",
       color: "border-indigo-100 bg-indigo-50/50 hover:bg-indigo-50",
     },
     {
       icon: <Globe className="w-6 h-6 text-cyan-600" />,
       title: "Performance",
-      desc: "Optimasi LCP, CLS, dan FID. Buat website yang loading kurang dari 1 detik.",
+      desc: "Optimize LCP, CLS, and FID. Create a website that loads in less than 1 second.",
       color: "border-cyan-100 bg-cyan-50/50 hover:bg-cyan-50",
     },
   ];
@@ -308,12 +305,12 @@ const GoalsSection = () => {
     <section className="py-20 bg-slate-50 border-t border-slate-200">
       <div className="max-w-7xl mx-auto px-6 text-center">
         <h2 className="text-3xl font-extrabold text-blue-800 mb-4 goal-title">
-          Tujuan Utama:{" "}
+            Main Objective:{" "}
           <span className="text-blue-600">Fullstack Frontend</span>
         </h2>
         <p className="text-slate-600 mb-16 max-w-2xl mx-auto goal-subtitle">
-          Kami mencetak developer yang tidak hanya bisa coding, tapi juga
-          mengerti estetika dan pengalaman pengguna.
+        We develop developers who can not only code, but also
+        understand aesthetics and user experience.
         </p>
 
         <div className="grid md:grid-cols-3 gap-6">
@@ -432,15 +429,15 @@ const WhyLearnSection = () => {
           </div>
 
           <h2 className="text-4xl font-extrabold text-blue-900 mb-6">
-            Kenapa Memilih <br />
+            Why choose <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">
               Neukod Academy?
             </span>
           </h2>
           <p className="text-slate-600 mb-8 text-lg">
-            Di dunia digital, impresi pertama adalah segalanya. Kami mengajarkan
-            Anda cara membangun antarmuka yang tidak hanya berfungsi, tetapi
-            juga memukau.
+          In the digital world, first impressions are everything. We teach
+            you how to build interfaces that not only work, but
+            also impress.
           </p>
 
           <div className="grid sm:grid-cols-2 gap-4 mb-10">
@@ -458,7 +455,7 @@ const WhyLearnSection = () => {
           </div>
 
           <button className="w-full sm:w-auto px-8 py-3 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-lg shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2">
-            Gabung Komunitas <ArrowRight className="w-4 h-4" />
+            Join Community <ArrowRight className="w-4 h-4" />
           </button>
         </div>
       </div>
@@ -503,10 +500,10 @@ const PathSection = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16 path-header opacity-0">
           <h2 className="text-3xl font-extrabold text-blue-900 mb-4">
-            Tech Stack <span className="text-blue-600">Terbaik</span>
+            Our <span className="text-blue-600">Tech Stack</span>
           </h2>
           <p className="text-slate-500">
-            Kurikulum yang disesuaikan dengan kebutuhan industri saat ini.
+          A curriculum tailored to the needs of today's industry.
           </p>
         </div>
 
@@ -524,9 +521,9 @@ const PathSection = () => {
                   {path.title}
                 </h3>
                 <p className="text-slate-500 text-sm mb-6">Essential Mastery</p>
-                <button className="px-4 py-2 rounded-lg bg-white border border-slate-200 text-slate-600 text-xs font-bold uppercase tracking-wider group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-colors">
-                  Lihat Detail
-                </button>
+                <Button className="px-4 py-2 rounded-lg bg-white border border-slate-200 text-slate-600 text-xs font-bold uppercase tracking-wider group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-colors">
+                  View Detail
+                </Button>
               </div>
             </div>
           ))}
@@ -544,7 +541,8 @@ const App = () => {
     gsap.registerPlugin(ScrollTrigger);
 
     // Initial Hero Animation
-    const tl = gsap.timeline();
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline();
     tl.to(".hero-text", {
       opacity: 1,
       y: 0,
@@ -648,6 +646,8 @@ const App = () => {
         delay: i * 0.1,
       });
     });
+  });
+  return () => ctx.revert();
   }, []);
 
   return (
