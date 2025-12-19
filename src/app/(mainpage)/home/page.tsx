@@ -1,8 +1,8 @@
 
 import Hero from "./Hero";
-import CourseProgram from "../courses/CourseHighlight";
+import CourseProgram from "./CourseHighlight";
 import AboutUs from "./AboutUs";
-import CourseCategory from "../courses/CourseCategory";
+import CourseCategory from "./CourseCategory";
 import WelcomeText from "./WelcomeText";
 import FeaturesSection from "./FeatureSection";
 import SlidePage from "./SlidePage";

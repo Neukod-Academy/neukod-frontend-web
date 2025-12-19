@@ -1,6 +1,70 @@
-import { GraduationCap, TreesIcon as Tree, FileCheck, Tag, Lightbulb } from 'lucide-react'
+"use client";
+
+import {
+  GraduationCap,
+  TreesIcon as Tree,
+  FileCheck,
+  Tag,
+  Lightbulb,
+} from "lucide-react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { gsap } from "gsap";
+import { useEffect, useRef, useState } from "react";
 
 export default function FeaturesSection() {
+  const titleRef = useRef<HTMLDivElement | null>(null);
+  const cardRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        titleRef.current,
+        {
+          opacity: 0,
+          y: 50,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.in",
+          scrollTrigger: {
+            trigger: titleRef.current,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+
+      gsap.fromTo(
+        (".feature-card"),
+        {
+          opacity: 0,
+          y:80
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          stagger: 0.2,
+          scrollTrigger: {
+            trigger: cardRef.current,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    });
+  });
+
   const features = [
     {
       icon: GraduationCap,
@@ -42,47 +106,64 @@ export default function FeaturesSection() {
       iconColor: "text-blue-500",
       bgColor: "bg-blue-100",
     },
-  ]
+  ];
 
   return (
     <div id="Course" className="container mx-auto px-4 py-16">
-      <div className="max-w-3xl mx-auto text-center mb-12">
+      <div ref={titleRef} className="max-w-3xl mx-auto text-center mb-12">
         <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-4 text-blue-800">
           Why we are different than others?
         </h2>
         <hr className="w-48 h-1 mx-auto my-4 bg-blue-400 border-0 rounded md:my-10 dark:bg-gray-700" />
         <p className="text-sm md:text-base lg:text-lg text-gray-600 mb-8">
-          At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.
+          At vero eos et accusamus et iusto odio dignissimos ducimus qui
+          blanditiis praesentium voluptatum deleniti atque corrupti.
         </p>
         <button className="bg-coral-500 hover:bg-coral-600 text-white font-semibold py-3 px-8 rounded-lg transition-colors">
           Get Started
         </button>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div ref={cardRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {features.map((feature, index) => {
-          const Icon = feature.icon
+          const Icon = feature.icon;
+
           return (
-            <div
+            <Card
               key={index}
-              className="p-6 rounded-lg border-2 border-gray-100 hover:scale-105 duration-200 transform-all"
+              className="feature-card
+          border-2 border-gray-100 
+          transition-transform duration-300
+          hover:scale-105
+        "
             >
-              <div className="mb-4">
-                <div className={`w-14 h-14 rounded-lg ${feature.bgColor} flex items-center justify-center`}>
-                  <Icon className={`w-7 h-7 ${feature.iconColor}`} />
+              <CardHeader className="pb-4">
+                <div className="mb-4">
+                  <div
+                    className={`
+                w-14 h-14 rounded-lg 
+                ${feature.bgColor} 
+                flex items-center justify-center
+              `}
+                  >
+                    <Icon className={`w-7 h-7 ${feature.iconColor}`} />
+                  </div>
                 </div>
-              </div>
-              <h3 className="text-xl font-semibold text-green-800 mb-3">
-                {feature.title}
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                {feature.description}
-              </p>
-            </div>
-          )
+
+                <CardTitle className="text-xl font-semibold text-green-800">
+                  {feature.title}
+                </CardTitle>
+              </CardHeader>
+
+              <CardContent>
+                <CardDescription className="text-gray-600 leading-relaxed">
+                  {feature.description}
+                </CardDescription>
+              </CardContent>
+            </Card>
+          );
         })}
       </div>
     </div>
-  )
+  );
 }
-

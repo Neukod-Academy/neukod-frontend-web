@@ -10,12 +10,75 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel"
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
 
 const CourseProgram = () => {
+  const titleRef = useRef<HTMLDivElement | null>(null);
+  const carouselRef = useRef(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.fromTo(
+      ".bg-anim",
+      {
+        opacity: 0
+      },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 2,
+        ease: "power1.inOut",
+        scrollTrigger: {
+          trigger: titleRef.current,
+          start: "top 80%",
+          toggleActions: "play none none none",
+        }
+      }
+    )
+    gsap.fromTo(
+      titleRef.current,
+      {
+        opacity: 0,
+        x:-100
+      },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 1,
+        ease: "power1.inOut",
+        scrollTrigger: {
+          trigger: titleRef.current,
+          start: "top 80%",
+          toggleActions: "play none none none",
+        }
+      }
+    )
+    gsap.fromTo(
+      carouselRef.current,
+      {
+        opacity: 0,
+        x:100
+      },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 1,
+        ease: "power1.inOut",
+        scrollTrigger: {
+          trigger: carouselRef.current,
+          start: "top 80%",
+          toggleActions: "play none none none",
+        }
+      }
+    )
+  })
   return (
-    <div className="flex w-full px-24 py-4 justify-center bg-gray-100 rounded-md">
+    <div className="bg-anim flex w-full px-24 py-4 justify-center bg-gray-100 rounded-md">
       <div className="relative flex flex-col md:flex-row gap-4 items-center">
-        <div className="flex justify-start mx-2 w-auto p-2">
+        <div ref={titleRef} className="flex justify-start mx-2 w-auto p-2">
           <h1 className="text-xl md:text-3xl font-bold sm:text-left text-blue-900">
             Our Programs
           </h1>
@@ -39,7 +102,7 @@ const CourseProgram = () => {
             }}
             className="w-full max-w-[900px]"
           >
-            <CarouselContent>
+            <CarouselContent ref={carouselRef}>
               {courseHighlight.map((course, index) => (
                 <CarouselItem key={index} className="relative basis-1/3 md:basis-1/4 lg:basis-1/6">
                   <div className="relative h-full w-full bg-transparent">
