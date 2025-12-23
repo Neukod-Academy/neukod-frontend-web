@@ -240,19 +240,19 @@ export interface FAQData {
 export const faqData: FAQData[] = [
   {
     id: "programs",
-    question: "What programs does Pennant Education offer?",
+    question: "What programs does Neukod Education offer?",
     answer:
       "We offer a wide range of programs including Software Development, Cybersecurity, Gaming, Data Science/AI, Design, and STEM-anchored K-12 programs. Additionally, we provide enrichment in English language/liberal arts, SAT/College Prep, and chess.",
   },
   {
     id: "apply",
-    question: "How do I apply to Pennant Education?",
+    question: "How do I apply to Neukod Education?",
     answer:
-      "You can apply to Pennant Education by visiting our admissions page and completing the online application form. Our admissions team will guide you through the process, which includes submitting transcripts, letters of recommendation, and a personal statement. We also offer virtual information sessions to help you learn more about our programs.",
+      "You can apply to Neukod Education by visiting our admissions page and completing the online application form. Our admissions team will guide you through the process, which includes submitting transcripts, letters of recommendation, and a personal statement. We also offer virtual information sessions to help you learn more about our programs.",
   },
   {
     id: "accredited",
-    question: "Are the programs at Pennant Education accredited?",
+    question: "Are the programs at Neukod Education accredited?",
     answer:
       "Yes, all of our programs are fully accredited by recognized accrediting bodies. Our institution maintains high academic standards and is regularly reviewed to ensure we meet all educational requirements. This accreditation ensures that your credits and certifications will be recognized by employers and other educational institutions.",
   },

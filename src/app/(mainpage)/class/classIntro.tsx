@@ -20,11 +20,6 @@ import {
 } from "@/components/ui/card";
 import FloatingCard from "./classComponent/FloatingCard";
 
-// Register GSAP plugins
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
-
 export default function ClassroomPage() {
   const heroRef = useRef<HTMLDivElement>(null);
   const bannerRef = useRef<HTMLDivElement>(null);
@@ -32,15 +27,20 @@ export default function ClassroomPage() {
   const floatingElementsRef = useRef<HTMLDivElement[]>([]);
   const categoriesRef = useRef<HTMLDivElement>(null);
   const classIntroRef = useRef<HTMLDivElement>(null);
+  const introRef = useRef<HTMLDivElement | null>(null);
 
-  const [selectedCategory, setSelectedCategory] = useState<
-    "backend" | "frontend"
-  >("backend");
-  const [selectedTab, setSelectedTab] = useState<"programs" | "competitions">(
-    "programs"
-  );
+  // const [selectedCategory, setSelectedCategory] = useState<
+  //   "backend" | "frontend"
+  // >("backend");
+  // const [selectedTab, setSelectedTab] = useState<"programs" | "competitions">(
+  //   "programs"
+  // );
 
   useEffect(() => {
+    if (typeof window !== "undefined") {
+    gsap.registerPlugin(ScrollTrigger);
+    }
+
     const ctx = gsap.context(() => {
       // Hero parallax animation
       gsap.to(bannerRef.current, {
@@ -164,15 +164,205 @@ export default function ClassroomPage() {
             trigger: ".categories-section",
             start: "top 80%",
             end: "bottom 20%",
-            toggleActions: "play none none reverse",
+            toggleActions: "play none none none",
             once: true,
           },
         }
       );
-    });
 
+      gsap.fromTo(
+        ".partner-section",
+        { opacity: 0, y: 80, scale: 0.8 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.8,
+          stagger: 0.2,
+          scrollTrigger: {
+            trigger: ".partner-section",
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+      gsap.fromTo(
+        ".intro-title",
+        {
+          opacity: 0,
+          y: 60,
+        },
+        {
+          scrollTrigger: { trigger: ".intro-title", start: "top 80%" },
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+        }
+      );
+
+      gsap.set(".intro-item", { opacity: 0, y: 60 });
+      gsap.utils
+        .toArray<HTMLDivElement>(".intro-item")
+        .forEach((item, index) => {
+          gsap.to(item, {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            delay: index * 0.2,
+            scrollTrigger: {
+              trigger: item,
+              start: "top 90%",
+            },
+          });
+        });
+      gsap.fromTo(
+        ".about-title",
+        {
+          opacity: 0,
+          y: 60,
+        },
+        {
+          scrollTrigger: { trigger: ".about-title", start: "top 80%" },
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+        }
+      );
+      gsap.fromTo(
+        ".about-item",
+        { opacity: 0, y: 60, scale: 0.9 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.8,
+          stagger: 0.3,
+          scrollTrigger: {
+            trigger: ".about-item",
+            start: "top 85%",
+            end: "bottom 20%",
+            toggleActions: "play none none none",
+            once: true,
+          },
+        }
+      );
+
+      gsap.fromTo(
+        ".about-classroom",
+        {
+          opacity: 0,
+          x: -80,
+        },
+        {
+          scrollTrigger: { trigger: ".about-classroom", start: "top 80%" },
+          opacity: 1,
+          x: 0,
+          duration: 0.8,
+        }
+      );
+      gsap.fromTo(
+        ".about-classroom-img",
+        {
+          opacity: 0,
+          x: 80,
+        },
+        {
+          scrollTrigger: { trigger: ".about-classroom", start: "top 80%" },
+          opacity: 1,
+          x: 0,
+          duration: 0.8,
+        }
+      );
+
+      gsap.fromTo(
+        ".feature-title",
+        {
+          opacity: 0,
+          y: 80,
+        },
+        {
+          scrollTrigger: { trigger: ".feature-title", start: "top 80%" },
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+        }
+      );
+      gsap.fromTo(
+        ".feature-title2",
+        {
+          opacity: 0,
+          x: 80,
+        },
+        {
+          scrollTrigger: { trigger: ".feature-title2", start: "top 80%" },
+          opacity: 1,
+          x: 0,
+          duration: 0.8,
+          delay: 0.2
+        }
+      );
+      gsap.set(".feature-item", { opacity: 0, x: 80 });
+      gsap.utils
+        .toArray<HTMLDivElement>(".feature-item")
+        .forEach((feature, index) => {
+          gsap.to(feature, {
+            opacity: 1,
+            x: 0,
+            duration: 0.8,
+            delay: index * 0.2,
+            scrollTrigger: {
+              trigger: feature,
+              start: "top 90%",
+            },
+          });
+        });
+        gsap.fromTo(".shapes",{
+          opacity: 0,
+          scale: 0.8,
+        }, {
+          opacity: 1,
+          scale: 1,
+          y: 0,
+          duration: 0.8,
+          stagger: 0.2,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".shapes",
+            start: "top 80%",
+          },
+        });
+        gsap.fromTo(".title-teach",{
+          opacity: 0,
+          x: 80,
+        }, {
+          opacity: 1,
+          x: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".title-teach",
+            start: "top 80%",
+          },
+        });
+        gsap.fromTo(".img-teach",{
+          opacity: 0,
+          x: -80,
+        }, {
+          opacity: 1,
+          x: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".img-teach",
+            start: "top 80%",
+          },
+        });
+
+    });
     return () => ctx.revert();
   }, []);
+
   const backendLanguages = [
     {
       name: "Go",
@@ -246,7 +436,44 @@ export default function ClassroomPage() {
       level: "Intermediate",
     },
   ];
+  const introItem = [
+    {
+      icon: <CreditCard className="w-8 h-8 text-white" />,
+      color: "bg-blue-900",
+      title: "Online Billing, Invoicing, & Contracts",
+      desc: "Simple and secure control of your organization's financial and legal transactions. Send customized invoices and contracts",
+    },
+    {
+      icon: <Calendar className="w-8 h-8 text-white" />,
+      color: "bg-blue-900",
+      title: "Easy Scheduling & Attendance Tracking",
+      desc: "Schedule and reserve classrooms at one campus or multiple campuses. Keep detailed records of student attendance",
+    },
+    {
+      icon: <UserCheck className="w-8 h-8 text-white" />,
+      color: "bg-cyan-500",
+      title: "Customer Tracking",
+      desc: "Automate and track emails to individuals or groups. Neukod built-in system helps organize your organization",
+    },
+  ];
 
+  const featuresTeacher = [
+    {
+      dotOutline: "bg-blue-100",
+      dotColor: "bg-blue-500",
+      text: "Teachers don't get lost in the grid view and have dedicated Podium space.",
+    },
+    {
+      dotOutline: "bg-orange-100",
+      dotColor: "bg-orange-500",
+      text: "TA's and presenters can be moved to the front of the class.",
+    },
+    {
+      dotOutline: "bg-purple-100",
+      dotColor: "bg-purple-500",
+      text: "Teachers can easily see all students and class data at one time.",
+    },
+  ];
   const addToRefs = (el: HTMLDivElement) => {
     if (el && !floatingElementsRef.current.includes(el)) {
       floatingElementsRef.current.push(el);
@@ -370,7 +597,7 @@ export default function ClassroomPage() {
         </div>
 
         {/* Trust Section */}
-        <section className="py-16 bg-white">
+        <section className="partner-section py-16 bg-white">
           <div className="container mx-auto px-6 text-center">
             <h3 className="text-lg text-gray-600 mb-8">
               Trusted by 5,000+ Companies Worldwide
@@ -386,10 +613,9 @@ export default function ClassroomPage() {
           </div>
         </section>
 
-        {/* Features Section */}
         <section className="py-20 bg-gray-50">
           <div className="container mx-auto px-6">
-            <div className="text-center mb-16">
+            <div className="intro-title text-center mb-16">
               <h2 className="text-4xl font-bold text-gray-900 mb-4">
                 All-In-One{" "}
                 <span className="text-blue-900">Cloud Software.</span>
@@ -401,57 +627,26 @@ export default function ClassroomPage() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              {/* Feature 1 */}
-              <div className="text-center">
-                <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <CreditCard className="w-8 h-8 text-white" />
+              {introItem.map((item, index) => (
+                <div key={index} className="intro-item text-center">
+                  <div
+                    className={`w-16 h-16 ${item.color} rounded-full flex items-center justify-center mx-auto mb-6`}
+                  >
+                    {item.icon}
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-600">{item.desc}</p>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  Online Billing,
-                  <br />
-                  Invoicing, & Contracts
-                </h3>
-                <p className="text-gray-600">
-                  Simple and secure control of your organization's financial and
-                  legal transactions. Send customized invoices and contracts
-                </p>
-              </div>
-
-              {/* Feature 2 */}
-              <div className="text-center">
-                <div className="w-16 h-16 bg-blue-900 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Calendar className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  Easy Scheduling &<br />
-                  Attendance Tracking
-                </h3>
-                <p className="text-gray-600">
-                  Schedule and reserve classrooms at one campus or multiple
-                  campuses. Keep detailed records of student attendance
-                </p>
-              </div>
-
-              {/* Feature 3 */}
-              <div className="text-center">
-                <div className="w-16 h-16 bg-cyan-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <UserCheck className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  Customer Tracking
-                </h3>
-                <p className="text-gray-600">
-                  Automate and track emails to individuals or groups. Neukod
-                  built-in system helps organize your organization
-                </p>
-              </div>
+              ))}
             </div>
           </div>
         </section>
 
         <section className="py-20 bg-white">
           <div className="container mx-auto px-6">
-            <div className="text-center mb-16">
+            <div className="about-title text-center mb-16">
               <h2 className="text-4xl font-bold text-gray-900 mb-6">
                 What is <span className="text-blue-900">Neukod?</span>
               </h2>
@@ -463,7 +658,7 @@ export default function ClassroomPage() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8 mb-20">
+            <div className="about-item grid md:grid-cols-2 gap-8 mb-20">
               {/* For Instructors Card */}
               <div className="relative rounded-2xl overflow-hidden group cursor-pointer">
                 <Image
@@ -511,7 +706,7 @@ export default function ClassroomPage() {
 
             {/* Physical Classroom Section */}
             <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="relative">
+              <div className="about-classroom relative">
                 <div className="relative z-0">
                   <div className="absolute -top-6 -left-8 w-[70px] h-[70px] bg-orange-400 rounded-full shadow-[rgba(233, 213, 255,50)_0px_0px_20px_2px]"></div>
                   <div className="absolute top-20 left-3/4 w-[100px] h-[100px] bg-sky-400 rounded-full shadow-[rgba(233, 213, 255,50)_0px_0px_20px_2px]"></div>
@@ -523,11 +718,6 @@ export default function ClassroomPage() {
                       you can do with Neukod
                     </span>
                   </h3>
-
-                  {/* <div className="bg-orange-100 text-orange-600 px-4 py-2 rounded-full mb-6">
-                <span className="font-semibold">Everything you can do in a physical classroom, </span>
-                <span className="font-bold">you can do with Neukod</span>
-              </div> */}
                   <p className="text-gray-600 mb-6 leading-relaxed">
                     Neukod school management software helps traditional and
                     online schools manage scheduling, attendance, payments and
@@ -541,7 +731,7 @@ export default function ClassroomPage() {
                   Learn more →
                 </Button>
               </div>
-              <div className="relative">
+              <div className="about-classroom-img relative">
                 <Image
                   src={Teacher1}
                   alt="Modern classroom"
@@ -676,7 +866,7 @@ export default function ClassroomPage() {
         {/* Our Features Section */}
         <section className="py-20 bg-gray-50">
           <div className="container mx-auto px-6">
-            <div className="text-center mb-16">
+            <div className="feature-title text-center mb-16">
               <h2 className="text-4xl font-bold text-gray-900 mb-4">
                 Our <span className="text-blue-900">Features</span>
               </h2>
@@ -688,7 +878,7 @@ export default function ClassroomPage() {
 
             <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
               <div className="group relative">
-                <div className="relative z-50">
+                <div className="shapes relative z-50">
                   <Image
                     src={InstructorImg}
                     alt="User interface design"
@@ -697,14 +887,14 @@ export default function ClassroomPage() {
                 </div>
                 {/* Decorative elements */}
                 <div className="z-0">
-                  <div className="absolute inset-0 -top-4 -left-4 group-hover:scale-110 transition-all duration-400 delay-100 w-[200px] h-[200px] bg-green-400 rounded-2xl shadow-[rgba(187,247,208,50)_0px_0px_20px_2px]" />
-                  <div className="absolute -bottom-10 -right-6 group-hover:scale-110 transition-all duration-300 delay-300 w-[200px] h-[150px] md:w-[400px] md:h-[200px] bg-blue-400 rounded-2xl shadow-[rgba(191,219,254,50)_0px_0px_20px_2px]" />
-                  <div className="absolute -bottom-4 -left-5 group-hover:scale-110 transition-all duration-300 delay-300 w-[100px] h-[100px] bg-orange-400 rounded-2xl shadow-[rgba(253,230,138,50)_0px_0px_20px_2px]" />
+                  <div className="absolute inset-0 -top-4 -left-4 group-hover:scale-110 transition-all duration-400 hover:delay-100 w-[200px] h-[200px] bg-green-400 rounded-2xl shadow-[rgba(187,247,208,50)_0px_0px_20px_2px]" />
+                  <div className="absolute -bottom-10 -right-6 group-hover:scale-110 transition-all duration-300 hover:delay-300 w-[200px] h-[150px] md:w-[400px] md:h-[200px] bg-blue-400 rounded-2xl shadow-[rgba(191,219,254,50)_0px_0px_20px_2px]" />
+                  <div className="absolute -bottom-4 -left-5 group-hover:scale-110 transition-all duration-300 hover:delay-300 w-[100px] h-[100px] bg-orange-400 rounded-2xl shadow-[rgba(253,230,138,50)_0px_0px_20px_2px]" />
                 </div>
               </div>
 
               <div>
-                <h3 className="text-3xl font-bold text-gray-900 mb-6">
+                <h3 className="feature-title2 text-3xl font-bold text-gray-900 mb-6">
                   A <span className="text-blue-900">user interface</span>{" "}
                   designed
                   <br />
@@ -712,42 +902,25 @@ export default function ClassroomPage() {
                 </h3>
 
                 <div className="space-y-6">
-                  <div className="flex items-start gap-4">
-                    <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                      <div className="w-4 h-4 bg-blue-500 rounded"></div>
+                  {featuresTeacher.map((feature, index) => (
+                    <div key={index} className="feature-item flex items-start gap-4">
+                      <div
+                        className={`w-8 h-8 ${feature.dotOutline} rounded-lg flex items-center justify-center flex-shrink-0 mt-1`}
+                      >
+                        <div
+                          className={`w-4 h-4 ${feature.dotColor} rounded`}
+                        ></div>
+                      </div>
+                      <p className="text-gray-600">{feature.text}</p>
                     </div>
-                    <p className="text-gray-600">
-                      Teachers don't get lost in the grid view and have a
-                      dedicated Podium space.
-                    </p>
-                  </div>
-
-                  <div className="flex items-start gap-4">
-                    <div className="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                      <div className="w-4 h-4 bg-blue-900 rounded"></div>
-                    </div>
-                    <p className="text-gray-600">
-                      TA's and presenters can be moved to the front of the
-                      class.
-                    </p>
-                  </div>
-
-                  <div className="flex items-start gap-4">
-                    <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                      <div className="w-4 h-4 bg-purple-500 rounded"></div>
-                    </div>
-                    <p className="text-gray-600">
-                      Teachers can easily see all students and class data at one
-                      time.
-                    </p>
-                  </div>
+                  ))}
                 </div>
               </div>
             </div>
 
             {/* Tools Section */}
             <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div>
+              <div className="title-teach">
                 <h3 className="text-3xl font-bold text-gray-900 mb-6">
                   <span className="text-blue-900">Tools</span> For Teachers
                   <br />
@@ -766,7 +939,7 @@ export default function ClassroomPage() {
                 </Button>
               </div>
 
-              <div className="relative">
+              <div className="img-teach relative">
                 <Image
                   src={TeacherImg}
                   alt="Teacher with educational tools"

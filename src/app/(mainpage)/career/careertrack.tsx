@@ -119,7 +119,7 @@ export default function CareerSection() {
 
               <div className="space-y-4 text-gray-700 leading-relaxed">
                 <p>
-                  At Pennant Education, we're dedicated to delivering
+                  At Neukod Education, we're dedicated to delivering
                   high-quality, industry-focused education across a range of
                   technology fields.
                 </p>
@@ -148,7 +148,7 @@ export default function CareerSection() {
               </div>
 
               <p className="leading-relaxed">
-                At Pennant Education, we value flexible, immersive learning
+                At Neukod Education, we value flexible, immersive learning
                 experiences that emphasize hands-on practice. We prioritize
                 career-oriented education, making sure you gain skills that are
                 relevant in today's rapidly evolving tech landscape.

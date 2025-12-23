@@ -17,7 +17,7 @@ export default function Component() {
               <h1 className="text-4xl font-bold text-blue-800 leading-tight">Frequently Asked Questions</h1>
 
               <p className="text-gray-600 text-lg leading-relaxed">
-                At Pennant Education, we understand that you may have questions about our programs, enrollment process,
+                At Neukod Education, we understand that you may have questions about our programs, enrollment process,
                 and more. Below, we have compiled a list of frequently asked questions to help you get the information
                 you need.
               </p>
