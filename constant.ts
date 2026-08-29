@@ -5,5 +5,5 @@
 export const METADATA = {
     title: "Neukod E-Learning",
     description: "Website E-Learning",
-    siteUrl: "https://"
+    siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "https://"
 };

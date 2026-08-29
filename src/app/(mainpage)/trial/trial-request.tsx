@@ -2,6 +2,8 @@
 
 import type React from "react";
 import { useState } from "react";
+
+const TRIAL_ENDPOINT = process.env.NEXT_PUBLIC_TRIAL_ENDPOINT ?? "/trials";
 import {
   Dialog,
   DialogContent,
@@ -103,7 +105,7 @@ export function TrialRequestModal({ isOpen, onClose }: TrialRequestModalProps) {
         duration: Number.parseInt(formData.duration),
       };
 
-      const response = await fetch("http://127.0.0.1:4000/trials", {
+      const response = await fetch(TRIAL_ENDPOINT, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

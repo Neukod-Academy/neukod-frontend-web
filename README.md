@@ -23,6 +23,17 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Environment Configuration
+
+Copy `.env.example` to `.env.local` and fill in the values for your target environment:
+
+| Variable | Description |
+| --- | --- |
+| `NEXT_PUBLIC_TRIAL_ENDPOINT` | Endpoint that receives trial-request form submissions (the Neukod backend, a separate project). Defaults to `/trials`. |
+| `NEXT_PUBLIC_SITE_URL` | Public site URL used in SEO / page metadata. Defaults to `https://`. |
+
+> **Note:** This project is built as a [static export](https://nextjs.org/docs/app/building-your-application/deploying/static-exports). `NEXT_PUBLIC_*` variables are baked in **at build time**, so each environment (dev/staging/prod) must set its own `.env.local` and run its own build.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
